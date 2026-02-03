@@ -1,0 +1,45 @@
+---
+import "@/styles/global.css";
+import PresentationCard from "@/components/Presentation-card.astro";
+import ProfileDescription from "@/layouts/ProfileDescription.astro";
+import ExperienceMenu from "@/layouts/ExperienceMenu.astro";
+import Footer from "@/components/Footer.astro";
+import { useI18n } from "@ariaskit/astro-i18n";
+const { t, lang } = useI18n(Astro);
+---
+
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <title>{t("head.title")}</title>
+        <link rel="canonical" href={t("footer.github-link")} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- METADATA SOCIALS -->
+        <meta property="og:title" content={t("head.metaTitle")} />
+        <meta property="og:description" content={t("head.metaDescription")} />
+        <meta property="og:type" content="website" />
+        <meta name="description" content={t("head.metaDescription")} />
+    </head>
+    <body class="flex-col content-between">
+        <main>
+            <section
+                class="min-h-[95vh] bg-primary w-full flex flex-col items-center justify-center"
+            >
+                <PresentationCard />
+            </section>
+            <section class="h-[50vh] flex flex-col items-center justify-center">
+                <ProfileDescription />
+            </section>
+            <section
+                class="-mt-30 h-[80vh] flex flex-col items-center justify-center"
+            >
+                <ExperienceMenu />
+            </section>
+        </main>
+        <footer
+            class="h-50 bg-primary w-full flex flex-col items-center justify-center gap-y-10"
+        >
+            <Footer />
+        </footer>
+    </body>
+</html>

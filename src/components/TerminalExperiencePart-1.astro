@@ -1,0 +1,147 @@
+---
+import { useI18n } from "@ariaskit/astro-i18n";
+const { t, lang } = useI18n(Astro);
+---
+
+<section class="flex flex-col w-full h-full bg-transparent">
+    <div
+        id="show-terminal-exp"
+        aria-label="simulated-linux-terminal"
+        class="opacity-0 flex flex-col justify-start bg-transparent z-20 w-full h-[70%] items-center border-primary border-2"
+    >
+        <span
+            id="terminal-header-exp"
+            class="flex flex-row justify-center items-center bg-primary text-secondary h-10 w-full"
+        >
+            {t("terminal.terminal-remote-header")}
+            {t("terminal.terminal-folder-symbol")}{
+                t("terminal.terminal-main-folder")
+            }
+            <p id="terminal-exp-folder" class="opacity-0 w-0">
+                {t("terminal.terminal-experience-dir")}
+            </p>
+        </span>
+        <section
+            id="terminal-content-exp"
+            class="bg-secondary h-full w-full p-5 overflow-scroll"
+        >
+            <div id="code-ssh-login-exp" class="flex flex-col">
+                <div class="flex flex-row">
+                    <h1 class="font-medium w-fit">
+                        {t("terminal.terminal-remote")}{
+                            t("terminal.terminal-folder-symbol")
+                        }{t("terminal.terminal-main-folder")}{
+                            t("terminal.terminal-dots")
+                        }{t("terminal.terminal-shell")}
+                    </h1>
+                    <p id="ssh-code-exp" class="opacity-0 w-fit">
+                        {t("terminal.terminal-cd")}
+                        {t("terminal.terminal-experience-folder")}
+                    </p>
+                    <p
+                        id="blinking-cursor-exp"
+                        class="animate-blinking-cursor w-3 h-5 bg-selected -translate-x-25"
+                    >
+                    </p>
+                </div>
+                <div id="ranger-command-line" class="flex flex-row opacity-0">
+                    <h1 class="font-medium w-fit">
+                        {t("terminal.terminal-remote")}{
+                            t("terminal.terminal-folder-symbol")
+                        }{t("terminal.terminal-main-folder")}{
+                            t("terminal.terminal-experience-dir")
+                        }{t("terminal.terminal-dots")}{
+                            t("terminal.terminal-shell")
+                        }
+                    </h1>
+                    <p id="ranger-command" class="opacity-0 w-fit">
+                        {t("terminal.terminal-ranger")}
+                    </p>
+                    <p
+                        id="blinking-cursor-ranger"
+                        class="animate-blinking-cursor w-3 h-5 bg-selected -translate-x-11"
+                    >
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+<script>
+    //first step: show terminal
+    const terminalContent = document.getElementById("terminal-content-exp");
+    const terminal = document.getElementById("show-terminal-exp");
+
+    window.addEventListener("terminal:first:opacity-reduced-exp", () => {
+        terminal?.classList.remove("opacity-0");
+        terminal?.classList.add("animate-openTerminal");
+    });
+
+    // second step: cursor tracks text and stops
+    const blinkingCursor = document.getElementById("blinking-cursor-exp");
+    if (terminal) {
+        terminal.addEventListener("animationend", () => {
+            if (blinkingCursor) {
+                blinkingCursor.style.setProperty(
+                    "--translate-distance",
+                    "6rem",
+                );
+                blinkingCursor.classList.add("animate-translateX-terminal");
+            }
+        });
+        blinkingCursor
+            ? blinkingCursor.addEventListener("animationend", () => {
+                  blinkingCursor.classList.add("translate-x-0");
+                  blinkingCursor.classList.add("opacity-0");
+                  blinkingCursor.classList.remove("animate-blinking-cursor");
+              })
+            : null;
+    }
+    //third step: show ssh code
+    const sshCode = document.getElementById("ssh-code-exp");
+    const expFolder = document.getElementById("terminal-exp-folder");
+    if (terminal) {
+        terminal.addEventListener("animationend", () => {
+            if (sshCode) {
+                sshCode.classList.add("animate-reveal-text-terminal");
+                sshCode.classList.add("opacity-100");
+            }
+        });
+    }
+    //fourth step: show ranger command line
+    const rangerCommandLine = document.getElementById("ranger-command-line");
+    const rangerCommand = document.getElementById("ranger-command");
+    const rangerCursor = document.getElementById("blinking-cursor-ranger");
+    if (sshCode) {
+        sshCode.addEventListener("animationend", () => {
+            if (rangerCommandLine) {
+                expFolder?.classList.add("opacity-100");
+                expFolder?.classList.add("w-fit");
+                rangerCommandLine.classList.add("opacity-100");
+                rangerCommand?.classList.add("animate-reveal-text-terminal");
+                rangerCommand?.classList.add("opacity-100");
+                if (rangerCursor) {
+                    rangerCursor.style.setProperty(
+                        "--translate-distance",
+                        "3rem",
+                    );
+                    rangerCursor.classList.add("animate-translateX-terminal");
+                }
+            }
+        });
+    }
+    //finally removes blinking cursor
+    if (rangerCursor) {
+        rangerCommand?.addEventListener("animationend", () => {
+            if (rangerCommandLine) {
+                rangerCursor.classList.add("opacity-0");
+                rangerCursor.classList.remove("animate-blinking-cursor");
+                terminal?.classList.remove("opacity-100");
+                terminal?.classList.add("opacity-50");
+                window.dispatchEvent(
+                    new CustomEvent("terminal:first:opacity-reduced-exp-2"),
+                );
+            }
+        });
+    }
+</script>

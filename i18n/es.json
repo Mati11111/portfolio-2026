@@ -1,0 +1,67 @@
+{
+  "head": {
+    "title": "Sobre mí Mati",
+    "metaTitle": "Matías Chaparro | Portafolio",
+    "metaDescription": "Portafolio de Matías Chaparro, Ingeniero Civil Informático especializado en desarrollo full-stack."
+  },
+  "body": {
+    "placeholder": "EL CONTENIDO VA AQUI",
+    "resume": "Ingeniero Civil Informático y Desarrollador Full-Stack con experiencia en trabajo remoto, especializado en desarrollo de plataformas web, optimización de flujos de usuario y performance. He trabajado con React, MERN, Node.js, Docker, CI/CD, ETL (Informatica PowerCenter), SQL, Power BI y AWS, integrando tecnologías distribuidas como Stellar y Soroban. Experiencia en gestión de proyectos y trabajo en equipo utilizando Jira. Apasionado por la mejora continua, la eficiencia de procesos y la adopción de nuevas tecnologías.",
+    "ranger": {
+      "options": ["Experiencia laboral", "Educacion", "Proyectos personales"],
+      "job_experiences": [
+        {
+          "text": ".txt",
+          "company_name": "Forcast",
+          "role": "Desarrollador Full-Stack",
+          "description": "Desarrollador Full-Stack en Forcast, trabajando de manera remota en la mejora de flujos de usuario y optimización de procesos de la plataforma. Implementé interfaces con React siguiendo lineamientos de diseño, desarrollé y mantuve funcionalidades backend con Node.js, gestioné APIs REST, y participé en despliegues en producción usando Docker y pipelines CI/CD. Integré tecnologías distribuidas como Stellar y Soroban, y trabajé en equipo bajo metodologías ágiles usando Jira.",
+          "date": "2022 - Presente",
+          "duration": "6 Meses",
+          "frameworks": [
+            "React",
+            "Node.js",
+            "Docker",
+            "CI/CD",
+            "ETL",
+            "SQL",
+            "Power BI",
+            "AWS",
+            "Stellar",
+            "Soroban"
+          ]
+        }
+      ]
+    }
+  },
+  "terminal": {
+    "terminal-welcome-msg": "Bienvenido a mi portafolio!",
+    "terminal-local-header": "mati@local",
+    "terminal-shell-symbol": "~$",
+    "terminal-shell": "$",
+    "terminal-folder-symbol": "~/",
+    "terminal-local": "mati@local:",
+    "terminal-ssh": "ssh ",
+    "terminal-confirm": "Estas seguro que quieres continuar conectando (si/no)?",
+    "terminal-yes": "si",
+    "terminal-welcome": "Bienvenido a mi portafolio!",
+    "terminal-remote-header": "portafolio@localhost",
+    "terminal-remote": "portafolio@localhost:",
+    "terminal-main-folder": "documentos",
+    "terminal-experience-folder": "experiencia",
+    "terminal-experience-dir": "/experiencia",
+    "terminal-ranger": "ranger",
+    "terminal-cd": "cd",
+    "terminal-cat": "cat",
+    "terminal-portfolio-file": "about_me_es.txt",
+    "terminal-dots": ":"
+  },
+  "footer": {
+    "github": "Github",
+    "github-link": "https://github.com/Mati11111",
+    "linkedin": "LinkedIn",
+    "linkedin-link": "https://www.linkedin.com/in/mat%C3%ADas-chaparro-d%C3%ADaz-a6749027a/",
+    "email": "Email",
+    "email-link": "matias.chaparro.mail@gmail.com",
+    "sign": "Diseñado & elaborado por Matías Chaparro"
+  }
+}

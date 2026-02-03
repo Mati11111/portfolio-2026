@@ -1,0 +1,37 @@
+{
+  "head": {
+    "title": "About me Mati",
+    "metaTitle": "Matías Chaparro | Portfolio",
+    "metaDescription": "Matías Chaparro portfolio, software developer specializing in full-stack development."
+  },
+  "body": {
+    "placeholder": "CONTENT GOES HERE",
+    "resume": "Ingeniero Civil Informático y Desarrollador Full-Stack con experiencia en trabajo remoto, especializado en desarrollo de plataformas web, optimización de flujos de usuario y performance. He trabajado con React, MERN, Node.js, Docker, CI/CD, ETL (Informatica PowerCenter), SQL, Power BI y AWS, integrando tecnologías distribuidas como Stellar y Soroban. Experiencia en gestión de proyectos y trabajo en equipo utilizando Jira. Apasionado por la mejora continua, la eficiencia de procesos y la adopción de nuevas tecnologías."
+  },
+  "terminal": {
+    "terminal-welcome-msg": "Welcome to my portfolio!",
+    "terminal-local-header": "mati@local",
+    "terminal-shell-symbol": "~$",
+    "terminal-folder-symbol": "~/",
+    "terminal-local": "mati@local:",
+    "terminal-ssh": "ssh ",
+    "terminal-confirm": "Are you sure you want to continue connecting (yes/no)?",
+    "terminal-yes": "yes",
+    "terminal-welcome": "Welcome to my portfolio!",
+    "terminal-remote-header": "portfolio@localhost",
+    "terminal-remote": "portfolio@localhost:",
+    "terminal-main-folder": "documents",
+    "terminal-cd": "cd",
+    "terminal-cat": "cat",
+    "terminal-portfolio-file": "about_me_en.txt"
+  },
+  "footer": {
+    "github": "Github",
+    "github-link": "https://github.com/Mati11111",
+    "linkedin": "LinkedIn",
+    "linkedin-link": "https://www.linkedin.com/in/mat%C3%ADas-chaparro-d%C3%ADaz-a6749027a/",
+    "email": "Email",
+    "email-link": "matias.chaparro.mail@gmail.com",
+    "sign": "Designed & built by Matias Chaparro"
+  }
+}

@@ -1,0 +1,191 @@
+---
+import { useI18n } from "@ariaskit/astro-i18n";
+const { t, lang } = useI18n(Astro);
+---
+
+<section class="flex flex-col w-full h-full">
+    <div
+        id="show-terminal-main"
+        aria-label="simulated-linux-terminal"
+        class="opacity-0 flex flex-col justify-start bg-transparent z-20 absolute w-full h-[70%] items-center border-primary border-2"
+    >
+        <span
+            id="terminal-header-main"
+            class="flex flex-row justify-center items-center bg-primary text-secondary h-10 w-full"
+        >
+            {t("terminal.terminal-remote-header")}
+            {t("terminal.terminal-folder-symbol")}
+            <p id="terminal-main-folder" class="opacity-0">
+                {t("terminal.terminal-main-folder")}
+            </p>
+        </span>
+        <section
+            id="terminal-content-main"
+            class="bg-secondary h-full w-full p-5 overflow-scroll"
+        >
+            <div id="find-folder-main" class="flex flex-col">
+                <div class="flex flex-row pb-3">
+                    <p id="greeting" class="w-fit">
+                        {t("terminal.terminal-welcome-msg")}
+                    </p>
+                </div>
+                <div class="flex flex-row">
+                    <h1
+                        id="find-folder-main-line"
+                        class="font-medium w-fit opacity-0"
+                    >
+                        {t("terminal.terminal-remote")}{
+                            t("terminal.terminal-shell-symbol")
+                        }
+                    </h1>
+                    <p id="cd-folder-main" class="w-fit opacity-0">
+                        {t("terminal.terminal-cd")}
+                        {t("terminal.terminal-main-folder")}
+                    </p>
+                    <p
+                        id="blinking-cursor-main-1"
+                        class="animate-blinking-cursor w-3 h-5 bg-selected -translate-x-26"
+                    >
+                    </p>
+                </div>
+                <div class="flex flex-row">
+                    <h1
+                        id="terminal-portfolio"
+                        class="font-medium w-fit opacity-0"
+                    >
+                        {t("terminal.terminal-remote-header")}{
+                            t("terminal.terminal-folder-symbol")
+                        }{t("terminal.terminal-main-folder")}{
+                            t("terminal.terminal-dots")
+                        }{t("terminal.terminal-shell")}
+                    </h1>
+                    <p id="cat-file-main" class="w-fit opacity-0">
+                        {t("terminal.terminal-cat")}
+                        {t("terminal.terminal-portfolio-file")}
+                    </p>
+                    <p
+                        id="blinking-cursor-main-2"
+                        class="opacity-0 w-3 h-5 bg-selected -translate-x-37"
+                    >
+                    </p>
+                </div>
+                <div class="flex flex-col">
+                    <div class="flex flex-row">
+                        <p id="show-text-main" class="w-fit opacity-0 text-2xl">
+                            {t("body.resume")}
+                        </p>
+                    </div>
+                    <div class="flex flex-row">
+                        <h1
+                            id="terminal-resume"
+                            class="font-medium w-fit opacity-0"
+                        >
+                            {t("terminal.terminal-remote-header")}{
+                                t("terminal.terminal-folder-symbol")
+                            }{t("terminal.terminal-main-folder")}{
+                                t("terminal.terminal-dots")
+                            }{t("terminal.terminal-shell")}
+                        </h1>
+                        <p
+                            id="blinking-cursor-3"
+                            class="opacity-0 w-3 h-5 bg-selected"
+                        >
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+<script>
+    //first step: show 2nd terminal
+    const terminal = document.getElementById("show-terminal-main");
+    const blinkingCursor1 = document.getElementById("blinking-cursor-main-1");
+    const folderPath = document.getElementById("cd-folder-main");
+    const firstLine = document.getElementById("find-folder-main-line");
+    if (terminal) {
+        window.addEventListener("terminal:first:opacity-reduced", () => {
+            terminal.classList.remove("opacity-0");
+            terminal.classList.add("animate-openTerminal");
+        });
+
+        blinkingCursor1
+            ? terminal.addEventListener("animationend", () => {
+                  if (firstLine) {
+                      firstLine.classList.add("opacity-100");
+                  }
+                  blinkingCursor1.style.setProperty(
+                      "--translate-distance",
+                      "6rem",
+                  );
+                  blinkingCursor1.classList.add("animate-translateX-terminal");
+                  blinkingCursor1.classList.remove("animate-blinking-cursor");
+                  blinkingCursor1.classList.remove("opacity-100");
+                  blinkingCursor1.classList.add("opacity-0");
+                  if (folderPath) {
+                      folderPath.classList.add("opacity-100");
+                      folderPath.classList.add("animate-reveal-text-terminal");
+                  }
+              })
+            : null;
+    }
+    //second step: show 2nd line
+    const blinkingCursor2 = document.getElementById("blinking-cursor-main-2");
+    const portfolioFile = document.getElementById("cat-file-main");
+    const mainFolder = document.getElementById("terminal-main-folder");
+    const secondLine = document.getElementById("terminal-portfolio");
+    if (terminal) {
+        terminal.addEventListener("animationend", () => {
+            if (blinkingCursor2) {
+                blinkingCursor2.style.setProperty(
+                    "--translate-distance",
+                    "9rem",
+                );
+            }
+        });
+        blinkingCursor1
+            ? blinkingCursor1.addEventListener("animationend", () => {
+                  if (secondLine) {
+                      secondLine.classList.add("opacity-100");
+                      mainFolder?.classList.add("opacity-100");
+                  }
+
+                  if (portfolioFile) {
+                      portfolioFile.classList.add("opacity-100");
+                      portfolioFile.classList.add(
+                          "animate-reveal-text-terminal",
+                      );
+                      if (blinkingCursor2) {
+                          blinkingCursor2.classList.add(
+                              "animate-translateX-terminal",
+                          );
+                          blinkingCursor2.classList.remove("opacity-100");
+                          blinkingCursor2.classList.add("opacity-0");
+                      }
+                  }
+              })
+            : null;
+    }
+    //third step: show resume
+    const resumeContent = document.getElementById("show-text-main");
+    const thirdLine = document.getElementById("terminal-resume");
+    if (resumeContent) {
+        blinkingCursor2?.addEventListener("animationend", () => {
+            if (thirdLine) {
+                thirdLine.classList.add("opacity-100");
+            }
+            resumeContent.classList.add("opacity-100");
+        });
+    }
+    //final step: show blinking cursor
+    const blinkingCursor3 = document.getElementById("blinking-cursor-3");
+    if (blinkingCursor3) {
+        blinkingCursor2?.addEventListener("animationend", () => {
+            blinkingCursor3.classList.add("opacity-100");
+            blinkingCursor3.classList.add("animate-blinking-cursor");
+            window.dispatchEvent(
+                new CustomEvent("terminal:first:opacity-reduced-exp"),
+            );
+        });
+    }
+</script>

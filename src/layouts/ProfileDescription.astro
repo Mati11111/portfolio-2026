@@ -1,0 +1,19 @@
+---
+import TerminalWelcomePart1 from "@/components/TerminalWelcomePart-1.astro";
+import TerminalWelcomePart2 from "@/components/TerminalWelcomePart-2.astro";
+---
+
+<section class="relative w-[90%] h-[90%]">
+    <div
+        aria-label="simulated-linux-terminal "
+        class="flex flex-row z-20 pt-10 absolute w-[40%] left-0 h-[60%] items-center justify-center"
+    >
+        <TerminalWelcomePart1 />
+    </div>
+    <div
+        aria-label="simulated-linux-terminal "
+        class="flex flex-row z-30 w-[70%] h-full right-0 absolute items-center justify-center"
+    >
+        <TerminalWelcomePart2 />
+    </div>
+</section>
