@@ -1,0 +1,84 @@
+---
+import { useI18n } from "@ariaskit/astro-i18n";
+const { t, lang } = useI18n(Astro);
+---
+
+<section
+    class="flex flex-col w-full h-full bg-transparent xl:text-2xl md:text-sm"
+>
+    <div
+        id="show-terminal-exp-3"
+        aria-label="simulated-linux-terminal"
+        class="opacity-0 flex flex-col justify-start z-20 w-full h-[70%] items-center border-bg-variant border-2"
+    >
+        <span
+            id="terminal-header-exp"
+            class="lg:text-sm sm:text-sm text-nowrap flex flex-row justify-center items-center bg-bg-primary text-text-tertiary h-10 w-full"
+        >
+            {t("terminal.terminal-remote-header")}
+            {t("terminal.terminal-folder-symbol")}{
+                t("terminal.terminal-main-folder")
+            }
+        </span>
+        <section
+            id="terminal-content-exp"
+            class="lg:text-lg sm:text-sm text-text-secondary bg-bg-secondary h-full w-full p-5 overflow-scroll"
+        >
+            <div id="code-ssh-login-exp" class="flex flex-col">
+                <div class="flex flex-col lg:flex-row">
+                    <h1 class="flex flex-row font-medium w-fit text-nowrap">
+                        {t("terminal.terminal-remote-header")}{
+                            t("terminal.terminal-folder-symbol")
+                        }{t("terminal.terminal-main-folder")}{
+                            t("terminal.terminal-dots")
+                        }{t("terminal.terminal-shell")}
+                    </h1>
+                    <p id="ssh-code-exp" class="opacity-100 w-fit">
+                        {t("terminal.terminal-htop")}
+                    </p>
+                    <p
+                        id="blinking-cursor-exp"
+                        class="animate-blinking-cursor w-3 xl:h-8 md:h-5 bg-bg-variant xl:-translate-x-40 md:-translate-x-25"
+                    >
+                    </p>
+                </div>
+                <div
+                    id="ranger-command-line"
+                    class="flex flex-col lg:flex-row opacity-0 bg-bg-secondary text-text-tertiary"
+                >
+                    <h1 class="font-medium w-fit">
+                        {t("terminal.terminal-remote-header")}{
+                            t("terminal.terminal-folder-symbol")
+                        }{t("terminal.terminal-main-folder")}{
+                            t("terminal.terminal-dots")
+                        }{t("terminal.terminal-shell")}
+                    </h1>
+                    <p id="ranger-command" class="opacity-0 w-fit">
+                        {t("terminal.terminal-ranger")}
+                    </p>
+                    <p
+                        id="blinking-cursor-ranger"
+                        class="animate-blinking-cursor w-3 xl:h-8 md:h-5 bg-bg-variant xl:-translate-x-20 md:-translate-x-11"
+                    >
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+<script>
+    //first step: show terminal
+    const terminal = document.getElementById("show-terminal-exp-3");
+    window.addEventListener("ranger:part2:ended", () => {
+        terminal?.classList.remove("opacity-0");
+        terminal?.classList.add("animate-openTerminal");
+        terminal?.addEventListener(
+            "animationend",
+            () => {
+                window.dispatchEvent(new CustomEvent("htop:part1:ended"));
+                terminal?.classList.add("opacity-60");
+            },
+            { once: true },
+        );
+    });
+</script>

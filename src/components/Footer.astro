@@ -2,22 +2,30 @@
 import { useI18n } from "@ariaskit/astro-i18n";
 const { t, lang } = useI18n(Astro);
 const currentYear = new Date().getFullYear();
+import EmailIcon from "@/assets/email.svg";
+import GithubIcon from "@/assets/github.svg";
+import LinkedinIcon from "@/assets/linkedin.svg";
+import TranslateIcon from "@/assets/translate.svg";
+import DarkModeToggle from "@/components/DarkModeToggle";
 ---
 
 <section class="flex flex-col">
     <div
+        id="footer-icons-container"
         aria-label="social-media-links"
-        class="flex flex-row items-center justify-center gap-x-3 text-2xl tracking-wider"
+        class="flex flex-row items-center justify-center gap-x-5 text-2xl opacity-0"
     >
         <a
             href={t("footer.github-link")}
             target="_blank"
             rel="noopener noreferrer"
-            class="link group flex flex-col justify-center items-center"
+            class="footer-icon-container flex flex-col justify-center items-center cursor-pointer"
         >
-            <span class="text-secondary">{t("footer.github")}</span>
-            <hr
-                class="border border-secondary w-0 group-hover:w-[50%] transition-all duration-300"
+            <GithubIcon
+                class="footer-icon"
+                width={20}
+                height={20}
+                fill="#dddddd"
             />
         </a>
 
@@ -25,47 +33,119 @@ const currentYear = new Date().getFullYear();
             href={t("footer.linkedin-link")}
             target="_blank"
             rel="noopener noreferrer"
-            class="link group flex flex-col justify-center items-center"
+            class="footer-icon-container flex flex-col justify-center items-center cursor-pointer"
         >
-            <span class="text-secondary">{t("footer.linkedin")}</span>
-            <hr
-                class="border border-secondary w-0 group-hover:w-[50%] transition-all duration-300"
+            <LinkedinIcon
+                class="footer-icon"
+                width={20}
+                height={20}
+                fill="#dddddd"
             />
         </a>
 
         <div
-            class="link group flex flex-col justify-center items-center cursor-pointer"
+            class="footer-icon-container flex flex-col justify-center items-center cursor-pointer"
             onclick="navigator.clipboard.writeText('matias.chaparro.mail@gmail.com')"
             aria-label="Copy email to clipboard"
         >
-            <span class="text-secondary">{t("footer.email")}</span>
-            <hr
-                class="border border-secondary w-0 group-hover:w-[50%] transition-all duration-300"
+            <EmailIcon
+                class="footer-icon"
+                width={27}
+                height={27}
+                fill="#dddddd"
             />
         </div>
     </div>
+    <section class="absolute right-0 bottom-0 mb-10 mr-10">
+        <DarkModeToggle client:only="react" />
+    </section>
 </section>
 
-<div class="flex flex-col justify-center items-center">
-    <h1 id="presentation-card" class="text-secondary">
+<div class="flex flex-col justify-center items-center text-text-same">
+    <h1 id="footerSign" class="text-secondary opacity-0">
         {t("footer.sign")}
     </h1>
-    <p id="copyright" class="text-secondary">
-        &copy; {currentYear}
-    </p>
-</div>
+    <div class="flex flex-row gap-x-1 items-center justify-center">
+        <p id="copyright" class="text-secondary opacity-0">&copy;</p>
+        <p id="copyright-year" class="text-secondary opacity-0">
+            {currentYear}
+        </p>
+    </div>
+    <script>
+        // animated hover for socials
+        const containers = document.querySelectorAll(".footer-icon-container");
 
-<script>
-    const linkElements = document.querySelectorAll(".link");
-    linkElements.forEach((el) => {
-        const hr = el.querySelector("hr");
-        el.addEventListener("click", () => {
-            if (hr) {
-                hr.style.width = "100%";
-                setTimeout(() => {
-                    hr.style.width = "";
-                }, 200);
-            }
+        containers.forEach((container) => {
+            const icon = container.querySelector(".footer-icon");
+
+            container.addEventListener("mouseenter", () => {
+                icon?.classList.remove("animate-moveFooterIconLeave");
+                icon?.classList.add("animate-moveFooterIcon");
+            });
+
+            container.addEventListener("click", () => {
+                icon?.classList.add("animate-clickFooterIcon");
+
+                icon?.addEventListener(
+                    "animationend",
+                    () => {
+                        icon.classList.remove("animate-clickFooterIcon");
+                    },
+                    { once: true },
+                );
+            });
+
+            container.addEventListener("mouseleave", () => {
+                icon?.classList.remove("animate-moveFooterIcon");
+                icon?.classList.add("animate-moveFooterIconLeave");
+            });
         });
-    });
-</script>
+    </script>
+    <script>
+        // animated hover for socials container
+        const footerIcons = document.getElementById("footer-icons-container");
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (!footerIcons) return;
+                if (entry.isIntersecting) {
+                    footerIcons.classList.remove("opacity-0");
+                    footerIcons.classList.add("animate-footerIconsAppear");
+                } else {
+                    footerIcons.classList.add("opacity-0");
+                    footerIcons.classList.remove("animate-footerIconsAppear");
+                }
+            },
+            { threshold: 0.1 },
+        );
+        if (footerIcons) observer.observe(footerIcons);
+    </script>
+    <script>
+        // animated footerSign text
+        const footerSign = document.getElementById("footerSign");
+        const copyRight = document.getElementById("copyright");
+        const copyRightYear = document.getElementById("copyright-year");
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (!footerSign) return;
+                if (entry.isIntersecting) {
+                    window.scrollTo({
+                        top: document.body.scrollHeight,
+                        behavior: "smooth",
+                    });
+                    footerSign.classList.remove("opacity-0");
+                    footerSign.classList.add("animate-revealLeftSign");
+                    footerSign.addEventListener("animationend", () => {
+                        copyRight?.classList.remove("opacity-0");
+                        copyRight?.classList.add("animate-copyRightLogo");
+                    });
+                    copyRight?.addEventListener("animationend", () => {
+                        copyRightYear?.classList.remove("opacity-0");
+                        copyRightYear?.classList.add("animate-copyRightYear");
+                    });
+                }
+            },
+            { threshold: 0.1 },
+        );
+        if (footerSign) observer.observe(footerSign);
+    </script>
+</div>

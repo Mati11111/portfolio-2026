@@ -1,0 +1,19 @@
+---
+import TerminalRangerPart1 from "@/components/TerminalRangerPart-1.astro";
+import TerminalRangerPart2 from "@/components/TerminalRangerPart-2.astro";
+---
+
+<section class="relative w-[90%] h-[90%]">
+    <div
+        aria-label="simulated-linux-terminal"
+        class="flex flex-row z-20 pt-10 absolute w-full left-0 h-[60%] items-center justify-center lg:w-[40%]"
+    >
+        <TerminalRangerPart1 />
+    </div>
+    <div
+        aria-label="simulated-linux-terminal "
+        class="flex flex-row z-30 w-full h-[90%] right-0 absolute items-center justify-center lg:w-[80%]"
+    >
+        <TerminalRangerPart2 />
+    </div>
+</section>

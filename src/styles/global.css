@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 /*FONTS*/
 /* Regular */
 @font-face {
@@ -8,7 +9,6 @@
     font-style: normal;
     font-display: swap;
 }
-
 /* Medium */
 @font-face {
     font-family: "Stellar";
@@ -17,7 +17,6 @@
     font-style: normal;
     font-display: swap;
 }
-
 /* Bold */
 @font-face {
     font-family: "Stellar";
@@ -26,14 +25,53 @@
     font-style: normal;
     font-display: swap;
 }
+:root.dark {
+    --dot-bar: #181818;
+    --color-primary: #181818;
+    --color-bg-primary: #dddddd;
+    --color-bg-secondary: #181818;
+    --color-bg-variant: #202124;
+    --color-text-presentation: #dddddd;
+    --color-text: #181818;
+    --color-text-secondary: #dddddd;
+    --color-text-tertiary: #181818;
+    --color-text-same: #dddddd;
+    --color-selected: #323639;
+    --color-variant: #424242;
+    --dot-bg: #202124;
+    --dot-color: #dddddd;
+}
+*,
+*::before,
+*::after {
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        color 0.2s ease;
+}
 /*COLOR PALETTE*/
 @theme {
-    --color-primary: #000000;
-    --color-secondary: #ffffff;
-    --color-selected: #c2c2c2;
+    --dot-bar: #d6d6d7;
+    --dot-color: #181818;
+    --color-primary: #181818;
+    --color-bg-primary: #181818;
+    --color-bg-secondary: #d6d6d7;
+    --color-bg-variant: #202124;
+    --color-text-presentation: #dddddd;
+    --color-text: #181818;
+    --color-text-secondary: #181818;
+    --color-text-tertiary: #dddddd;
+    --color-text-same: #dddddd;
+    --color-selected: #323639;
     --color-variant: #424242;
-    --text-huge: clamp(3rem, 22vw, 32rem);
-    --tracking-huge: 8rem;
+    --dot-bg: #dddddd;
+    --dot-color: #202124;
+    --dot-size: 1px;
+    --dot-space: 22px;
+    --text-huge: clamp(3rem, 22cqw, 32rem);
+    --tracking-huge: clamp(1rem, 6cqw, 8rem);
+    --translate-start: clamp(-120rem, -40vw, 20rem);
+    --translate-distance: clamp(20rem, 81vw, 110rem);
     --animate-fadeIn: fadeIn 1s ease-in-out;
     --animate-fadeOut: fadeOut 1s ease-in-out forwards;
     --animate-blinking: blinking 1s ease-in-out;
@@ -43,18 +81,19 @@
     --animate-revealLeft: revealLeft 1s ease-out;
     --animate-reveal-text-terminal: revealLeft 0.3s ease-out;
     --animate-openTerminal: openTerminal 0.5s ease-out;
-}
-
-html {
-    font-family: "Stellar", system-ui, sans-serif;
-    font-weight: 300;
-    scroll-behavior: smooth;
-}
-
-h1,
-span,
-p {
-    cursor: default;
+    --animate-moveFooterIcon: moveFooterIcon 0.2s ease-in-out forwards;
+    --animate-moveFooterIconLeave: moveFooterIconLeave 0.2s ease-in-out;
+    --animate-clickFooterIcon: clickFooterIcon 0.2s ease-in-out;
+    --animate-footerIconsAppear: footerIconsAppear 0.2s ease-in-out;
+    --animate-footerContainerApear: footerContainerApear 0.5s ease-in-out
+        forwards;
+    --animate-revealLeftSign: revealLeftSign 1.5s;
+    --animate-copyRightLogo: copyRightLogo 0.2s;
+    --animate-copyRightYear: copyRightYear 0.2s;
+    --animate-growBar: growBar 1s ease-in-out forwards;
+    --animate-rotateThemeSwitch: rotateThemeSwitch 0.4s ease-in-out forwards;
+    --animate-rotateThemeSwitchBack: rotateThemeSwitchBack 0.4s ease-in-out
+        forwards;
 }
 
 /*SCROLL*/
@@ -78,10 +117,59 @@ p {
     scrollbar-color: var(--color-primary) transparent;
 }
 
+html {
+    font-family: "Stellar", system-ui, sans-serif;
+    font-weight: 300;
+    scroll-behavior: smooth;
+}
+
+h1,
+p,
+span {
+    cursor: default;
+}
+a {
+    cursor: pointer;
+}
+
 .reveal-left {
     clip-path: inset(0 100% 0 0);
     display: inline-block;
     animation: revealLeft 0.6s ease-out forwards;
+}
+
+.dotted-bar {
+    --dot-size: 1px;
+    --dot-space: 4px;
+    background:
+        linear-gradient(
+                90deg,
+                var(--dot-bar) calc(var(--dot-space) - var(--dot-size)),
+                transparent 1%
+            )
+            center / var(--dot-space) var(--dot-space),
+        linear-gradient(
+                var(--dot-bar) calc(var(--dot-space) - var(--dot-size)),
+                transparent 1%
+            )
+            center / var(--dot-space) var(--dot-space),
+        var(--dot-color);
+}
+
+body {
+    background:
+        linear-gradient(
+                90deg,
+                var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+                transparent 1%
+            )
+            center / var(--dot-space) var(--dot-space),
+        linear-gradient(
+                var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+                transparent 1%
+            )
+            center / var(--dot-space) var(--dot-space),
+        var(--dot-color);
 }
 
 /*ANIMATIONS*/
@@ -127,7 +215,7 @@ p {
         opacity: 1;
     }
     100% {
-        transform: translateX(var(--translate-distance, 105rem));
+        transform: translateX(var(--translate-distance));
         opacity: 1;
     }
 }
@@ -153,5 +241,118 @@ p {
     100% {
         transform: scaleX(1) scaleY(1);
         opacity: 1;
+    }
+}
+
+@keyframes moveFooterIconStart {
+    from {
+        transform: translateX(0rem);
+    }
+    to {
+        transform: translateX(2rem);
+    }
+}
+
+@keyframes moveFooterIcon {
+    from {
+        transform: translateY(0rem);
+        rotate: 0deg;
+    }
+    to {
+        transform: translateY(-0.5rem);
+        rotate: 10deg;
+    }
+}
+@keyframes moveFooterIconLeave {
+    from {
+        transform: translateY(-0.5rem);
+        rotate: 10deg;
+    }
+    to {
+        transform: translateY(0rem);
+        rotate: 0deg;
+    }
+}
+
+@keyframes clickFooterIcon {
+    0% {
+        transform: translateY(0);
+        rotate: 0deg;
+    }
+    40% {
+        transform: translateY(-0.6rem);
+        rotate: 10deg;
+    }
+    100% {
+        transform: translateY(0);
+        rotate: 0deg;
+    }
+}
+@keyframes footerIconsAppear {
+    from {
+        transform: translateY(1rem);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0rem);
+        opacity: 1;
+    }
+}
+@keyframes footerContainerApear {
+    from {
+        transform: scaleY(0);
+    }
+    to {
+        transform: scaleY(1);
+    }
+}
+@keyframes revealLeftSign {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+@keyframes copyRightLogo {
+    from {
+        scale: 2;
+    }
+    to {
+        scale: 1;
+    }
+}
+@keyframes copyRightYear {
+    from {
+        opacity: 0;
+        transform: translateX(-2rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes growBar {
+    from {
+        width: 0%;
+    }
+    to {
+        width: var(--bar-width);
+    }
+}
+@keyframes rotateThemeSwitch {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(90deg);
+    }
+}
+@keyframes rotateThemeSwitchBack {
+    from {
+        transform: rotate(90deg);
+    }
+    to {
+        transform: rotate(0deg);
     }
 }

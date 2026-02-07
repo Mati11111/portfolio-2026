@@ -2,7 +2,8 @@
 import "@/styles/global.css";
 import PresentationCard from "@/components/Presentation-card.astro";
 import ProfileDescription from "@/layouts/ProfileDescription.astro";
-import ExperienceMenu from "@/layouts/ExperienceMenu.astro";
+import ExperienceMenu from "@/layouts/RangerMenu.astro";
+import BarsMetrics from "@/layouts/BarsMetrics.astro";
 import Footer from "@/components/Footer.astro";
 import { useI18n } from "@ariaskit/astro-i18n";
 const { t, lang } = useI18n(Astro);
@@ -21,9 +22,9 @@ const { t, lang } = useI18n(Astro);
         <meta name="description" content={t("head.metaDescription")} />
     </head>
     <body class="flex-col content-between">
-        <main>
+        <main class="flex flex-col gap-y-10">
             <section
-                class="min-h-[95vh] bg-primary w-full flex flex-col items-center justify-center"
+                class="min-h-[95vh] bg-primary w-full flex flex-col items-center justify-center overflow-x-hidden"
             >
                 <PresentationCard />
             </section>
@@ -31,15 +32,50 @@ const { t, lang } = useI18n(Astro);
                 <ProfileDescription />
             </section>
             <section
-                class="-mt-30 h-[80vh] flex flex-col items-center justify-center"
+                class="-mt-20 h-[80vh] flex flex-col items-center justify-center lg:-mt-30"
             >
                 <ExperienceMenu />
             </section>
+            <section
+                class="-mt-20 h-[40vh] flex flex-col items-center justify-center lg:-mt-20"
+            >
+                <BarsMetrics />
+            </section>
         </main>
-        <footer
-            class="h-50 bg-primary w-full flex flex-col items-center justify-center gap-y-10"
-        >
-            <Footer />
-        </footer>
+        <div class="h-50">
+            <footer
+                id="footer"
+                class="h-full bg-primary w-full flex flex-col items-center justify-center gap-y-10
+         translate-y-full opacity-0"
+            >
+                <Footer />
+            </footer>
+        </div>
     </body>
 </html>
+<script>
+    const footer = document.getElementById("footer");
+    const observer = new IntersectionObserver(
+        ([entry]) => {
+            if (!footer) return;
+            if (entry.isIntersecting) {
+                footer.classList.remove("opacity-0");
+                footer.classList.add("animate-footerContainerApear");
+            }
+        },
+        { threshold: 0.1 },
+    );
+    if (footer) observer.observe(footer);
+</script>
+<script is:inline>
+    // Ensures dark mode is applied before styles load
+    if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+        document.documentElement.classList.add("dark");
+    } else {
+        document.documentElement.classList.remove("dark");
+    }
+</script>

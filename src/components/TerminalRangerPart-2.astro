@@ -1,0 +1,186 @@
+---
+import { useI18n } from "@ariaskit/astro-i18n";
+const { t, lang } = useI18n(Astro);
+
+import RangerJobExpOptions from "@/components/RangerJobExpOptions";
+import RangerCareerOptions from "@/components/RangerCareerOptions";
+import RangerPersonalProjectsOptions from "@/components/RangerPersonalProjectsOptions";
+
+const menuLeftSelector = 0;
+
+//this get options amount works for all languages
+import es from "../../i18n/es.json";
+const options = Object.values(es.body.ranger.options);
+const experiences = JSON.stringify(
+    Object.values(es.body.ranger.job_experiences),
+);
+const careers = JSON.stringify(Object.values(es.body.ranger.careers));
+const projects = JSON.stringify(Object.values(es.body.ranger.projects));
+---
+
+<section class="flex flex-col w-full h-full">
+    <div
+        id="show-terminal-main-exp-2"
+        aria-label="simulated-linux-terminal"
+        class="lg:text-sm sm:text-sm opacity-0 flex flex-col justify-start bg-bg-secondary text-text-secondary z-20 absolute w-full h-full items-center border-bg-variant border-2"
+    >
+        <span
+            id="terminal-header-main"
+            class="flex flex-row justify-center items-center text-text-tertiary bg-bg-primary h-10 w-full px-4"
+        >
+            <p class="text-nowrap overflow-hidden text-ellipsis max-w-[70%]">
+                {t("terminal.terminal-remote-header")}
+                {t("terminal.terminal-folder-symbol")}{
+                    t("terminal.terminal-main-folder")
+                }
+            </p>
+            <p
+                class="text-nowrap overflow-hidden text-ellipsis max-w-[70%] content-section"
+                data-section-index="0"
+            >
+                {t("terminal.terminal-experience-dir")}
+            </p>
+            <p
+                class="text-nowrap overflow-hidden text-ellipsis max-w-[70%] content-section hidden"
+                data-section-index="1"
+            >
+                {t("terminal.terminal-career-dir")}
+            </p>
+            <p
+                class="text-nowrap overflow-hidden text-ellipsis max-w-[70%] content-section hidden"
+                data-section-index="2"
+            >
+                {t("terminal.terminal-projects-dir")}
+            </p>
+        </span>
+        <section
+            id="terminal-content-main"
+            class="flex flex-col items-center bg-secondary h-[95%] w-full p-5 overflow-y-hidden"
+        >
+            <span class="font-medium w-full flex flex-row text-nowrap"
+                >{t("terminal.terminal-remote-header")}{
+                    t("terminal.terminal-folder-symbol")
+                }{t("terminal.terminal-main-folder")}
+                <p
+                    class="text-nowrap overflow-hidden text-ellipsis max-w-[70%] content-section h-full"
+                    data-section-index="0"
+                >
+                    {t("terminal.terminal-experience-dir")}
+                </p>
+                <p
+                    class="text-nowrap overflow-hidden text-ellipsis max-w-[70%] content-section h-full hidden"
+                    data-section-index="1"
+                >
+                    {t("terminal.terminal-career-dir")}
+                </p>
+                <p
+                    class="text-nowrap overflow-hidden text-ellipsis max-w-[70%] content-section h-full hidden"
+                    data-section-index="2"
+                >
+                    {t("terminal.terminal-projects-dir")}
+                </p>
+            </span>
+            <div
+                class="flex flex-row border-2 border-bg-primary bg-bg-secondary w-full h-[95%]"
+            >
+                <section id="leftContainer" class="w-1/4 p-2 overflow-y-scroll">
+                    <ul id="leftList">
+                        {
+                            options.map((key, index) => (
+                                <li
+                                    data-index={index}
+                                    class={`xl:text-[1.3rem] md:text-sm text-nowrap overflow-hidden text-ellipsis cursor-pointer! list-item-left font-medium border pl-1 ${index === menuLeftSelector ? " bg-bg-variant border-bg-variants text-text-same " : "text-same border-bg-secondary"}`}
+                                >
+                                    {t(`body.ranger.options.${index}`)}
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </section>
+                <section
+                    class="w-3/4 h-full p-2 pb-0 pt-0 border-l-2 border-bg-variant"
+                >
+                    <div class="content-section h-full" data-section-index="0">
+                        <RangerJobExpOptions
+                            client:load
+                            content={experiences}
+                        />
+                    </div>
+
+                    <div
+                        class="content-section h-full hidden"
+                        data-section-index="1"
+                    >
+                        <RangerCareerOptions client:load content={careers} />
+                    </div>
+                    <div
+                        class="content-section h-full hidden"
+                        data-section-index="2"
+                    >
+                        <RangerPersonalProjectsOptions
+                            client:load
+                            content={projects}
+                        />
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div>
+</section>
+<script>
+    //show 2nd terminal
+    const terminal = document.getElementById("show-terminal-main-exp-2");
+    window.addEventListener("terminal:first:opacity-reduced-exp-2", () => {
+        terminal?.classList.remove("opacity-0");
+        terminal?.classList.add("animate-openTerminal");
+        terminal?.addEventListener(
+            "animationend",
+            () => {
+                window.dispatchEvent(new CustomEvent("ranger:part2:ended"));
+            },
+            { once: true },
+        );
+    });
+</script>
+<script>
+    //left menu selector
+    const leftList = document.getElementById("leftList");
+    let menuLeftSelector = 0;
+    leftList?.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) return;
+        const li = target.closest(".list-item-left");
+        if (!(li instanceof HTMLLIElement)) return;
+        menuLeftSelector = Number(li.dataset.index);
+        document
+            .querySelectorAll("#leftList .list-item-left")
+            .forEach((item) => {
+                item.classList.remove("bg-bg-variant", "text-text-same");
+                item.classList.add("bg-bg-secondary", "border-bg-secondary");
+            });
+        li.classList.add("bg-bg-variant", "text-text-same");
+        li.classList.remove("bg-bg-secondary");
+        window.dispatchEvent(
+            new CustomEvent("menu:left:changed", {
+                detail: { index: menuLeftSelector },
+            }),
+        );
+    });
+</script>
+<script>
+    //middle selector status update on left menu change
+    window.addEventListener("menu:left:changed", (event) => {
+        const index = event.detail.index;
+        const sections = document.querySelectorAll(".content-section");
+
+        sections.forEach((section) => {
+            const sectionIndex = Number(section.dataset.sectionIndex);
+
+            if (sectionIndex === index) {
+                section.classList.remove("hidden");
+            } else {
+                section.classList.add("hidden");
+            }
+        });
+    });
+</script>

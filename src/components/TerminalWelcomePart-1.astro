@@ -3,23 +3,23 @@ import { useI18n } from "@ariaskit/astro-i18n";
 const { t, lang } = useI18n(Astro);
 ---
 
-<section class="flex flex-col w-full h-full">
+<section class="flex flex-col w-full h-full xl:text-2xl md:text-sm">
     <div
         id="show-terminal"
-        class="opacity-0 flex flex-col justify-start bg-transparent z-20 absolute w-full h-[70%] items-center border-primary border-2"
+        class="opacity-0 flex flex-col justify-start z-20 absolute w-full h-full items-center border-bg-variant border-2 bg-bg-primary text-text-tertiary"
     >
         <span
-            class="flex flex-col justify-center items-center bg-primary text-secondary h-10 w-full"
+            class="lg:text-sm sm:text-sm text-nowrap text-ellipsis flex flex-col justify-center items-center h-10 w-full"
         >
             {t("terminal.terminal-local-header")}
             {t("terminal.terminal-folder-symbol")}
         </span>
         <section
             id="terminal-content"
-            class="bg-secondary h-full w-full p-5 overflow-scroll"
+            class="bg-bg-secondary h-full w-full p-5 overflow-scroll"
         >
-            <div class="flex flex-col">
-                <div class="flex flex-row">
+            <div class="text-text-secondary flex flex-col overflow-x-hidden">
+                <div class="flex flex-row lg:text-lg sm:text-sm text-nowrap">
                     <h1 class="font-medium w-fit">
                         {t("terminal.terminal-local")}{
                             t("terminal.terminal-shell-symbol")
@@ -32,11 +32,14 @@ const { t, lang } = useI18n(Astro);
                     </p>
                     <p
                         id="blinking-cursor"
-                        class="animate-blinking-cursor w-3 h-5 bg-selected -translate-x-40"
+                        class="animate-blinking-cursor w-3 xl:h-7 md:h-5 bg-bg-variant xl:-translate-x-60 md:-translate-x-40"
                     >
                     </p>
                 </div>
-                <div id="code-login-confirm" class="flex flex-col">
+                <div
+                    id="code-login-confirm"
+                    class="flex flex-col lg:text-lg sm:text-sm text-nowrap text-ellipsis"
+                >
                     <p id="code-login-confirm-text" class="opacity-0">
                         {t("terminal.terminal-confirm")}
                     </p>
@@ -114,7 +117,7 @@ const { t, lang } = useI18n(Astro);
                             document.getElementById("show-terminal");
                         if (terminal) {
                             terminal.classList.remove("opacity-100");
-                            terminal.classList.add("opacity-50");
+                            terminal.classList.add("opacity-80");
                             window.dispatchEvent(
                                 new CustomEvent(
                                     "terminal:first:opacity-reduced",
