@@ -112,7 +112,7 @@
       "projects": [
         {
           "text": ".txt",
-          "project_title": "Integration API Gateway",
+          "company_name": "Integration API Gateway",
           "description": "Desarrollé e implementé una API Gateway en Node.js con Express para la orquestación e integración de múltiples servicios externos (Spotify, YouTube Music, Cloudinary y Gemini AI). La arquitectura expone endpoints REST para procesamiento y transformación de datos, gestiona autenticación con APIs de terceros y coordina la comunicación con Discord mediante Discord.js como cliente de interacción. Incluye tareas automatizadas de mantenimiento y sincronización programadas con cron (limpieza de caché, refresco de tokens y monitoreo de servicios). El sistema está desplegado y operativo en Oracle Cloud Free Tier con configuración de servidor, procesos en segundo plano y gestión de logs.",
           "status": "Finalizado",
           "frameworks": [

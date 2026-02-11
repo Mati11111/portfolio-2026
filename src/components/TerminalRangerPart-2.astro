@@ -5,7 +5,7 @@ const { t, lang } = useI18n(Astro);
 import RangerJobExpOptions from "@/components/RangerJobExpOptions";
 import RangerCareerOptions from "@/components/RangerCareerOptions";
 import RangerPersonalProjectsOptions from "@/components/RangerPersonalProjectsOptions";
-
+import RangerShowOptions from "@/components/RangerShowOptionContent";
 const menuLeftSelector = 0;
 
 //this get options amount works for all languages
@@ -22,11 +22,11 @@ const projects = JSON.stringify(Object.values(es.body.ranger.projects));
     <div
         id="show-terminal-main-exp-2"
         aria-label="simulated-linux-terminal"
-        class="lg:text-sm sm:text-sm opacity-0 flex flex-col justify-start bg-bg-secondary text-text-secondary z-20 absolute w-full h-full items-center border-bg-variant border-2"
+        class="min-w-93.75 lg:text-sm sm:text-sm opacity-0 flex flex-col justify-start bg-bg-secondary text-text-secondary z-20 absolute w-full h-full items-center border-bg-variant border-2"
     >
         <span
             id="terminal-header-main"
-            class="flex flex-row justify-center items-center text-text-tertiary bg-bg-primary h-10 w-full px-4"
+            class="flex flex-row justify-center items-center text-text-tertiary bg-bg-primary min-h-10 w-full px-4"
         >
             <p class="text-nowrap overflow-hidden text-ellipsis max-w-[70%]">
                 {t("terminal.terminal-remote-header")}
@@ -55,7 +55,7 @@ const projects = JSON.stringify(Object.values(es.body.ranger.projects));
         </span>
         <section
             id="terminal-content-main"
-            class="flex flex-col items-center bg-secondary h-[95%] w-full p-5 overflow-y-hidden"
+            class="flex flex-col items-center bg-secondary h-[95%] w-full p-5"
         >
             <span class="font-medium w-full flex flex-row text-nowrap"
                 >{t("terminal.terminal-remote-header")}{
@@ -81,15 +81,20 @@ const projects = JSON.stringify(Object.values(es.body.ranger.projects));
                 </p>
             </span>
             <div
-                class="flex flex-row border-2 border-bg-primary bg-bg-secondary w-full h-[95%]"
+                class="lg:flex lg:flex-row md:flex md:flex-col lg:border-2 md:border-0 border-bg-primary bg-bg-secondary w-full h-[90%] overflow-y-hidden"
             >
-                <section id="leftContainer" class="w-1/4 p-2 overflow-y-scroll">
+                <section
+                    id="leftContainer"
+                    class="lg:w-1/4 lg:overflow-y-scroll md:w-full p-2 md:pb-5"
+                >
                     <ul id="leftList">
                         {
                             options.map((key, index) => (
                                 <li
                                     data-index={index}
-                                    class={`xl:text-[1.3rem] md:text-sm text-nowrap overflow-hidden text-ellipsis cursor-pointer! list-item-left font-medium border pl-1 ${index === menuLeftSelector ? " bg-bg-variant border-bg-variants text-text-same " : "text-same border-bg-secondary"}`}
+                                    class="xl:text-[1.3rem] md:text-sm text-nowrap overflow-hidden text-ellipsis
+  cursor-pointer list-item-left font-medium border pl-1
+  bg-bg-secondary border-bg-secondary text-text-secondary"
                                 >
                                     {t(`body.ranger.options.${index}`)}
                                 </li>
@@ -98,29 +103,23 @@ const projects = JSON.stringify(Object.values(es.body.ranger.projects));
                     </ul>
                 </section>
                 <section
-                    class="w-3/4 h-full p-2 pb-0 pt-0 border-l-2 border-bg-variant"
+                    class="lg:w-3/4 md:w-full lg:h-full h-3/4 lg:pt-2 p-2 pb-0 md:pt-0 lg:border-l-2 md:border-l-0 border-bg-variant"
                 >
                     <div class="content-section h-full" data-section-index="0">
-                        <RangerJobExpOptions
-                            client:load
-                            content={experiences}
-                        />
+                        <RangerShowOptions client:load content={experiences} />
                     </div>
 
                     <div
                         class="content-section h-full hidden"
                         data-section-index="1"
                     >
-                        <RangerCareerOptions client:load content={careers} />
+                        <RangerShowOptions client:load content={careers} />
                     </div>
                     <div
                         class="content-section h-full hidden"
                         data-section-index="2"
                     >
-                        <RangerPersonalProjectsOptions
-                            client:load
-                            content={projects}
-                        />
+                        <RangerShowOptions client:load content={projects} />
                     </div>
                 </section>
             </div>
@@ -143,23 +142,53 @@ const projects = JSON.stringify(Object.values(es.body.ranger.projects));
     });
 </script>
 <script>
-    //left menu selector
     const leftList = document.getElementById("leftList");
     let menuLeftSelector = 0;
-    leftList?.addEventListener("click", (event) => {
-        const target = event.target;
-        if (!(target instanceof HTMLElement)) return;
-        const li = target.closest(".list-item-left");
-        if (!(li instanceof HTMLLIElement)) return;
-        menuLeftSelector = Number(li.dataset.index);
+    function updateSelectedItem(newIndex: string) {
         document
             .querySelectorAll("#leftList .list-item-left")
             .forEach((item) => {
-                item.classList.remove("bg-bg-variant", "text-text-same");
-                item.classList.add("bg-bg-secondary", "border-bg-secondary");
+                item.classList.remove(
+                    "bg-bg-variant",
+                    "text-text-same",
+                    "border-red-500",
+                );
+                item.classList.add(
+                    "bg-bg-secondary",
+                    "border-bg-secondary",
+                    "text-text-secondary",
+                );
             });
-        li.classList.add("bg-bg-variant", "text-text-same");
-        li.classList.remove("bg-bg-secondary");
+        const selected = document.querySelector(
+            `#leftList .list-item-left[data-index="${newIndex}"]`,
+        );
+
+        if (selected) {
+            selected.classList.add(
+                "bg-bg-variant",
+                "text-text-same",
+                "border-bg-secondary",
+            );
+
+            selected.classList.remove(
+                "bg-bg-secondary",
+                "text-text-secondary",
+                "border-bg-secondary",
+            );
+        }
+    }
+    updateSelectedItem(menuLeftSelector);
+
+    leftList?.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) return;
+
+        const li = target.closest(".list-item-left");
+        if (!(li instanceof HTMLLIElement)) return;
+
+        menuLeftSelector = Number(li.dataset.index);
+        updateSelectedItem(menuLeftSelector);
+
         window.dispatchEvent(
             new CustomEvent("menu:left:changed", {
                 detail: { index: menuLeftSelector },
@@ -167,8 +196,8 @@ const projects = JSON.stringify(Object.values(es.body.ranger.projects));
         );
     });
 </script>
+
 <script>
-    //middle selector status update on left menu change
     window.addEventListener("menu:left:changed", (event) => {
         const index = event.detail.index;
         const sections = document.querySelectorAll(".content-section");

@@ -168,8 +168,8 @@ export default function BarSectionContent({
   }
   return (
     <div className="flex flex-col h-[90%] w-full gap-y-10">
-      <section className="flex flex-row justify-between gap-x-2">
-        <section className="flex flex-col gap-y-2 w-1/2">
+      <section className="lg:flex lg:flex-row md:flex md:flex-col justify-between gap-x-2">
+        <section className="flex flex-col gap-y-2 lg:w-1/2">
           {allFrameworks.slice(0, 4).map((frameworkName) => {
             const count = frameworkCount[frameworkName];
             const percent = totalProjects ? (count / totalProjects) * 100 : 0;
@@ -192,7 +192,7 @@ export default function BarSectionContent({
             );
           })}
         </section>
-        <section className="flex flex-col gap-y-2 w-1/2 ">
+        <section className="flex flex-col gap-y-2 lg:w-1/2 ">
           {allFrameworks.slice(4, 8).map((frameworkName) => {
             const count = frameworkCount[frameworkName];
             const percent = totalProjects ? (count / totalProjects) * 100 : 0;

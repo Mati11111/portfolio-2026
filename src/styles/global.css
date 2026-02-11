@@ -106,7 +106,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--color-primary);
+    background-color: var(--color-bg-primary);
     border-radius: 0.5rem;
     border: none;
 }
@@ -114,7 +114,7 @@
 /* FIREFOX*/
 * {
     scrollbar-width: 0.5rem;
-    scrollbar-color: var(--color-primary) transparent;
+    scrollbar-color: var(--color-bg-primary) transparent;
 }
 
 html {
@@ -132,6 +132,9 @@ a {
     cursor: pointer;
 }
 
+* {
+    user-select: none;
+}
 .reveal-left {
     clip-path: inset(0 100% 0 0);
     display: inline-block;
