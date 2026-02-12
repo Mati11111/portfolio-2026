@@ -2,7 +2,7 @@ import { useEffect, useState, useMemo } from "react";
 import LeftIcon from "@/assets/left-icon.svg?url";
 import LeftIconDark from "@/assets/left-icon-dark-mode.svg?url";
 
-export default function BarSectionContent({
+export default function BarSectionContentMobileView({
   experienceContent,
   careerContent,
   projectsContent,
@@ -168,10 +168,10 @@ export default function BarSectionContent({
     );
   }
   return (
-    <div className="flex flex-col h-[90%] w-full gap-y-10">
-      <section className="flex flex-row justify-between gap-x-2">
-        <section className="flex flex-col gap-y-2 w-1/2">
-          {allFrameworks.slice(0, 4).map((frameworkName) => {
+    <div className="flex flex-col h-[90%] w-full justify-center">
+      <section className="flex flex-row  gap-x-2">
+        <section className="flex flex-col gap-y-2 w-full">
+          {allFrameworks.slice(0, 6).map((frameworkName) => {
             const count = frameworkCount[frameworkName];
             const percent = totalProjects ? (count / totalProjects) * 100 : 0;
 
@@ -180,7 +180,7 @@ export default function BarSectionContent({
                 key={frameworkName}
                 className="flex items-center gap-3 w-full text-ellipsis"
               >
-                <span className="text-text-secondary text-sm truncate w-30">
+                <span className="text-text-secondary text-sm truncate w-20">
                   {frameworkName}
                 </span>
                 <div className="dotted-bar flex-1 h-6 overflow-hidden">
@@ -193,56 +193,6 @@ export default function BarSectionContent({
             );
           })}
         </section>
-        <section className="flex flex-col gap-y-2 w-1/2 ">
-          {allFrameworks.slice(4, 8).map((frameworkName) => {
-            const count = frameworkCount[frameworkName];
-            const percent = totalProjects ? (count / totalProjects) * 100 : 0;
-
-            return (
-              <div
-                key={frameworkName}
-                className="flex items-center gap-3 w-full"
-              >
-                <span className=" text-text-secondary text-sm truncate w-30">
-                  {frameworkName}
-                </span>
-
-                <div className="dotted-bar flex-1 h-6 overflow-hidden">
-                  <div
-                    className="bg-variant h-full animate-growBar"
-                    style={{ "--bar-width": `${percent}%` }}
-                  />
-                </div>
-              </div>
-            );
-          })}
-        </section>
-      </section>
-      <section className="flex flex-col overflow-y-auto flex-1 min-h-0">
-        <div className="w-full flex-1  min-h-0">
-          <table className="w-full table-fixed">
-            <thead
-              className={`bg-variant text-text-same sticky top-0 text-nowrap text-ellipsis`}
-            >
-              <tr>
-                {hTopHeaders.map((header) => (
-                  <th
-                    onClick={() => setSorterOption(header.id)}
-                    key={header.id}
-                    className={` text-left font-light
-                  ${sorterOption === header.id ? "bg-bg-primary text-text-tertiary cursor-default" : "cursor-pointer"} `}
-                  >
-                    {header.label}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody className="divide-y ">{renderData()}</tbody>
-          </table>
-        </div>
-        <div className="flex flex-row justify-around mt-5">
-          {renderPaginationControls()}
-        </div>
       </section>
     </div>
   );

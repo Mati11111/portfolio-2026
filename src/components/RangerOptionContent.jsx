@@ -17,17 +17,19 @@ export default function RangerOptionContent({ content = "", experience = 0 }) {
               id="right-role"
               className="font-medium xl:text-2xl md:text-sm lg:border-none"
             >
-              {parsedContent[experience].role}
+              {parsedContent[experience].role ||
+                parsedContent[experience].company_name}
             </h1>
             <span
               id="right-role"
               className="font-light xl:text-[1rem] md:text-sm mb-3"
             >
-              {parsedContent[experience].company_name}
+              {parsedContent[experience].status
+                ? parsedContent[experience].status
+                : parsedContent[experience].company_name}
             </span>
             <span id="right-date" className="xl:text-2xl md:text-sm">
-              {parsedContent[experience].date ||
-                parsedContent[experience].status}
+              {parsedContent[experience].date}
             </span>
           </div>
           <p

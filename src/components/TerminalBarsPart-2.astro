@@ -2,7 +2,8 @@
 import { useI18n } from "@ariaskit/astro-i18n";
 const { t } = useI18n(Astro);
 import BarSectionContent from "@/components/BarSectionContent";
-
+import BarSectionContentDeskView from "@/components/BarSectionContentDeskView";
+import BarSectionContentMobileView from "@/components/BarSectionContentMobileView";
 //this get options amount works for all languages
 import es from "../../i18n/es.json";
 const experiences = JSON.stringify(
@@ -30,10 +31,19 @@ const projects = JSON.stringify(Object.values(es.body.ranger.projects));
             </p>
         </span>
         <section
-            id="terminal-content-main"
-            class="bg-bg-secondary text-primary flex flex-col items-center bg-secondary h-full w-full p-5 overflow-y-hidden"
+            class="hidden bg-bg-secondary text-primary lg:flex xl:flex flex-col items-center bg-secondary h-full w-full p-5 overflow-y-hidden"
         >
-            <BarSectionContent
+            <BarSectionContentDeskView
+                client:load
+                experienceContent={experiences}
+                careerContent={careers}
+                projectsContent={projects}
+            />
+        </section>
+        <section
+            class="lg:hidden bg-bg-secondary text-primary flex flex-col items-center bg-secondary h-full w-full p-5 overflow-y-hidden"
+        >
+            <BarSectionContentMobileView
                 client:load
                 experienceContent={experiences}
                 careerContent={careers}

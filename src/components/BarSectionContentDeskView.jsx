@@ -2,7 +2,7 @@ import { useEffect, useState, useMemo } from "react";
 import LeftIcon from "@/assets/left-icon.svg?url";
 import LeftIconDark from "@/assets/left-icon-dark-mode.svg?url";
 
-export default function BarSectionContent({
+export default function BarSectionContentDeskView({
   experienceContent,
   careerContent,
   projectsContent,
@@ -21,7 +21,7 @@ export default function BarSectionContent({
   const [frameworkCount, setFrameworkCount] = useState({});
   const [totalProjects, setTotalProjects] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(5);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
   const [frameworkDetails, setFrameworkDetails] = useState([]);
   const [hTopHeaders, setHTopHeaders] = useState([]);
   const [sorterOption, setSorterOption] = useState("projects_amount");
@@ -168,7 +168,7 @@ export default function BarSectionContent({
     );
   }
   return (
-    <div className="flex flex-col h-[90%] w-full gap-y-10">
+    <div className="flex flex-col h-full w-full gap-y-5">
       <section className="flex flex-row justify-between gap-x-2">
         <section className="flex flex-col gap-y-2 w-1/2">
           {allFrameworks.slice(0, 4).map((frameworkName) => {
@@ -219,7 +219,7 @@ export default function BarSectionContent({
         </section>
       </section>
       <section className="flex flex-col overflow-y-auto flex-1 min-h-0">
-        <div className="w-full flex-1  min-h-0">
+        <div className="w-full flex-1 min-h-0">
           <table className="w-full table-fixed">
             <thead
               className={`bg-variant text-text-same sticky top-0 text-nowrap text-ellipsis`}
@@ -240,10 +240,10 @@ export default function BarSectionContent({
             <tbody className="divide-y ">{renderData()}</tbody>
           </table>
         </div>
-        <div className="flex flex-row justify-around mt-5">
-          {renderPaginationControls()}
-        </div>
       </section>
+      <div className="flex flex-row justify-around h-fit bg-transparent">
+        {renderPaginationControls()}
+      </div>
     </div>
   );
 }

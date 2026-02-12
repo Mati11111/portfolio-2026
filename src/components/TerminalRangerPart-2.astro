@@ -2,11 +2,7 @@
 import { useI18n } from "@ariaskit/astro-i18n";
 const { t, lang } = useI18n(Astro);
 
-import RangerJobExpOptions from "@/components/RangerJobExpOptions";
-import RangerCareerOptions from "@/components/RangerCareerOptions";
-import RangerPersonalProjectsOptions from "@/components/RangerPersonalProjectsOptions";
 import RangerShowOptions from "@/components/RangerShowOptionContent";
-const menuLeftSelector = 0;
 
 //this get options amount works for all languages
 import es from "../../i18n/es.json";
@@ -22,7 +18,7 @@ const projects = JSON.stringify(Object.values(es.body.ranger.projects));
     <div
         id="show-terminal-main-exp-2"
         aria-label="simulated-linux-terminal"
-        class="min-w-93.75 lg:text-sm sm:text-sm opacity-0 flex flex-col justify-start bg-bg-secondary text-text-secondary z-20 absolute w-full h-full items-center border-bg-variant border-2"
+        class="lg:text-sm sm:text-sm opacity-0 flex flex-col justify-start bg-bg-secondary text-text-secondary z-20 absolute w-full h-full items-center border-bg-variant border-2"
     >
         <span
             id="terminal-header-main"

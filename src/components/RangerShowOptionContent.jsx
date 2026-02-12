@@ -28,7 +28,7 @@ export default function RangerShowOptions({ content }) {
           onNext={() => setExperience((prev) => prev + 1)}
         />
       </section>
-      <section className="h-full">
+      <section className="h-full lg:w-3/4">
         <RangerOptionContent content={content} experience={experience} />
       </section>
     </div>
