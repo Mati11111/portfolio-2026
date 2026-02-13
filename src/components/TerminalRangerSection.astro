@@ -125,7 +125,7 @@ const projects = JSON.stringify(Object.values(es.body.ranger.projects));
 <script>
     //show 2nd terminal
     const terminal = document.getElementById("show-terminal-main-exp-2");
-    window.addEventListener("terminal:first:opacity-reduced-exp-2", () => {
+    window.addEventListener("terminal:2:opacity-reduced", () => {
         terminal?.classList.remove("opacity-0");
         terminal?.classList.add("animate-openTerminal");
         terminal?.addEventListener(

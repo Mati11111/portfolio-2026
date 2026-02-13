@@ -5,8 +5,8 @@ const currentYear = new Date().getFullYear();
 import EmailIcon from "@/assets/email.svg";
 import GithubIcon from "@/assets/github.svg";
 import LinkedinIcon from "@/assets/linkedin.svg";
-import TranslateIcon from "@/assets/translate.svg";
 import DarkModeToggle from "@/components/DarkModeToggle";
+import LanguageToggle from "@/components/LanguageToggle";
 ---
 
 <section class="flex flex-col">
@@ -57,9 +57,12 @@ import DarkModeToggle from "@/components/DarkModeToggle";
         </div>
     </div>
     <section
-        class="absolute bottom-4 right-4 opacity-50 md:bottom-8 md:right-8 lg:bottom-10 lg:right-10"
+        class="absolute items-center justify-center bottom-4 right-4 opacity-50 md:bottom-8 md:right-8 lg:bottom-10 lg:right-10"
     >
-        <DarkModeToggle client:only="react" />
+        <section class="flex flex-col justify-center">
+            <LanguageToggle client:only="react" />
+            <DarkModeToggle client:only="react" />
+        </section>
     </section>
 </section>
 

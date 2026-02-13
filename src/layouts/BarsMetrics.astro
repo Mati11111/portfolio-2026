@@ -1,15 +1,20 @@
 ---
-import TerminalBarsPart1 from "@/components/TerminalBarsPart-1.astro";
-import TerminalBarsPart2 from "@/components/TerminalBarsPart-2.astro";
+import TerminalBarsPart2 from "@/components/TerminalBarsSection.astro";
+import TerminalCommand from "@/components/TerminalCommand.astro";
 ---
 
 <section class="relative w-[90%] h-full">
     <div class="flex flex-col justify-between">
         <div
             aria-label="simulated-linux-terminal"
-            class="flex flex-row z-20 p-10 absolute w-full left-0 h-full items-center justify-center lg:w-[40%]"
+            class="flex flex-row z-20 pt-10 absolute w-full left-0 h-[90%] items-center justify-center lg:w-[40%]"
         >
-            <TerminalBarsPart1 />
+            <TerminalCommand
+                id="3"
+                headerContent="terminal-3nd.header"
+                commands="terminal-3nd.commands"
+                previousTab="ranger:part2:ended"
+            />
         </div>
         <div
             aria-label="simulated-linux-terminal "

@@ -1,6 +1,6 @@
 ---
-import TerminalWelcomePart1 from "@/components/TerminalWelcomePart-1.astro";
-import TerminalWelcomePart2 from "@/components/TerminalWelcomePart-2.astro";
+import TerminalWelcomePart2 from "@/components/TerminalWelcomeSection.astro";
+import TerminalCommand from "@/components/TerminalCommand.astro";
 ---
 
 <section class="relative w-[90%] h-[90%]">
@@ -8,7 +8,11 @@ import TerminalWelcomePart2 from "@/components/TerminalWelcomePart-2.astro";
         aria-label="simulated-linux-terminal "
         class="flex flex-row z-20 pt-10 absolute left-0 w-full h-[60%] items-center justify-center lg:w-[40%]"
     >
-        <TerminalWelcomePart1 />
+        <TerminalCommand
+            id="1"
+            headerContent={"terminal-1st.header"}
+            commands={"terminal-1st.commands"}
+        />
     </div>
     <div
         aria-label="simulated-linux-terminal "

@@ -346,5 +346,48 @@
     "email": "Email",
     "email-link": "matias.chaparro.mail@gmail.com",
     "sign": "Diseñado & elaborado por Matías Chaparro"
+  },
+  "terminal-1st": {
+    "header": ["mati@local", "~/"],
+    "commands": {
+      "0": {
+        "0": "mati@local:~$",
+        "1": "ssh portafolio@localhost"
+      },
+      "1": {
+        "0": "textLine",
+        "1": "Estas seguro que quieres continuar conectando (si/no)?"
+      },
+      "2": {
+        "0": "textLine",
+        "1": "si"
+      }
+    }
+  },
+  "terminal-2nd": {
+    "header": ["portafolio@localhost", "~/"],
+    "commands": {
+      "0": {
+        "0": "portafolio@localhost:~$",
+        "1": "cd experiencia_laboral"
+      },
+      "1": {
+        "0": "portafolio@localhost:~documentos/experiencia_laboral/$",
+        "1": "ranger"
+      }
+    }
+  },
+  "terminal-3nd": {
+    "header": ["portafolio@localhost", "~/"],
+    "commands": {
+      "0": {
+        "0": "portafolio@localhost:~$",
+        "1": "cd habilidades"
+      },
+      "1": {
+        "0": "portafolio@localhost:~/habilidades/$",
+        "1": "htop"
+      }
+    }
   }
 }

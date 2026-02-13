@@ -1,0 +1,198 @@
+---
+import { useI18n } from "@ariaskit/astro-i18n";
+
+const { t, lang } = useI18n(Astro);
+const { id, headerContent, commands, previousTab } = Astro.props;
+
+const headerContentList = getContentList(headerContent, t);
+const commandsContentList = getDoubleContentList(commands, t);
+
+//parse content list
+function getContentList(baseKey: string, t: (key: string) => string): string[] {
+    const values: string[] = [];
+    let index = 0;
+
+    while (true) {
+        const key = `${baseKey}.${index}`;
+        const value = t(key);
+
+        if (value === key) break;
+
+        values.push(value);
+        index++;
+    }
+
+    return values;
+}
+//parse content from list of a list
+function getDoubleContentList(
+    baseKey: string,
+    t: (key: string) => string,
+    maxOuter = 50,
+    maxInner = 10,
+): string[][] {
+    const result: string[][] = [];
+
+    for (let i = 0; i < maxOuter; i++) {
+        const row: string[] = [];
+
+        for (let j = 0; j < maxInner; j++) {
+            const key = `${baseKey}.${i}.${j}`;
+            const value = t(key);
+
+            if (value === key) break;
+
+            row.push(value);
+        }
+
+        if (row.length === 0) break;
+
+        result.push(row);
+    }
+
+    return result;
+}
+---
+
+<section class="flex flex-col w-full h-full xl:text-2xl">
+    <div
+        id={`show-terminal-${id}`}
+        data-terminal-id={id}
+        class="opacity-0 flex flex-col justify-start z-20 absolute w-full h-full items-center border-bg-variant border-2 bg-bg-primary text-text-tertiary"
+    >
+        <section class="flex flex-row">
+            {
+                headerContentList.map((content, index) => (
+                    <span class="lg:text-sm sm:text-sm text-nowrap text-ellipsis flex flex-col justify-center items-center h-10 w-full">
+                        {content}
+                    </span>
+                ))
+            }
+        </section>
+
+        <section
+            id={`terminal-content-${id}`}
+            class="bg-bg-secondary h-full w-full p-5 overflow-scroll"
+        >
+            <div class="text-text-secondary flex flex-col overflow-x-hidden">
+                <div class="flex flex-col lg:text-lg sm:text-sm text-nowrap">
+                    {
+                        commandsContentList.map(([type, text], index) => (
+                            <div class="flex flex-row gap-x-1">
+                                <h1
+                                    class={`font-medium w-fit ${type === "textLine" ? "hidden" : ""}`}
+                                >
+                                    {type}
+                                </h1>
+                                <p
+                                    id={`blinking-cursor-command-${id}-${index}`}
+                                    class={`opacity-0 w-3 xl:h-7 md:h-5 bg-selected ${type === "textLine" ? "hidden" : ""}`}
+                                    data-terminal-cursor
+                                />
+                                <p
+                                    id={`terminal-content-${id}-${index}`}
+                                    class="opacity-0 w-fit"
+                                    data-terminal-line
+                                    data-line-type={type}
+                                >
+                                    {text}
+                                </p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+<script is:client define:vars={{ id, previousTab }}>
+    function showLinesAnimated() {
+        const lines = terminalContent?.querySelectorAll("[data-terminal-line]");
+        if (!lines || lines.length === 0) return;
+
+        let current = 0;
+
+        function showNextLine() {
+            if (current >= lines.length) return;
+
+            const line = lines[current];
+            const type = line.dataset.lineType;
+
+            const cursor = document.getElementById(
+                `blinking-cursor-command-${id}-${current}`,
+            );
+
+            if (type === "textLine") {
+                line.classList.remove("opacity-0");
+                current++;
+                showNextLine();
+                return;
+            }
+            line.classList.remove("opacity-0");
+            line.classList.add("animate-reveal-text-terminal");
+            if (cursor) {
+                cursor.classList.remove("opacity-0");
+                cursor.classList.add("opacity-100");
+
+                const textWidth = line.offsetWidth;
+
+                cursor.style.setProperty(
+                    "--translate-distance",
+                    `${textWidth}px`,
+                );
+
+                cursor.classList.add("animate-translateX-terminal");
+            }
+
+            line.addEventListener(
+                "animationend",
+                () => {
+                    cursor?.classList.remove("opacity-100");
+                    cursor?.classList.add("opacity-0");
+
+                    current++;
+                    showNextLine();
+                },
+                { once: true },
+            );
+        }
+
+        showNextLine();
+    }
+
+    const terminal = document.getElementById(`show-terminal-${id}`);
+    const terminalContent = document.getElementById(`terminal-content-${id}`);
+
+    if (previousTab) {
+        window.addEventListener(previousTab, () => {
+            terminal?.classList.add("animate-openTerminal", "opacity-100");
+        });
+    } else {
+        if (!terminalContent) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    terminal?.classList.add(
+                        "animate-openTerminal",
+                        "opacity-100",
+                    );
+                    observer.unobserve(terminalContent);
+                }
+            },
+            { threshold: 0.1 },
+        );
+
+        observer.observe(terminalContent);
+    }
+    terminal?.addEventListener("animationend", (e) => {
+        if (e.animationName !== "openTerminal") return;
+
+        terminal?.classList.remove("opacity-100");
+        terminal?.classList.add("opacity-80", "md:hidden", "lg:flex");
+
+        window.dispatchEvent(new CustomEvent(`terminal:${id}:opacity-reduced`));
+
+        showLinesAnimated();
+    });
+</script>

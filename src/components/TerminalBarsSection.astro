@@ -55,7 +55,7 @@ const projects = JSON.stringify(Object.values(es.body.ranger.projects));
 <script>
     //first step: show terminal
     const terminal = document.getElementById("show-terminal-exp-4");
-    window.addEventListener("htop:part1:ended", () => {
+    window.addEventListener("terminal:3:opacity-reduced", () => {
         terminal?.classList.remove("opacity-0");
         terminal?.classList.add("animate-openTerminal");
     });

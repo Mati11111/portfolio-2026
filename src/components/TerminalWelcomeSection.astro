@@ -5,55 +5,52 @@ const { t, lang } = useI18n(Astro);
 
 <section class="flex flex-col w-full h-full xl:text-2xl md:text-sm">
     <div
-        id="show-terminal-main"
+        id="show-terminal-welcome"
         aria-label="simulated-linux-terminal"
         class="opacity-0 flex flex-col justify-start bg-transparent z-20 absolute w-full h-[85%] items-center border-bg-variant border-2"
     >
         <span
-            id="terminal-header-main"
             class="lg:text-sm sm:text-sm text-nowrap text-ellipsis flex flex-row justify-center items-center bg-bg-primary text-text-tertiary min-h-10 w-full"
         >
             {t("terminal.terminal-remote-header")}
             {t("terminal.terminal-folder-symbol")}
-            <p id="terminal-main-folder" class="opacity-0">
+            <p id="terminal-welcome-folder" class="opacity-0">
                 {t("terminal.terminal-main-folder")}
             </p>
         </span>
         <section
-            id="terminal-content-main"
             class="text-bg-primary bg-bg-secondary h-full w-full p-5 overflow-scroll"
         >
-            <div
-                id="find-folder-main"
-                class="flex flex-col lg:text-lg sm:text-sm"
-            >
+            <div class="flex flex-col lg:text-lg sm:text-sm">
                 <div class="flex flex-row pb-3">
-                    <p id="greeting" class="w-fit">
+                    <p class="w-fit">
                         {t("terminal.terminal-welcome-msg")}
                     </p>
                 </div>
-                <div class="flex flex-col lg:flex-row">
+                <div class="flex flex-row text-nowrap">
                     <h1
-                        id="find-folder-main-line"
+                        id="find-folder-welcome-line"
                         class="font-medium w-fit opacity-0"
                     >
                         {t("terminal.terminal-remote")}{
                             t("terminal.terminal-shell-symbol")
                         }
                     </h1>
-                    <p id="cd-folder-main" class="w-fit opacity-0">
+                    <p
+                        id="blinking-cursor-welcome-1"
+                        class="animate-blinking-cursor w-3 xl:h-7 md:h-5 bg-selected"
+                    >
+                    </p>
+                    <p id="cd-folder-welcome" class="w-fit opacity-0">
                         {t("terminal.terminal-cd")}
                         {t("terminal.terminal-main-folder")}
                     </p>
-                    <p
-                        id="blinking-cursor-main-1"
-                        class="animate-blinking-cursor w-3 xl:h-7 md:h-5 bg-selected xl:-translate-x-40 md:-translate-x-26"
-                    >
-                    </p>
                 </div>
-                <div class="flex flex-col pb-5 lg:flex-row lg:pb-0">
+                <div
+                    class="flex pb-5 flex-row text-nowrap overflow-hidden lg:pb-0"
+                >
                     <h1
-                        id="terminal-portfolio"
+                        id="terminal-welcome"
                         class="font-medium w-fit opacity-0"
                     >
                         {t("terminal.terminal-remote-header")}{
@@ -62,20 +59,20 @@ const { t, lang } = useI18n(Astro);
                             t("terminal.terminal-dots")
                         }{t("terminal.terminal-shell")}
                     </h1>
-                    <p id="cat-file-main" class="w-fit opacity-0">
+                    <p
+                        id="blinking-cursor-welcome-2"
+                        class="opacity-0 w-3 xl:h-7 md:h-5 bg-selected"
+                    >
+                    </p>
+                    <p id="cat-file-welcome" class="w-fit opacity-0">
                         {t("terminal.terminal-cat")}
                         {t("terminal.terminal-portfolio-file")}
-                    </p>
-                    <p
-                        id="blinking-cursor-main-2"
-                        class="opacity-0 w-3 xl:h-7 md:h-5 bg-selected xl:-translate-x-50 md:-translate-x-37"
-                    >
                     </p>
                 </div>
                 <div class="flex flex-col">
                     <div class="flex flex-row">
                         <p
-                            id="show-text-main"
+                            id="show-text-welcome"
                             class="w-fit opacity-0 text-justify"
                         >
                             {t("body.resume")}
@@ -83,7 +80,7 @@ const { t, lang } = useI18n(Astro);
                     </div>
                     <div class="flex flex-row">
                         <h1
-                            id="terminal-resume"
+                            id="terminal-resume-welcome"
                             class="font-medium w-fit opacity-0"
                         >
                             {t("terminal.terminal-remote-header")}{
@@ -93,7 +90,7 @@ const { t, lang } = useI18n(Astro);
                             }{t("terminal.terminal-shell")}
                         </h1>
                         <p
-                            id="blinking-cursor-3"
+                            id="blinking-cursor-welcome-3"
                             class="opacity-0 w-3 xl:h-7 md:h-5 bg-selected"
                         >
                         </p>
@@ -105,12 +102,14 @@ const { t, lang } = useI18n(Astro);
 </section>
 <script>
     //first step: show 2nd terminal
-    const terminal = document.getElementById("show-terminal-main");
-    const blinkingCursor1 = document.getElementById("blinking-cursor-main-1");
-    const folderPath = document.getElementById("cd-folder-main");
-    const firstLine = document.getElementById("find-folder-main-line");
+    const terminal = document.getElementById("show-terminal-welcome");
+    const blinkingCursor1 = document.getElementById(
+        "blinking-cursor-welcome-1",
+    );
+    const folderPath = document.getElementById("cd-folder-welcome");
+    const firstLine = document.getElementById("find-folder-welcome-line");
     if (terminal) {
-        window.addEventListener("terminal:first:opacity-reduced", () => {
+        window.addEventListener("terminal:1:opacity-reduced", () => {
             terminal.classList.remove("opacity-0");
             terminal.classList.add("animate-openTerminal");
         });
@@ -119,11 +118,12 @@ const { t, lang } = useI18n(Astro);
             ? terminal.addEventListener("animationend", () => {
                   if (firstLine) {
                       firstLine.classList.add("opacity-100");
+                      const textWidth = firstLine.offsetWidth;
+                      blinkingCursor1.style.setProperty(
+                          "--translate-distance",
+                          `${textWidth}px`,
+                      );
                   }
-                  blinkingCursor1.style.setProperty(
-                      "--translate-distance",
-                      "6rem",
-                  );
                   blinkingCursor1.classList.add("animate-translateX-terminal");
                   blinkingCursor1.classList.remove("animate-blinking-cursor");
                   blinkingCursor1.classList.remove("opacity-100");
@@ -136,16 +136,19 @@ const { t, lang } = useI18n(Astro);
             : null;
     }
     //second step: show 2nd line
-    const blinkingCursor2 = document.getElementById("blinking-cursor-main-2");
-    const portfolioFile = document.getElementById("cat-file-main");
-    const mainFolder = document.getElementById("terminal-main-folder");
-    const secondLine = document.getElementById("terminal-portfolio");
+    const blinkingCursor2 = document.getElementById(
+        "blinking-cursor-welcome-2",
+    );
+    const portfolioFile = document.getElementById("cat-file-welcome");
+    const mainFolder = document.getElementById("terminal-welcome-folder");
+    const secondLine = document.getElementById("terminal-welcome");
     if (terminal) {
         terminal.addEventListener("animationend", () => {
             if (blinkingCursor2) {
+                const textWidth = portfolioFile?.offsetWidth;
                 blinkingCursor2.style.setProperty(
                     "--translate-distance",
-                    "9rem",
+                    `${textWidth}px`,
                 );
             }
         });
@@ -173,8 +176,8 @@ const { t, lang } = useI18n(Astro);
             : null;
     }
     //third step: show resume
-    const resumeContent = document.getElementById("show-text-main");
-    const thirdLine = document.getElementById("terminal-resume");
+    const resumeContent = document.getElementById("show-text-welcome");
+    const thirdLine = document.getElementById("terminal-resume-welcome");
     if (resumeContent) {
         blinkingCursor2?.addEventListener("animationend", () => {
             if (thirdLine) {
@@ -184,14 +187,14 @@ const { t, lang } = useI18n(Astro);
         });
     }
     //final step: show blinking cursor
-    const blinkingCursor3 = document.getElementById("blinking-cursor-3");
+    const blinkingCursor3 = document.getElementById(
+        "blinking-cursor-welcome-3",
+    );
     if (blinkingCursor3) {
         blinkingCursor2?.addEventListener("animationend", () => {
             blinkingCursor3.classList.add("opacity-100");
             blinkingCursor3.classList.add("animate-blinking-cursor");
-            window.dispatchEvent(
-                new CustomEvent("terminal:first:opacity-reduced-exp"),
-            );
+            window.dispatchEvent(new CustomEvent("terminal:first"));
         });
     }
 </script>

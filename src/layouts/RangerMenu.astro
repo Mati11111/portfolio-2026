@@ -1,6 +1,6 @@
 ---
-import TerminalRangerPart1 from "@/components/TerminalRangerPart-1.astro";
-import TerminalRangerPart2 from "@/components/TerminalRangerPart-2.astro";
+import TerminalRangerPart2 from "@/components/TerminalRangerSection.astro";
+import TerminalCommand from "@/components/TerminalCommand.astro";
 ---
 
 <section class="relative w-[90%] h-[90%]">
@@ -8,7 +8,12 @@ import TerminalRangerPart2 from "@/components/TerminalRangerPart-2.astro";
         aria-label="simulated-linux-terminal"
         class="flex flex-row z-20 pt-10 absolute w-full left-0 h-[60%] items-center justify-center lg:w-[40%]"
     >
-        <TerminalRangerPart1 />
+        <TerminalCommand
+            id="2"
+            headerContent="terminal-2nd.header"
+            commands="terminal-2nd.commands"
+            previousTab="terminal:first"
+        />
     </div>
     <div
         aria-label="simulated-linux-terminal "

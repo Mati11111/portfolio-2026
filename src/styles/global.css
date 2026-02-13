@@ -81,6 +81,7 @@
     --animate-revealLeft: revealLeft 1s ease-out;
     --animate-reveal-text-terminal: revealLeft 0.3s ease-out;
     --animate-openTerminal: openTerminal 0.5s ease-out;
+    --animate-showIconTranslate: showIconTranslate 0.2s ease-out;
     --animate-moveFooterIcon: moveFooterIcon 0.2s ease-in-out forwards;
     --animate-moveFooterIconLeave: moveFooterIconLeave 0.2s ease-in-out;
     --animate-clickFooterIcon: clickFooterIcon 0.2s ease-in-out;
@@ -346,16 +347,30 @@ body {
 @keyframes rotateThemeSwitch {
     from {
         transform: rotate(0deg);
+        opacity: 0;
     }
     to {
         transform: rotate(90deg);
+        opacity: 100;
     }
 }
 @keyframes rotateThemeSwitchBack {
     from {
         transform: rotate(90deg);
+        opacity: 0;
     }
     to {
         transform: rotate(0deg);
+        opacity: 100;
+    }
+}
+@keyframes showIconTranslate {
+    0% {
+        transform: scaleX(0) scaleY(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scaleX(1) scaleY(1);
+        opacity: 1;
     }
 }
