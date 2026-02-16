@@ -1,12 +1,13 @@
 ---
-import { useI18n } from "@ariaskit/astro-i18n";
-const { t, lang } = useI18n(Astro);
-const currentYear = new Date().getFullYear();
+import { createTranslator, t } from "@/i18n";
 import EmailIcon from "@/assets/email.svg";
 import GithubIcon from "@/assets/github.svg";
 import LinkedinIcon from "@/assets/linkedin.svg";
 import DarkModeToggle from "@/components/DarkModeToggle";
 import LanguageToggle from "@/components/LanguageToggle";
+
+const tl = createTranslator(Astro.currentLocale);
+const currentYear = new Date().getFullYear();
 ---
 
 <section class="flex flex-col">
@@ -16,7 +17,7 @@ import LanguageToggle from "@/components/LanguageToggle";
         class="flex flex-row items-center justify-center gap-x-5 text-2xl opacity-0"
     >
         <a
-            href={t("footer.github-link")}
+            href={tl("footer.github-link")}
             target="_blank"
             rel="noopener noreferrer"
             class="footer-icon-container flex flex-col justify-center items-center cursor-pointer"
@@ -30,7 +31,7 @@ import LanguageToggle from "@/components/LanguageToggle";
         </a>
 
         <a
-            href={t("footer.linkedin-link")}
+            href={tl("footer.linkedin-link")}
             target="_blank"
             rel="noopener noreferrer"
             class="footer-icon-container flex flex-col justify-center items-center cursor-pointer"
@@ -68,7 +69,7 @@ import LanguageToggle from "@/components/LanguageToggle";
 
 <div class="flex flex-col justify-center items-center text-text-same">
     <h1 id="footerSign" class="text-secondary opacity-0">
-        {t("footer.sign")}
+        {tl("footer.sign")}
     </h1>
     <div class="flex flex-row gap-x-1 items-center justify-center">
         <p id="copyright" class="text-secondary opacity-0">&copy;</p>

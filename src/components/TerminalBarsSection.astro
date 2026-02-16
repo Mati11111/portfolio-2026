@@ -1,11 +1,11 @@
 ---
-import { useI18n } from "@ariaskit/astro-i18n";
-const { t } = useI18n(Astro);
-import BarSectionContent from "@/components/BarSectionContent";
+import { createTranslator, t } from "@/i18n";
 import BarSectionContentDeskView from "@/components/BarSectionContentDeskView";
 import BarSectionContentMobileView from "@/components/BarSectionContentMobileView";
 //this get options amount works for all languages
-import es from "../../i18n/es.json";
+import es from "@/i18n/es.json";
+
+const tl = createTranslator(Astro.currentLocale);
 const experiences = JSON.stringify(
     Object.values(es.body.ranger.job_experiences),
 );
@@ -24,10 +24,10 @@ const projects = JSON.stringify(Object.values(es.body.ranger.projects));
             class="flex flex-row justify-center items-center bg-bg-primary text-text-tertiary min-h-10 w-full px-4"
         >
             <p class="text-nowrap overflow-hidden text-ellipsis max-w-[70%]">
-                {t("terminal.terminal-remote-header")}
-                {t("terminal.terminal-folder-symbol")}{
-                    t("terminal.terminal-main-folder")
-                }{t("terminal.terminal-skills-dir")}
+                {tl("terminal.terminal-remote-header")}
+                {tl("terminal.terminal-folder-symbol")}{
+                    tl("terminal.terminal-main-folder")
+                }{tl("terminal.terminal-skills-dir")}
             </p>
         </span>
         <section

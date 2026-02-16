@@ -1,11 +1,11 @@
 ---
-import { useI18n } from "@ariaskit/astro-i18n";
-const { t, lang } = useI18n(Astro);
-
+import { createTranslator } from "@/i18n";
 import RangerShowOptions from "@/components/RangerShowOptionContent";
 
 //this get options amount works for all languages
-import es from "../../i18n/es.json";
+import es from "@/i18n/es.json";
+
+const tl = createTranslator(Astro.currentLocale);
 const options = Object.values(es.body.ranger.options);
 const experiences = JSON.stringify(
     Object.values(es.body.ranger.job_experiences),
@@ -25,28 +25,28 @@ const projects = JSON.stringify(Object.values(es.body.ranger.projects));
             class="flex flex-row justify-center items-center text-text-tertiary bg-bg-primary min-h-10 w-full px-4"
         >
             <p class="text-nowrap overflow-hidden text-ellipsis max-w-[70%]">
-                {t("terminal.terminal-remote-header")}
-                {t("terminal.terminal-folder-symbol")}{
-                    t("terminal.terminal-main-folder")
+                {tl("terminal.terminal-remote-header")}
+                {tl("terminal.terminal-folder-symbol")}{
+                    tl("terminal.terminal-main-folder")
                 }
             </p>
             <p
                 class="text-nowrap overflow-hidden text-ellipsis max-w-[70%] content-section"
                 data-section-index="0"
             >
-                {t("terminal.terminal-experience-dir")}
+                {tl("terminal.terminal-experience-dir")}
             </p>
             <p
                 class="text-nowrap overflow-hidden text-ellipsis max-w-[70%] content-section hidden"
                 data-section-index="1"
             >
-                {t("terminal.terminal-career-dir")}
+                {tl("terminal.terminal-career-dir")}
             </p>
             <p
                 class="text-nowrap overflow-hidden text-ellipsis max-w-[70%] content-section hidden"
                 data-section-index="2"
             >
-                {t("terminal.terminal-projects-dir")}
+                {tl("terminal.terminal-projects-dir")}
             </p>
         </span>
         <section
@@ -54,26 +54,26 @@ const projects = JSON.stringify(Object.values(es.body.ranger.projects));
             class="flex flex-col items-center bg-secondary h-[95%] w-full p-5"
         >
             <span class="font-medium w-full flex flex-row text-nowrap"
-                >{t("terminal.terminal-remote-header")}{
-                    t("terminal.terminal-folder-symbol")
-                }{t("terminal.terminal-main-folder")}
+                >{tl("terminal.terminal-remote-header")}{
+                    tl("terminal.terminal-folder-symbol")
+                }{tl("terminal.terminal-main-folder")}
                 <p
                     class="text-nowrap overflow-hidden text-ellipsis max-w-[70%] content-section h-full"
                     data-section-index="0"
                 >
-                    {t("terminal.terminal-experience-dir")}
+                    {tl("terminal.terminal-experience-dir")}
                 </p>
                 <p
                     class="text-nowrap overflow-hidden text-ellipsis max-w-[70%] content-section h-full hidden"
                     data-section-index="1"
                 >
-                    {t("terminal.terminal-career-dir")}
+                    {tl("terminal.terminal-career-dir")}
                 </p>
                 <p
                     class="text-nowrap overflow-hidden text-ellipsis max-w-[70%] content-section h-full hidden"
                     data-section-index="2"
                 >
-                    {t("terminal.terminal-projects-dir")}
+                    {tl("terminal.terminal-projects-dir")}
                 </p>
             </span>
             <div
@@ -92,7 +92,7 @@ const projects = JSON.stringify(Object.values(es.body.ranger.projects));
   cursor-pointer list-item-left font-medium border pl-1
   bg-bg-secondary border-bg-secondary text-text-secondary"
                                 >
-                                    {t(`body.ranger.options.${index}`)}
+                                    {tl(`body.ranger.options.${index}`)}
                                 </li>
                             ))
                         }
@@ -140,7 +140,7 @@ const projects = JSON.stringify(Object.values(es.body.ranger.projects));
 <script>
     const leftList = document.getElementById("leftList");
     let menuLeftSelector = 0;
-    function updateSelectedItem(newIndex: string) {
+    function updateSelectedItem(newIndex: Number) {
         document
             .querySelectorAll("#leftList .list-item-left")
             .forEach((item) => {

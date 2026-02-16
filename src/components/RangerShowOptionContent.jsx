@@ -1,7 +1,7 @@
 import { useState } from "react";
 import RangerOptionSelectorMobileView from "@/components/RangerOptionSelectorMobileView";
 import RangerOptionSelector from "@/components/RangerOptionSelector";
-import RangerOptionContent from "./RangerOptionContent";
+import RangerOptionContent from "@/components/RangerOptionContent";
 
 export default function RangerShowOptions({ content }) {
   const parsedContent = JSON.parse(content);

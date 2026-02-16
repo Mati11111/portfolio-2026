@@ -16,7 +16,20 @@ const LanguageToggle = () => {
     setTimeout(() => {
       setLanguageChanging(false);
       setLanguageChanged((prev) => !prev);
-    }, 400);
+
+      const currentPath = window.location.pathname;
+      const isEnglish = currentPath.startsWith("/en");
+
+      let newPath;
+
+      if (isEnglish) {
+        newPath = currentPath.replace(/^\/en/, "") || "/es";
+      } else {
+        newPath = `/en${currentPath === "/es" ? "" : currentPath}`;
+      }
+      localStorage.setItem("savedLang", isEnglish ? "es" : "en");
+      window.location.href = newPath;
+    }, 300);
   };
 
   return (

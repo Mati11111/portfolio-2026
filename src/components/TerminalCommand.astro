@@ -1,11 +1,9 @@
 ---
-import { useI18n } from "@ariaskit/astro-i18n";
-
-const { t, lang } = useI18n(Astro);
+import { createTranslator } from "@/i18n";
 const { id, headerContent, commands, previousTab } = Astro.props;
-
-const headerContentList = getContentList(headerContent, t);
-const commandsContentList = getDoubleContentList(commands, t);
+const tl = createTranslator(Astro.currentLocale);
+const headerContentList = getContentList(headerContent, tl);
+const commandsContentList = getDoubleContentList(commands, tl);
 
 //parse content list
 function getContentList(baseKey: string, t: (key: string) => string): string[] {

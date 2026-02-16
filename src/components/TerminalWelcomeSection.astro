@@ -1,6 +1,6 @@
 ---
-import { useI18n } from "@ariaskit/astro-i18n";
-const { t, lang } = useI18n(Astro);
+import { createTranslator } from "@/i18n";
+const tl = createTranslator(Astro.currentLocale);
 ---
 
 <section class="flex flex-col w-full h-full xl:text-2xl md:text-sm">
@@ -12,10 +12,10 @@ const { t, lang } = useI18n(Astro);
         <span
             class="lg:text-sm sm:text-sm text-nowrap text-ellipsis flex flex-row justify-center items-center bg-bg-primary text-text-tertiary min-h-10 w-full"
         >
-            {t("terminal.terminal-remote-header")}
-            {t("terminal.terminal-folder-symbol")}
+            {tl("terminal.terminal-remote-header")}
+            {tl("terminal.terminal-folder-symbol")}
             <p id="terminal-welcome-folder" class="opacity-0">
-                {t("terminal.terminal-main-folder")}
+                {tl("terminal.terminal-main-folder")}
             </p>
         </span>
         <section
@@ -24,7 +24,7 @@ const { t, lang } = useI18n(Astro);
             <div class="flex flex-col lg:text-lg sm:text-sm">
                 <div class="flex flex-row pb-3">
                     <p class="w-fit">
-                        {t("terminal.terminal-welcome-msg")}
+                        {tl("terminal.terminal-welcome-msg")}
                     </p>
                 </div>
                 <div class="flex flex-row text-nowrap">
@@ -32,8 +32,8 @@ const { t, lang } = useI18n(Astro);
                         id="find-folder-welcome-line"
                         class="font-medium w-fit opacity-0"
                     >
-                        {t("terminal.terminal-remote")}{
-                            t("terminal.terminal-shell-symbol")
+                        {tl("terminal.terminal-remote")}{
+                            tl("terminal.terminal-shell-symbol")
                         }
                     </h1>
                     <p
@@ -42,8 +42,8 @@ const { t, lang } = useI18n(Astro);
                     >
                     </p>
                     <p id="cd-folder-welcome" class="w-fit opacity-0">
-                        {t("terminal.terminal-cd")}
-                        {t("terminal.terminal-main-folder")}
+                        {tl("terminal.terminal-cd")}
+                        {tl("terminal.terminal-main-folder")}
                     </p>
                 </div>
                 <div
@@ -53,11 +53,11 @@ const { t, lang } = useI18n(Astro);
                         id="terminal-welcome"
                         class="font-medium w-fit opacity-0"
                     >
-                        {t("terminal.terminal-remote-header")}{
-                            t("terminal.terminal-folder-symbol")
-                        }{t("terminal.terminal-main-folder")}{
-                            t("terminal.terminal-dots")
-                        }{t("terminal.terminal-shell")}
+                        {tl("terminal.terminal-remote-header")}{
+                            tl("terminal.terminal-folder-symbol")
+                        }{tl("terminal.terminal-main-folder")}{
+                            tl("terminal.terminal-dots")
+                        }{tl("terminal.terminal-shell")}
                     </h1>
                     <p
                         id="blinking-cursor-welcome-2"
@@ -65,8 +65,8 @@ const { t, lang } = useI18n(Astro);
                     >
                     </p>
                     <p id="cat-file-welcome" class="w-fit opacity-0">
-                        {t("terminal.terminal-cat")}
-                        {t("terminal.terminal-portfolio-file")}
+                        {tl("terminal.terminal-cat")}
+                        {tl("terminal.terminal-portfolio-file")}
                     </p>
                 </div>
                 <div class="flex flex-col">
@@ -75,7 +75,7 @@ const { t, lang } = useI18n(Astro);
                             id="show-text-welcome"
                             class="w-fit opacity-0 text-justify"
                         >
-                            {t("body.resume")}
+                            {tl("body.resume")}
                         </p>
                     </div>
                     <div class="flex flex-row">
@@ -83,11 +83,11 @@ const { t, lang } = useI18n(Astro);
                             id="terminal-resume-welcome"
                             class="font-medium w-fit opacity-0"
                         >
-                            {t("terminal.terminal-remote-header")}{
-                                t("terminal.terminal-folder-symbol")
-                            }{t("terminal.terminal-main-folder")}{
-                                t("terminal.terminal-dots")
-                            }{t("terminal.terminal-shell")}
+                            {tl("terminal.terminal-remote-header")}{
+                                tl("terminal.terminal-folder-symbol")
+                            }{tl("terminal.terminal-main-folder")}{
+                                tl("terminal.terminal-dots")
+                            }{tl("terminal.terminal-shell")}
                         </h1>
                         <p
                             id="blinking-cursor-welcome-3"
