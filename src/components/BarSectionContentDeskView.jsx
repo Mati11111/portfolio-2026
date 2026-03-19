@@ -43,7 +43,7 @@ export default function BarSectionContentDeskView({
       ...experiences,
       ...careers,
       ...projects,
-    ].flatMap((section) => section["about-frameworks"] || []);
+    ].flatMap((section) => section["about_frameworks"] || []);
 
     //add framework details to map
     const detailsMap = allFrameworkDetails.reduce((list, item) => {
@@ -102,6 +102,15 @@ export default function BarSectionContentDeskView({
       <>
         {currentItems.map((item, index) => {
           const details = frameworkDetails[item];
+          if (
+            !details ||
+            !details.area ||
+            !details.language ||
+            !details.experience_time ||
+            frameworkCount[item] == null
+          ) {
+            return null;
+          }
           return (
             <tr
               key={item}

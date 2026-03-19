@@ -43,7 +43,7 @@ export default function BarSectionContent({
       ...experiences,
       ...careers,
       ...projects,
-    ].flatMap((section) => section["about-frameworks"] || []);
+    ].flatMap((section) => section["about_frameworks"] || []);
 
     //add framework details to map
     const detailsMap = allFrameworkDetails.reduce((list, item) => {

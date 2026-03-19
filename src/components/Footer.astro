@@ -57,26 +57,32 @@ const currentYear = new Date().getFullYear();
             />
         </div>
     </div>
-    <section
-        class="absolute items-center justify-center bottom-4 right-4 opacity-50 md:bottom-8 md:right-8 lg:bottom-10 lg:right-10"
-    >
-        <section class="flex flex-col justify-center">
-            <LanguageToggle client:only="react" />
-            <DarkModeToggle client:only="react" />
-        </section>
-    </section>
 </section>
 
 <div class="flex flex-col justify-center items-center text-text-same">
-    <h1 id="footerSign" class="text-secondary opacity-0">
-        {tl("footer.sign")}
-    </h1>
-    <div class="flex flex-row gap-x-1 items-center justify-center">
-        <p id="copyright" class="text-secondary opacity-0">&copy;</p>
-        <p id="copyright-year" class="text-secondary opacity-0">
-            {currentYear}
-        </p>
+    <div>
+        <h1 id="footerSign" class="text-secondary opacity-0">
+            {tl("footer.sign")}
+        </h1>
+        <div class="flex flex-row gap-x-1 items-center justify-center">
+            <p id="copyright" class="text-secondary opacity-0">&copy;</p>
+            <p id="copyright-year" class="text-secondary opacity-0">
+                {currentYear}
+            </p>
+        </div>
     </div>
+
+    <div>
+        <section
+            class="sm:absolute relative items-center justify-center sm:bottom-4 sm:right-4 opacity-50 md:bottom-8 md:right-8 lg:bottom-10 lg:right-10"
+        >
+            <section class="flex flex-row sm:flex-col justify-center">
+                <LanguageToggle client:only="react" />
+                <DarkModeToggle client:only="react" />
+            </section>
+        </section>
+    </div>
+
     <script>
         // animated hover for socials
         const containers = document.querySelectorAll(".footer-icon-container");

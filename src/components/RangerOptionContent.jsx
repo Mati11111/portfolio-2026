@@ -52,7 +52,7 @@ export default function RangerOptionContent({ content = "", experience = 0 }) {
                   <div key={index}>
                     <p className="xl:text-sm md:text-[0.5rem] text-nowrap">
                       {framework}
-                      {index === 4 ? "" : " | "}
+                      {index === 3 ? "" : " | "}
                     </p>
                   </div>
                 ))}
