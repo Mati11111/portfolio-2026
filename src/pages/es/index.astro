@@ -6,12 +6,14 @@ import ExperienceMenu from "@/layouts/RangerMenu.astro";
 import BarsMetrics from "@/layouts/BarsMetrics.astro";
 import Footer from "@/components/Footer.astro";
 import { createTranslator } from "@/i18n";
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 const pathname = Astro.url.pathname;
 
 const lang = pathname.startsWith("/en") ? "en" : "es";
 
 const tl = createTranslator(lang);
+
 ---
 
 <html lang={lang}>
@@ -25,6 +27,7 @@ const tl = createTranslator(lang);
         <meta property="og:description" content={tl("head.metaDescription")} />
         <meta property="og:type" content="website" />
         <meta name="description" content={tl("head.metaDescription")} />
+        <SpeedInsights/>
     </head>
     <body class="flex-col content-between">
         <main class="flex flex-col gap-y-10 w-full">
