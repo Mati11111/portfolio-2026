@@ -1,49 +1,49 @@
 {
   "head": {
     "title": "Matías Chaparro | Full-Stack Developer",
-    "metaTitle": "Matías Chaparro | portfolio",
-    "metaDescription": "Matías Chaparro's portfolio, software engineer with focus on full-stack development."
+    "metaTitle": "Matías Chaparro | Portfolio",
+    "metaDescription": "Portfolio of Matías Chaparro, Software Engineer specialized in full-stack development."
   },
   "body": {
-    "placeholder": "EL CONTENIDO VA AQUI",
-    "resume": "Ingeniero Civil Informático y Desarrollador Full-Stack con experiencia en trabajo remoto, especializado en desarrollo de plataformas web, optimización de flujos de usuario y performance. He trabajado con React, MERN, Node.js, Docker, CI/CD, ETL (Informatica PowerCenter), SQL, Power BI y AWS, integrando tecnologías distribuidas como Stellar y Soroban. Experiencia en gestión de proyectos y trabajo en equipo utilizando Jira. Apasionado por la mejora continua, la eficiencia de procesos y la adopción de nuevas tecnologías.",
+    "placeholder": "CONTENT GOES HERE",
+    "resume": "Software Engineer and Full-Stack Developer with experience in remote work, specialized in web platform development, user flow optimization and performance. I have worked with React, MERN, Node.js, Docker, CI/CD, ETL (Informatica PowerCenter), SQL, Power BI and AWS, integrating distributed technologies such as Stellar and Soroban. Experience in project management and teamwork using Jira. Passionate about continuous improvement, process efficiency and the adoption of new technologies.",
     "ranger": {
-      "options": ["Experience", "Career", "Personal Projects"],
+      "options": ["Work experience", "Career", "Personal projects"],
       "job_experiences": [
         {
           "text": ".txt",
           "company_name": "Forcast",
-          "role": "Desarrollador Full-Stack",
-          "description": "Desarrollé y optimicé funcionalidades en una plataforma web usando React, JavaScript y TailwindCSS. Implementé mejoras UI/UX, componentes reutilizables y consumo de APIs. Participé en integración frontend-backend y despliegues, asegurando rendimiento y escalabilidad.",
+          "role": "Full-Stack Developer",
+          "description": "Developed and optimized functionalities on a web platform using React, JavaScript and TailwindCSS. Implemented UI/UX improvements, reusable components and API consumption. Participated in frontend-backend integration and deployments, ensuring performance and scalability.",
           "date": "Jul 2025 – Nov 2025",
-          "duration": "4 Meses",
+          "duration": "4 Months",
           "frameworks": ["React", "NextJs", "Tailwind", "Prisma"]
         },
         {
           "text": ".txt",
           "company_name": "Entix",
-          "role": "Desarrollador de procesos ETL",
-          "description": "Gestioné control remoto de flujos ETL utilizando Informatica PowerCenter. Realicé consultas SQL en Oracle para múltiples bases de datos, monitoreando procesos y generando reportes ejecutivos para análisis de información y toma de decisiones.",
-          "date": "Ene 2025 – Abr 2025",
-          "duration": "4 Meses",
+          "role": "ETL developer",
+          "description": "Managed remote control of ETL flows using Informatica PowerCenter. I performed SQL queries in Oracle for multiple databases, monitoring processes and generating executive reports for information analysis and decision making.",
+          "date": "Jan 2025 – Apr 2025",
+          "duration": "4 Months",
           "frameworks": ["Informatica PowerCenter", "Oracle SQL"]
         },
         {
           "text": ".txt",
           "company_name": "Servcon",
-          "role": "Desarrollador Full-Stack",
-          "description": "Participé en desarrollo y soporte de soluciones tecnológicas, integrando backend y bases de datos. Realicé mantenimiento, mejoras funcionales y soporte técnico, asegurando estabilidad operativa y continuidad de servicio.",
+          "role": "Full-Stack Developer",
+          "description": "I led the development of a web platform for a construction company, defining architecture and managing tasks with Jira. I implemented backend with Node.js and Express, designed the database in MongoDB (Atlas) and developed the frontend in React. I deployed on a Linux VPS with configuration and security using Cloudflare.",
           "date": "Ago 2023 – Ene 2024",
-          "duration": "6 Meses",
+          "duration": "6 Months",
           "frameworks": ["ExpressJs", "React", "MongoDB", "Cloudflare"]
         },
         {
           "text": ".txt",
           "company_name": "Psys",
-          "role": "Consultor TI",
-          "description": "Supervisé el rendimiento de una plataforma web en AWS dentro del sector salud y bienestar. Analicé métricas, identifiqué cuellos de botella y propuse mejoras de arquitectura, optimización de recursos y buenas prácticas de infraestructura.",
+          "role": "AWS Consultant",
+          "description": "I monitored the performance of a web platform on AWS within the health and wellness sector. I analyzed metrics, identified bottlenecks and proposed architecture improvements, resource optimization and good infrastructure practices.",
           "date": "Mar 2023 – Jun 2023",
-          "duration": "4 Meses",
+          "duration": "4 Months",
           "frameworks": ["AWS", "Linux", "SQL"]
         }
       ],
@@ -51,10 +51,10 @@
         {
           "text": ".txt",
           "company_name": "Universidad Nacional Andres Bello",
-          "role": "Ingeniero civil informatico",
-          "description": "Formación centrada en ingeniería de software y metodologías ágiles (Scrum), gestión de proyectos y trabajo colaborativo. Experiencia académica en desarrollo de software con React, Node.js, PostgreSQL, MongoDB y Docker. Aplicación práctica de Machine Learning y Computer Vision a nivel formativo. Tesis orientada a la integración de componentes electrónicos con modelos de IA. Desarrollo Full-Stack reforzado de forma autodidacta.",
-          "date": "Ene 2020 – Ene 2026",
-          "duration": "5 años",
+          "role": "Software engineer",
+          "description": "Training focused on software engineering and agile methodologies (Scrum), project management and collaborative work. Academic experience in software development with React, Node.js, PostgreSQL, MongoDB and Docker. Practical application of Machine Learning and Computer Vision at a training level. Thesis aimed at the integration of electronic components with AI models. Reinforced Full-Stack development in a self-taught way.",
+          "date": "January 2020 – January 2026",
+          "duration": "5 years",
           "frameworks": ["NodeJs", "MySQL", "Docker", "ML"]
         }
       ],
@@ -62,8 +62,8 @@
         {
           "text": ".txt",
           "company_name": "Integration API Gateway",
-          "description": "Desarrollé una API Gateway en Node.js y Express para integrar y orquestar servicios externos (Spotify, YouTube Music, Cloudinary y Gemini AI). Implementé endpoints REST, autenticación con APIs de terceros y comunicación con Discord mediante Discord.js. Automatización con cron para mantenimiento y monitoreo. Sistema desplegado en Oracle Cloud Free Tier con gestión de procesos y logs.",
-          "status": "Finalizado",
+          "description": "Developed an API Gateway in Node.js and Express to integrate and orchestrate external services (Spotify, YouTube Music, Cloudinary and Gemini AI). Implemented REST endpoints, authentication with third-party APIs and communication with Discord using Discord.js. Automation with cron for maintenance and monitoring. System deployed in Oracle Cloud Free Tier with process and log management.",
+          "status": "Finished",
           "frameworks": ["NodeJs", "ExpressJs", "DiscordJs", "Oracle Cloud"],
           "framework-headers": [
             {
@@ -80,7 +80,7 @@
             },
             {
               "id": "projects_amount",
-              "label": "PROJECTS AMOUNT"
+              "label": "NUMBER OF PROJECTS"
             },
             {
               "id": "experience_time",
@@ -92,205 +92,181 @@
               "framework": "NodeJs",
               "area": "Backend",
               "language": "JavaScript",
-              "experience_time": "2 AÑOS"
+              "experience_time": "2 YEARS"
             },
             {
               "framework": "PostgreSQL",
               "area": "Backend",
               "language": "SQL",
-              "experience_time": "1 AÑO"
+              "experience_time": "1 YEAR"
             },
             {
               "framework": "REST APIs",
               "area": "Backend",
-              "language": "Varios",
-              "experience_time": "6 AÑOS"
+              "language": "JavaScript",
+              "experience_time": "3 YEARS"
             },
             {
               "framework": "CI/CD",
               "area": "Backend",
-              "language": "Varios",
-              "experience_time": "2 AÑOS"
+              "language": "Several",
+              "experience_time": "2 YEARS"
             },
             {
               "framework": "Docker",
               "area": "Backend",
               "language": "Docker",
-              "experience_time": "1 AÑO"
+              "experience_time": "1 YEAR"
             },
             {
               "framework": "React",
               "area": "Frontend",
               "language": "JavaScript",
-              "experience_time": "2 AÑOS"
+              "experience_time": "2 YEARS"
             },
             {
               "framework": "NextJs",
               "area": "Frontend",
               "language": "JavaScript",
-              "experience_time": "6 MESES"
+              "experience_time": "6 MONTHS"
             },
             {
               "framework": "MongoDB",
               "area": "Backend",
               "language": "JavaScript",
-              "experience_time": "1 AÑO"
+              "experience_time": "1 YEAR"
             },
             {
               "framework": "Stellar",
               "area": "Backend",
               "language": "CLI",
-              "experience_time": "6 MESES"
+              "experience_time": "6 MONTHS"
             },
             {
               "framework": "Soroban",
               "area": "Backend",
               "language": "Rust",
-              "experience_time": "6 MESES"
+              "experience_time": "6 MONTHS"
             },
             {
               "framework": "Informatica PowerCenter",
-              "area": "Ingenieria",
+              "area": "Engineering",
               "language": "ETL",
-              "experience_time": "4 MESES"
+              "experience_time": "4 MONTHS"
             },
             {
               "framework": "MySQL",
               "area": "Backend",
               "language": "SQL",
-              "experience_time": "2 MESES"
+              "experience_time": "2 MONTHS"
             },
             {
               "framework": "OracleSQL",
               "area": "Backend",
               "language": "SQL",
-              "experience_time": "4 MESES"
+              "experience_time": "4 MONTHS"
             },
             {
               "framework": "Power BI",
-              "area": "Ingenieria",
+              "area": "Engineering",
               "language": "Power BI",
-              "experience_time": "4 MESES"
+              "experience_time": "4 MONTHS"
             },
             {
               "framework": "ETL",
-              "area": "Ingenieria",
+              "area": "Engineering",
               "language": "Informatica PowerCenter",
-              "experience_time": "4 MESES"
+              "experience_time": "4 MONTHS"
             },
             {
               "framework": "ExpressJs",
               "area": "Backend",
               "language": "JavaScript",
-              "experience_time": "2 AÑOS"
+              "experience_time": "2 YEARS"
             },
             {
               "framework": "Cloudflare",
               "area": "Backend",
               "language": "Nginx",
-              "experience_time": "1 AÑO"
+              "experience_time": "1 YEAR"
             },
             {
               "framework": "Linux",
               "area": "Backend",
               "language": "CLI",
-              "experience_time": "3 AÑOS"
+              "experience_time": "3 YEARS"
             },
             {
               "framework": "AWS",
-              "area": "Soporte TI",
+              "area": "IT Support",
               "language": "CLI",
-              "experience_time": "4 MESES"
+              "experience_time": "4 MONTHS"
             },
             {
-              "framework": "Monitoreo de rendimiento",
-              "area": "Soporte TI",
+              "framework": "Performance monitoring",
+              "area": "IT Support",
               "language": "AWS",
-              "experience_time": "4 AÑOS"
+              "experience_time": "4 YEARS"
             },
             {
-              "framework": "Arquitectura Cloud",
-              "area": "Soporte TI",
+              "framework": "Cloud Architecture",
+              "area": "IT Support",
               "language": "AWS",
-              "experience_time": "4 MESES"
+              "experience_time": "4 MONTHS"
             },
             {
               "framework": "DiscordJs",
               "area": "Backend",
               "language": "JavaScript",
-              "experience_time": "1 AÑO"
+              "experience_time": "1 YEAR"
             },
             {
               "framework": "Cron Jobs",
               "area": "Backend",
               "language": "CLI",
-              "experience_time": "1 AÑO"
+              "experience_time": "1 YEAR"
             },
             {
               "framework": "Oracle Cloud",
-              "area": "Soporte TI",
+              "area": "IT Support",
               "language": "CLI",
-              "experience_time": "1 AÑO"
+              "experience_time": "1 YEAR"
             },
             {
               "framework": "Spotify API",
               "area": "Backend",
               "language": "JavaScript",
-              "experience_time": "1 AÑO"
+              "experience_time": "1 YEAR"
             },
             {
               "framework": "YouTube Music API",
               "area": "Backend",
               "language": "JavaScript",
-              "experience_time": "1 AÑO"
+              "experience_time": "1 YEAR"
             },
             {
               "framework": "Gemini AI API",
               "area": "Backend",
               "language": "JavaScript",
-              "experience_time": "1 AÑO"
-            },
-            {
-              "framework": "Cloudinary API",
-              "area": "Backend",
-              "language": "JavaScript",
-              "experience_time": "2 AÑOS"
+              "experience_time": "1 YEAR"
             },
             {
               "framework": "Prisma",
               "area": "Backend",
               "language": "SQL",
-              "experience_time": "6 MESES"
-            },
-            {
-              "framework": "HackTheBox",
-              "area": "-",
-              "language": "-",
-              "experience_time": "-"
-            },
-            {
-              "framework": "TryToHackMe",
-              "area": "-",
-              "language": "-",
-              "experience_time": "-"
-            },
-            {
-              "framework": "IBM",
-              "area": "-",
-              "language": "-",
-              "experience_time": "-"
+              "experience_time": "6 MONTHS"
             },
             {
               "framework": "Tailwind",
               "area": "Frontend",
               "language": "CSS",
-              "experience_time": "1 AÑO"
+              "experience_time": "1 YEAR"
             },
             {
               "framework": "ML",
-              "area": "-",
-              "language": "-",
-              "experience_time": "-"
+              "area": "Backend",
+              "language": "Python",
+              "experience_time": "2 YEARS"
             }
           ]
         }
@@ -299,29 +275,29 @@
   },
   "terminal": {
     "terminal-welcome-msg": "Welcome to my portfolio!",
-    "terminal-local-header": "mati@local",
-    "terminal-shell-symbol": "~$",
-    "terminal-shell": "$",
-    "terminal-folder-symbol": "~/",
-    "terminal-local": "mati@local:",
-    "terminal-ssh": "ssh ",
+    "terminal-local-header": "dead@local",
+    "terminal-shell-symbol": null,
+    "terminal-shell": null,
+    "terminal-folder-symbol": null,
+    "terminal-local": "dead@local:",
+    "terminal-ssh": "ssh",
     "terminal-confirm": "Are you sure you want to continue connecting (yes/no)?",
-    "terminal-yes": "yes",
+    "terminal-yes": "and",
     "terminal-welcome": "Welcome to my portfolio!",
     "terminal-remote-header": "portfolio@localhost",
     "terminal-remote": "portfolio@localhost:",
-    "terminal-main-folder": "docs",
+    "terminal-main-folder": "documents",
     "terminal-experience-folder": "experience",
-    "terminal-experience-dir": "/experience",
+    "terminal-experience-dir": "/work_experience",
     "terminal-career-dir": "/career",
-    "terminal-projects-dir": "/projects",
+    "terminal-projects-dir": "/personal_projects",
     "terminal-skills-dir": "/skills",
     "terminal-ranger": "ranger",
     "terminal-htop": "htop",
     "terminal-cd": "cd",
     "terminal-cat": "cat",
-    "terminal-portfolio-file": "about_me_en.txt",
-    "terminal-dots": ":"
+    "terminal-portfolio-file": "about_me_es.txt",
+    "terminal-dots": null
   },
   "footer": {
     "github": "Github",
@@ -333,11 +309,11 @@
     "sign": "Designed & Developed by Matías Chaparro"
   },
   "terminal-1st": {
-    "header": ["mati@local", "~/"],
+    "header": ["dead@local", null],
     "commands": {
       "0": {
-        "0": "mati@local:~$",
-        "1": "ssh portfolio@localhost"
+        "0": "die@local:~$",
+        "1": "ssh portafolio@localhost"
       },
       "1": {
         "0": "textLine",
@@ -345,32 +321,32 @@
       },
       "2": {
         "0": "textLine",
-        "1": "yes"
+        "1": "and"
       }
     }
   },
   "terminal-2nd": {
-    "header": ["portfolio@localhost", "~/"],
+    "header": ["portfolio@localhost", null],
     "commands": {
       "0": {
         "0": "portfolio@localhost:~$",
-        "1": "cd experience"
+        "1": "work_experience cd"
       },
       "1": {
-        "0": "portfolio@localhost:~docs/experience/$",
+        "0": "portfolio@localhost:~documents/work_experience/$",
         "1": "ranger"
       }
     }
   },
   "terminal-3nd": {
-    "header": ["portfolio@localhost", "~/"],
+    "header": ["portfolio@localhost", null],
     "commands": {
       "0": {
         "0": "portfolio@localhost:~$",
         "1": "cd skills"
       },
       "1": {
-        "0": "portfolio@localhost:~/skills/$",
+        "0": "portafolio@localhost:~/skills/$",
         "1": "htop"
       }
     }
