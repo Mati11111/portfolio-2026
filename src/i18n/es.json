@@ -137,30 +137,6 @@
               "experience_time": "1 AÑO"
             },
             {
-              "framework": "Stellar",
-              "area": "Backend",
-              "language": "CLI",
-              "experience_time": "6 MESES"
-            },
-            {
-              "framework": "Soroban",
-              "area": "Backend",
-              "language": "Rust",
-              "experience_time": "6 MESES"
-            },
-            {
-              "framework": "Informatica PowerCenter",
-              "area": "Ingenieria",
-              "language": "ETL",
-              "experience_time": "4 MESES"
-            },
-            {
-              "framework": "MySQL",
-              "area": "Backend",
-              "language": "SQL",
-              "experience_time": "2 MESES"
-            },
-            {
               "framework": "OracleSQL",
               "area": "Backend",
               "language": "SQL",
@@ -173,82 +149,16 @@
               "experience_time": "4 MESES"
             },
             {
-              "framework": "ETL",
-              "area": "Ingenieria",
-              "language": "Informatica PowerCenter",
-              "experience_time": "4 MESES"
-            },
-            {
               "framework": "ExpressJs",
               "area": "Backend",
               "language": "JavaScript",
               "experience_time": "2 AÑOS"
             },
             {
-              "framework": "Cloudflare",
-              "area": "Backend",
-              "language": "Nginx",
-              "experience_time": "1 AÑO"
-            },
-            {
-              "framework": "Linux",
-              "area": "Backend",
-              "language": "CLI",
-              "experience_time": "3 AÑOS"
-            },
-            {
               "framework": "AWS",
               "area": "Soporte TI",
               "language": "CLI",
               "experience_time": "4 MESES"
-            },
-            {
-              "framework": "Monitoreo de rendimiento",
-              "area": "Soporte TI",
-              "language": "AWS",
-              "experience_time": "4 AÑOS"
-            },
-            {
-              "framework": "Arquitectura Cloud",
-              "area": "Soporte TI",
-              "language": "AWS",
-              "experience_time": "4 MESES"
-            },
-            {
-              "framework": "DiscordJs",
-              "area": "Backend",
-              "language": "JavaScript",
-              "experience_time": "1 AÑO"
-            },
-            {
-              "framework": "Cron Jobs",
-              "area": "Backend",
-              "language": "CLI",
-              "experience_time": "1 AÑO"
-            },
-            {
-              "framework": "Oracle Cloud",
-              "area": "Soporte TI",
-              "language": "CLI",
-              "experience_time": "1 AÑO"
-            },
-            {
-              "framework": "Spotify API",
-              "area": "Backend",
-              "language": "JavaScript",
-              "experience_time": "1 AÑO"
-            },
-            {
-              "framework": "YouTube Music API",
-              "area": "Backend",
-              "language": "JavaScript",
-              "experience_time": "1 AÑO"
-            },
-            {
-              "framework": "Gemini AI API",
-              "area": "Backend",
-              "language": "JavaScript",
-              "experience_time": "1 AÑO"
             },
             {
               "framework": "Prisma",
@@ -261,12 +171,6 @@
               "area": "Frontend",
               "language": "CSS",
               "experience_time": "1 AÑO"
-            },
-            {
-              "framework": "ML",
-              "area": "Backend",
-              "language": "Python",
-              "experience_time": "2 AÑOS"
             }
           ]
         }
