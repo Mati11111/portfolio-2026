@@ -2,14 +2,23 @@
   "head": {
     "title": "Matías Chaparro | Full-Stack Developer",
     "metaTitle": "Matías Chaparro | Portfolio",
-    "metaDescription": "Portfolio of Matías Chaparro, Software Engineer specialized in full-stack development."
+    "metaDescription": "Portfolio of Matías Chaparro, Computer Civil Engineer specialized in full-stack development."
   },
   "body": {
     "placeholder": "CONTENT GOES HERE",
-    "resume": "Software Engineer and Full-Stack Developer with experience in remote work, specialized in web platform development, user flow optimization and performance. I have worked with React, MERN, Node.js, Docker, CI/CD, ETL (Informatica PowerCenter), SQL, Power BI and AWS, integrating distributed technologies such as Stellar and Soroban. Experience in project management and teamwork using Jira. Passionate about continuous improvement, process efficiency and the adoption of new technologies.",
+    "resume": "Software engineer and Full-Stack Developer with experience in remote work, specialized in web platform development, user flow optimization and performance. I have worked with React, MERN, Node.js, Docker, CI/CD, ETL (Informatica PowerCenter), SQL, Power BI and AWS, integrating distributed technologies such as Stellar and Soroban. Experience in project management and teamwork using Jira. Passionate about continuous improvement, process efficiency and the adoption of new technologies.",
     "ranger": {
       "options": ["Work experience", "Career", "Personal projects"],
       "job_experiences": [
+        {
+          "text": ".txt",
+          "company_name": "Apiux (Fonasa)",
+          "role": "Full-Stack Developer",
+          "description": "Frontend development with React, Tailwind and TypeScript, and backend development with Python (FastAPI and SQLAlchemy). Implementation of multiple microservices and APIs to support internal processes and improve scale",
+          "date": "Feb 2026 - Abr 2026",
+          "duration": "3 MONTHS",
+          "frameworks": ["React", "Tailwind", "FastAPI", "SQLAlchemy"]
+        },
         {
           "text": ".txt",
           "company_name": "Forcast",
@@ -40,7 +49,7 @@
         {
           "text": ".txt",
           "company_name": "Psys",
-          "role": "AWS Consultant",
+          "role": "IT Consultant",
           "description": "I monitored the performance of a web platform on AWS within the health and wellness sector. I analyzed metrics, identified bottlenecks and proposed architecture improvements, resource optimization and good infrastructure practices.",
           "date": "Mar 2023 – Jun 2023",
           "duration": "4 Months",
@@ -80,7 +89,7 @@
             },
             {
               "id": "projects_amount",
-              "label": "NUMBER OF PROJECTS"
+              "label": "PROJECTS AMOUNT"
             },
             {
               "id": "experience_time",
@@ -137,30 +146,6 @@
               "experience_time": "1 YEAR"
             },
             {
-              "framework": "Stellar",
-              "area": "Backend",
-              "language": "CLI",
-              "experience_time": "6 MONTHS"
-            },
-            {
-              "framework": "Soroban",
-              "area": "Backend",
-              "language": "Rust",
-              "experience_time": "6 MONTHS"
-            },
-            {
-              "framework": "Informatica PowerCenter",
-              "area": "Engineering",
-              "language": "ETL",
-              "experience_time": "4 MONTHS"
-            },
-            {
-              "framework": "MySQL",
-              "area": "Backend",
-              "language": "SQL",
-              "experience_time": "2 MONTHS"
-            },
-            {
               "framework": "OracleSQL",
               "area": "Backend",
               "language": "SQL",
@@ -173,82 +158,16 @@
               "experience_time": "4 MONTHS"
             },
             {
-              "framework": "ETL",
-              "area": "Engineering",
-              "language": "Informatica PowerCenter",
-              "experience_time": "4 MONTHS"
-            },
-            {
               "framework": "ExpressJs",
               "area": "Backend",
               "language": "JavaScript",
               "experience_time": "2 YEARS"
             },
             {
-              "framework": "Cloudflare",
-              "area": "Backend",
-              "language": "Nginx",
-              "experience_time": "1 YEAR"
-            },
-            {
-              "framework": "Linux",
-              "area": "Backend",
-              "language": "CLI",
-              "experience_time": "3 YEARS"
-            },
-            {
               "framework": "AWS",
               "area": "IT Support",
               "language": "CLI",
               "experience_time": "4 MONTHS"
-            },
-            {
-              "framework": "Performance monitoring",
-              "area": "IT Support",
-              "language": "AWS",
-              "experience_time": "4 YEARS"
-            },
-            {
-              "framework": "Cloud Architecture",
-              "area": "IT Support",
-              "language": "AWS",
-              "experience_time": "4 MONTHS"
-            },
-            {
-              "framework": "DiscordJs",
-              "area": "Backend",
-              "language": "JavaScript",
-              "experience_time": "1 YEAR"
-            },
-            {
-              "framework": "Cron Jobs",
-              "area": "Backend",
-              "language": "CLI",
-              "experience_time": "1 YEAR"
-            },
-            {
-              "framework": "Oracle Cloud",
-              "area": "IT Support",
-              "language": "CLI",
-              "experience_time": "1 YEAR"
-            },
-            {
-              "framework": "Spotify API",
-              "area": "Backend",
-              "language": "JavaScript",
-              "experience_time": "1 YEAR"
-            },
-            {
-              "framework": "YouTube Music API",
-              "area": "Backend",
-              "language": "JavaScript",
-              "experience_time": "1 YEAR"
-            },
-            {
-              "framework": "Gemini AI API",
-              "area": "Backend",
-              "language": "JavaScript",
-              "experience_time": "1 YEAR"
             },
             {
               "framework": "Prisma",
@@ -263,10 +182,16 @@
               "experience_time": "1 YEAR"
             },
             {
-              "framework": "ML",
+              "framework": "FastAPI",
               "area": "Backend",
               "language": "Python",
-              "experience_time": "2 YEARS"
+              "experience_time": "3 MONTHS"
+            },
+            {
+              "framework": "SQLAlchemy",
+              "area": "Backend",
+              "language": "SQL",
+              "experience_time": "3 MONTHS"
             }
           ]
         }

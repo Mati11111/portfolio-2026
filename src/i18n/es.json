@@ -12,6 +12,15 @@
       "job_experiences": [
         {
           "text": ".txt",
+          "company_name": "Apiux (Fonasa)",
+          "role": "Desarollador Full-Stack",
+          "description": "Desarrollo frontend con React, Tailwind y TypeScript, y backend con Python (FastAPI y SQLAlchemy). Implementación de múltiples microservicios y APIs para soportar procesos internos y mejorar la escala",
+          "date": "Feb 2026 - Abr 2026",
+          "duration": "3 MESES",
+          "frameworks": ["React", "Tailwind", "FastAPI", "SQLAlchemy"]
+        },
+        {
+          "text": ".txt",
           "company_name": "Forcast",
           "role": "Desarrollador Full-Stack",
           "description": "Desarrollé y optimicé funcionalidades en una plataforma web usando React, JavaScript y TailwindCSS. Implementé mejoras UI/UX, componentes reutilizables y consumo de APIs. Participé en integración frontend-backend y despliegues, asegurando rendimiento y escalabilidad.",
@@ -171,6 +180,18 @@
               "area": "Frontend",
               "language": "CSS",
               "experience_time": "1 AÑO"
+            },
+            {
+              "framework": "FastAPI",
+              "area": "Backend",
+              "language": "Python",
+              "experience_time": "3 MESES"
+            },
+            {
+              "framework": "SQLAlchemy",
+              "area": "Backend",
+              "language": "SQL",
+              "experience_time": "3 MESES"
             }
           ]
         }
