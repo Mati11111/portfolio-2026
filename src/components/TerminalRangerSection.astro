@@ -2,16 +2,25 @@
 import { createTranslator } from "@/i18n";
 import RangerShowOptions from "@/components/RangerShowOptionContent";
 
-//this get options amount works for all languages
 import es from "@/i18n/es.json";
+import en from "@/i18n/en.json";
 
-const tl = createTranslator(Astro.currentLocale);
-const options = Object.values(es.body.ranger.options);
+const locale = Astro.currentLocale || "es";
+
+const tData =
+    {
+        es,
+        en,
+    }[locale] || es;
+
+const tl = createTranslator(locale);
+
+const options = Object.values(tData.body.ranger.options);
 const experiences = JSON.stringify(
-    Object.values(es.body.ranger.job_experiences),
+    Object.values(tData.body.ranger.job_experiences),
 );
-const careers = JSON.stringify(Object.values(es.body.ranger.careers));
-const projects = JSON.stringify(Object.values(es.body.ranger.projects));
+const careers = JSON.stringify(Object.values(tData.body.ranger.careers));
+const projects = JSON.stringify(Object.values(tData.body.ranger.projects));
 ---
 
 <section class="flex flex-col w-full h-full">
