@@ -2,20 +2,29 @@
   "head": {
     "title": "Matías Chaparro | Full-Stack Developer",
     "metaTitle": "Matías Chaparro | Portfolio",
-    "metaDescription": "Portfolio of Matías Chaparro, Computer Civil Engineer specialized in full-stack development."
+    "metaDescription": "Portfolio of Matías Chaparro, Computer Engineer specialized in full-stack development."
   },
   "body": {
     "placeholder": "CONTENT GOES HERE",
-    "resume": "Software engineer and Full-Stack Developer with experience in remote work, specialized in web platform development, user flow optimization and performance. I have worked with React, MERN, Node.js, Docker, CI/CD, ETL (Informatica PowerCenter), SQL, Power BI and AWS, integrating distributed technologies such as Stellar and Soroban. Experience in project management and teamwork using Jira. Passionate about continuous improvement, process efficiency and the adoption of new technologies.",
+    "resume": "Computer Engineer and Full-Stack Developer with remote work experience, specialized in web platform development, user flow optimization and performance. I have worked with React, MERN, Node.js, Docker, CI/CD, ETL (Informatica PowerCenter), SQL, Power BI and AWS, integrating distributed technologies such as Stellar and Soroban. Experienced in project management and teamwork using Jira. Passionate about continuous improvement, process efficiency and the adoption of new technologies.",
     "ranger": {
-      "options": ["Work experience", "Career", "Personal projects"],
+      "options": ["Work experience", "Education", "Personal projects"],
       "job_experiences": [
+        {
+          "text": ".txt",
+          "company_name": "Anticipa",
+          "role": "Full-Stack Developer",
+          "description": "Backend development for the health sector (FONASA). Design and implementation of microservices and APIs with Python, FastAPI and SQLAlchemy. Built business logic in a scalable, maintainable architecture for critical internal processes.",
+          "date": "Apr 2026 - Present",
+          "duration": "6 MONTHS",
+          "frameworks": ["FastAPI", "SQLAlchemy", "PostgreSQL"]
+        },
         {
           "text": ".txt",
           "company_name": "Apiux (Fonasa)",
           "role": "Full-Stack Developer",
-          "description": "Frontend development with React, Tailwind and TypeScript, and backend development with Python (FastAPI and SQLAlchemy). Implementation of multiple microservices and APIs to support internal processes and improve scale",
-          "date": "Feb 2026 - Abr 2026",
+          "description": "Frontend development for the health sector (FONASA) with React, Tailwind and TypeScript. Built interfaces and reusable components, consumed and integrated APIs, and optimized user flows in production environments.",
+          "date": "Feb 2026 - Apr 2026",
           "duration": "3 MONTHS",
           "frameworks": ["React", "Tailwind", "FastAPI", "SQLAlchemy"]
         },
@@ -23,57 +32,57 @@
           "text": ".txt",
           "company_name": "Forcast",
           "role": "Full-Stack Developer",
-          "description": "Developed and optimized functionalities on a web platform using React, JavaScript and TailwindCSS. Implemented UI/UX improvements, reusable components and API consumption. Participated in frontend-backend integration and deployments, ensuring performance and scalability.",
+          "description": "Developed interfaces with React, Next.js and TailwindCSS. Built REST APIs with Node.js and Express, integrated external services (Stellar and Soroban) and managed the SQL database with Prisma. Deployments with Docker and CI/CD.",
           "date": "Jul 2025 – Nov 2025",
-          "duration": "4 Months",
-          "frameworks": ["React", "NextJs", "Tailwind", "Prisma"]
+          "duration": "5 MONTHS",
+          "frameworks": ["React", "NextJs", "Tailwind", "NodeJs", "ExpressJs", "Prisma", "Docker"]
         },
         {
           "text": ".txt",
           "company_name": "Entix",
-          "role": "ETL developer",
-          "description": "Managed remote control of ETL flows using Informatica PowerCenter. I performed SQL queries in Oracle for multiple databases, monitoring processes and generating executive reports for information analysis and decision making.",
+          "role": "ETL Process Developer",
+          "description": "Management of ETL flows with Informatica PowerCenter. Ran SQL queries in Oracle across multiple databases, monitoring processes and generating executive reports for data analysis and decision making in production.",
           "date": "Jan 2025 – Apr 2025",
           "duration": "4 Months",
-          "frameworks": ["Informatica PowerCenter", "Oracle SQL"]
+          "frameworks": ["Informatica PowerCenter", "OracleSQL", "Power BI"]
         },
         {
           "text": ".txt",
           "company_name": "Servcon",
           "role": "Full-Stack Developer",
-          "description": "I led the development of a web platform for a construction company, defining architecture and managing tasks with Jira. I implemented backend with Node.js and Express, designed the database in MongoDB (Atlas) and developed the frontend in React. I deployed on a Linux VPS with configuration and security using Cloudflare.",
-          "date": "Ago 2023 – Ene 2024",
-          "duration": "6 Months",
-          "frameworks": ["ExpressJs", "React", "MongoDB", "Cloudflare"]
+          "description": "Led the architecture of a web platform for a construction company, managing tasks with Jira. Built the backend with Node.js and Express, modeled the database in MongoDB and developed the frontend in React. Deployed on a Linux VPS with Cloudflare.",
+          "date": "Aug 2023 – Jan 2024",
+          "duration": "6 MONTHS",
+          "frameworks": ["NodeJs", "ExpressJs", "React", "MongoDB", "Linux", "Cloudflare"]
         },
         {
           "text": ".txt",
           "company_name": "Psys",
           "role": "IT Consultant",
-          "description": "I monitored the performance of a web platform on AWS within the health and wellness sector. I analyzed metrics, identified bottlenecks and proposed architecture improvements, resource optimization and good infrastructure practices.",
+          "description": "Monitored the performance of a web platform on AWS within the health and wellness sector. Analyzed metrics, identified bottlenecks and proposed architecture improvements, resource optimization and infrastructure best practices.",
           "date": "Mar 2023 – Jun 2023",
           "duration": "4 Months",
-          "frameworks": ["AWS", "Linux", "SQL"]
+          "frameworks": ["AWS", "Linux", "OracleSQL"]
         }
       ],
       "careers": [
         {
           "text": ".txt",
           "company_name": "Universidad Nacional Andres Bello",
-          "role": "Software engineer",
-          "description": "Training focused on software engineering and agile methodologies (Scrum), project management and collaborative work. Academic experience in software development with React, Node.js, PostgreSQL, MongoDB and Docker. Practical application of Machine Learning and Computer Vision at a training level. Thesis aimed at the integration of electronic components with AI models. Reinforced Full-Stack development in a self-taught way.",
-          "date": "January 2020 – January 2026",
+          "role": "Computer Engineer",
+          "description": "Education in software engineering and agile methodologies (Scrum). Academic development with React, Node.js, PostgreSQL, MongoDB and Docker, applying Machine Learning. Thesis on integrating electronic components with AI models.",
+          "date": "Jan 2020 – Jan 2026",
           "duration": "5 years",
-          "frameworks": ["NodeJs", "MySQL", "Docker", "ML"]
+          "frameworks": ["NodeJs", "React", "PostgreSQL", "MongoDB", "Docker", "ML"]
         }
       ],
       "projects": [
         {
           "text": ".txt",
           "company_name": "Integration API Gateway",
-          "description": "Developed an API Gateway in Node.js and Express to integrate and orchestrate external services (Spotify, YouTube Music, Cloudinary and Gemini AI). Implemented REST endpoints, authentication with third-party APIs and communication with Discord using Discord.js. Automation with cron for maintenance and monitoring. System deployed in Oracle Cloud Free Tier with process and log management.",
+          "description": "API Gateway in Node.js and Express to integrate external services (Spotify, YouTube Music, Cloudinary and Gemini AI). Implemented REST endpoints, third-party authentication and Discord communication. Deployed on Oracle Cloud with log management.",
           "status": "Finished",
-          "frameworks": ["NodeJs", "ExpressJs", "DiscordJs", "Oracle Cloud"],
+          "frameworks": ["NodeJs", "ExpressJs", "Docker", "Linux"],
           "framework-headers": [
             {
               "id": "framework",
@@ -98,64 +107,16 @@
           ],
           "about_frameworks": [
             {
-              "framework": "NodeJs",
-              "area": "Backend",
-              "language": "JavaScript",
-              "experience_time": "2 YEARS"
-            },
-            {
-              "framework": "PostgreSQL",
-              "area": "Backend",
-              "language": "SQL",
-              "experience_time": "1 YEAR"
-            },
-            {
-              "framework": "REST APIs",
-              "area": "Backend",
-              "language": "JavaScript",
-              "experience_time": "3 YEARS"
-            },
-            {
-              "framework": "CI/CD",
-              "area": "Backend",
-              "language": "Several",
-              "experience_time": "2 YEARS"
-            },
-            {
-              "framework": "Docker",
-              "area": "Backend",
-              "language": "Docker",
-              "experience_time": "1 YEAR"
-            },
-            {
               "framework": "React",
               "area": "Frontend",
               "language": "JavaScript",
               "experience_time": "2 YEARS"
             },
             {
-              "framework": "NextJs",
-              "area": "Frontend",
-              "language": "JavaScript",
-              "experience_time": "6 MONTHS"
-            },
-            {
-              "framework": "MongoDB",
+              "framework": "NodeJs",
               "area": "Backend",
               "language": "JavaScript",
-              "experience_time": "1 YEAR"
-            },
-            {
-              "framework": "OracleSQL",
-              "area": "Backend",
-              "language": "SQL",
-              "experience_time": "4 MONTHS"
-            },
-            {
-              "framework": "Power BI",
-              "area": "Engineering",
-              "language": "Power BI",
-              "experience_time": "4 MONTHS"
+              "experience_time": "2 YEARS"
             },
             {
               "framework": "ExpressJs",
@@ -164,34 +125,94 @@
               "experience_time": "2 YEARS"
             },
             {
-              "framework": "AWS",
-              "area": "IT Support",
-              "language": "CLI",
-              "experience_time": "4 MONTHS"
-            },
-            {
-              "framework": "Prisma",
-              "area": "Backend",
-              "language": "SQL",
-              "experience_time": "6 MONTHS"
-            },
-            {
               "framework": "Tailwind",
               "area": "Frontend",
               "language": "CSS",
               "experience_time": "1 YEAR"
             },
             {
+              "framework": "MongoDB",
+              "area": "Backend",
+              "language": "JavaScript",
+              "experience_time": "1 YEAR"
+            },
+            {
+              "framework": "Docker",
+              "area": "DevOps",
+              "language": "Docker",
+              "experience_time": "1 YEAR"
+            },
+            {
+              "framework": "OracleSQL",
+              "area": "Backend",
+              "language": "SQL",
+              "experience_time": "8 MONTHS"
+            },
+            {
+              "framework": "PostgreSQL",
+              "area": "Backend",
+              "language": "SQL",
+              "experience_time": "1 YEAR"
+            },
+            {
               "framework": "FastAPI",
               "area": "Backend",
               "language": "Python",
-              "experience_time": "3 MONTHS"
+              "experience_time": "8 MONTHS"
             },
             {
               "framework": "SQLAlchemy",
               "area": "Backend",
+              "language": "Python",
+              "experience_time": "8 MONTHS"
+            },
+            {
+              "framework": "NextJs",
+              "area": "Frontend",
+              "language": "JavaScript",
+              "experience_time": "4 MONTHS"
+            },
+            {
+              "framework": "Prisma",
+              "area": "Backend",
               "language": "SQL",
-              "experience_time": "3 MONTHS"
+              "experience_time": "4 MONTHS"
+            },
+            {
+              "framework": "AWS",
+              "area": "IT Support",
+              "language": "CLI",
+              "experience_time": "4 MONTHS"
+            },
+            {
+              "framework": "Linux",
+              "area": "IT Support",
+              "language": "Bash",
+              "experience_time": "3 YEARS"
+            },
+            {
+              "framework": "Cloudflare",
+              "area": "DevOps",
+              "language": "CLI",
+              "experience_time": "6 MONTHS"
+            },
+            {
+              "framework": "Informatica PowerCenter",
+              "area": "Data",
+              "language": "ETL",
+              "experience_time": "4 MONTHS"
+            },
+            {
+              "framework": "Power BI",
+              "area": "Data",
+              "language": "Power BI",
+              "experience_time": "4 MONTHS"
+            },
+            {
+              "framework": "ML",
+              "area": "Data",
+              "language": "Python",
+              "experience_time": "1 YEAR"
             }
           ]
         }
@@ -200,29 +221,29 @@
   },
   "terminal": {
     "terminal-welcome-msg": "Welcome to my portfolio!",
-    "terminal-local-header": "dead@local",
-    "terminal-shell-symbol": null,
-    "terminal-shell": null,
-    "terminal-folder-symbol": null,
-    "terminal-local": "dead@local:",
-    "terminal-ssh": "ssh",
+    "terminal-local-header": "mati@local",
+    "terminal-shell-symbol": "~$",
+    "terminal-shell": "$",
+    "terminal-folder-symbol": "~/",
+    "terminal-local": "mati@local:",
+    "terminal-ssh": "ssh ",
     "terminal-confirm": "Are you sure you want to continue connecting (yes/no)?",
-    "terminal-yes": "and",
+    "terminal-yes": "yes",
     "terminal-welcome": "Welcome to my portfolio!",
     "terminal-remote-header": "portfolio@localhost",
     "terminal-remote": "portfolio@localhost:",
     "terminal-main-folder": "documents",
     "terminal-experience-folder": "experience",
     "terminal-experience-dir": "/work_experience",
-    "terminal-career-dir": "/career",
+    "terminal-career-dir": "/education",
     "terminal-projects-dir": "/personal_projects",
     "terminal-skills-dir": "/skills",
     "terminal-ranger": "ranger",
     "terminal-htop": "htop",
     "terminal-cd": "cd",
     "terminal-cat": "cat",
-    "terminal-portfolio-file": "about_me_es.txt",
-    "terminal-dots": null
+    "terminal-portfolio-file": "about_me_en.txt",
+    "terminal-dots": ":"
   },
   "footer": {
     "github": "Github",
@@ -231,13 +252,16 @@
     "linkedin-link": "https://www.linkedin.com/in/mat%C3%ADas-chaparro-d%C3%ADaz-a6749027a/",
     "email": "Email",
     "email-link": "matias.chaparro.mail@gmail.com",
-    "sign": "Designed & Developed by Matías Chaparro"
+    "sign": "Designed & Developed by Matías Chaparro",
+    "socials-label": "Social media links",
+    "opens-new-tab": "opens in a new tab",
+    "copy-email": "Copy email to clipboard"
   },
   "terminal-1st": {
-    "header": ["dead@local", null],
+    "header": ["mati@local", "~/"],
     "commands": {
       "0": {
-        "0": "die@local:~$",
+        "0": "mati@local:~$",
         "1": "ssh portafolio@localhost"
       },
       "1": {
@@ -246,16 +270,16 @@
       },
       "2": {
         "0": "textLine",
-        "1": "and"
+        "1": "yes"
       }
     }
   },
   "terminal-2nd": {
-    "header": ["portfolio@localhost", null],
+    "header": ["portfolio@localhost", "~/"],
     "commands": {
       "0": {
         "0": "portfolio@localhost:~$",
-        "1": "work_experience cd"
+        "1": "cd work_experience"
       },
       "1": {
         "0": "portfolio@localhost:~documents/work_experience/$",
@@ -264,14 +288,14 @@
     }
   },
   "terminal-3nd": {
-    "header": ["portfolio@localhost", null],
+    "header": ["portfolio@localhost", "~/"],
     "commands": {
       "0": {
         "0": "portfolio@localhost:~$",
         "1": "cd skills"
       },
       "1": {
-        "0": "portafolio@localhost:~/skills/$",
+        "0": "portfolio@localhost:~/skills/$",
         "1": "htop"
       }
     }

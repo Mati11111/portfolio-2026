@@ -1,8 +1,12 @@
 import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
+import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
 
+const SITE_URL = "https://mati-dev.cl";
+
 export default defineConfig({
+  site: SITE_URL,
   vite: {
     plugins: [tailwindcss()],
     resolve: {
@@ -11,7 +15,18 @@ export default defineConfig({
       },
     },
   },
-  integrations: [react()],
+  integrations: [
+    react(),
+    sitemap({
+      i18n: {
+        defaultLocale: "es",
+        locales: {
+          es: "es",
+          en: "en",
+        },
+      },
+    }),
+  ],
   i18n: {
     defaultLocale: "es",
     locales: ["en", "es"],

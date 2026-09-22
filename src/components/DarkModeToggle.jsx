@@ -33,7 +33,8 @@ const DarkModeToggle = () => {
         <IconButton
           ButtonIcon={ModeSwitchIcon}
           ButtonFunction={toggleDarkMode}
-          ButtonAlt={"toggle-darkmode"}
+          ButtonAlt=""
+          ButtonLabel="Activar modo claro"
         />
       </section>
       <section
@@ -45,7 +46,8 @@ const DarkModeToggle = () => {
         <IconButton
           ButtonIcon={ModeSwitchIconSun}
           ButtonFunction={toggleDarkMode}
-          ButtonAlt={"toggle-darkmode"}
+          ButtonAlt=""
+          ButtonLabel="Activar modo oscuro"
         />
       </section>
     </div>

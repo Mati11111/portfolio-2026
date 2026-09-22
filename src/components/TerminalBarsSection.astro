@@ -41,7 +41,7 @@ const projects = JSON.stringify(Object.values(tData.body.ranger.projects));
             </p>
         </span>
         <section
-            class="hidden bg-bg-secondary text-primary lg:flex xl:flex flex-col items-center bg-secondary h-full w-full p-5 overflow-y-hidden"
+            class="hidden bg-bg-secondary text-primary lg:flex xl:flex flex-col items-center bg-secondary flex-1 min-h-0 w-full p-5 overflow-y-hidden"
         >
             <BarSectionContentDeskView
                 client:load
@@ -51,7 +51,7 @@ const projects = JSON.stringify(Object.values(tData.body.ranger.projects));
             />
         </section>
         <section
-            class="lg:hidden bg-bg-secondary text-primary flex flex-col items-center bg-secondary h-full w-full p-5 overflow-y-hidden"
+            class="lg:hidden bg-bg-secondary text-primary flex flex-col items-center bg-secondary flex-1 min-h-0 w-full p-5 overflow-y-hidden"
         >
             <BarSectionContentMobileView
                 client:load

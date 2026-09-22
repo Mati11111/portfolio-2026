@@ -42,6 +42,8 @@ const LanguageToggle = () => {
           CustomStyle={`w-12 h-12 animate-showIconTranslate
           `}
           ButtonFunction={toggleLanguage}
+          ButtonAlt=""
+          ButtonLabel="Cambiar idioma / Switch language"
         />
       </section>
 
@@ -49,7 +51,11 @@ const LanguageToggle = () => {
         className={`absolute inset-0 flex items-center justify-center pointer-events-none z-10
         ${languageChanging ? "animate-rotateThemeSwitchBack" : ""}`}
       >
-        <IconButton ButtonIcon={TranslateIconArrows} CustomStyle="w-12 h-12" />
+        <IconButton
+          ButtonIcon={TranslateIconArrows}
+          CustomStyle="w-12 h-12"
+          ButtonAlt=""
+        />
       </section>
     </div>
   );

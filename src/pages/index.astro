@@ -1,20 +1,45 @@
 ---
-
+// Redirección con detección de idioma. Los buscadores siguen la canónica /es
+// (definida en astro.config como defaultLocale). Los usuarios reales son
+// redirigidos según el idioma del navegador o su preferencia guardada.
+const site = Astro.site?.href ?? "/";
+const esURL = new URL("/es", site).href;
+const enURL = new URL("/en", site).href;
 ---
 
-<html>
+<!doctype html>
+<html lang="es">
     <head>
+        <meta charset="utf-8" />
+        <title>Matías Chaparro | Portafolio</title>
+        <link rel="canonical" href={esURL} />
+        <meta name="robots" content="noindex, follow" />
+        <meta http-equiv="refresh" content="0; url=/es" />
         <script>
-            const userLang = navigator.language;
-            const lang = userLang.startsWith("es");
-            const savedLang = localStorage.getItem("savedLang");
-
-            if (lang || savedLang === "es") {
-                window.location.replace("/es");
-            } else {
-                window.location.replace("/en");
+            const userLang = navigator.language || "es";
+            const isSpanish = userLang.toLowerCase().startsWith("es");
+            let savedLang = null;
+            try {
+                savedLang = localStorage.getItem("savedLang");
+            } catch (e) {
+                // localStorage puede fallar en modo privado; se ignora.
             }
+
+            const target =
+                savedLang === "en"
+                    ? "/en"
+                    : savedLang === "es" || isSpanish
+                      ? "/es"
+                      : "/en";
+
+            window.location.replace(target);
         </script>
     </head>
-    <body></body>
+    <body>
+        <p>
+            Redirigiendo… Si no eres redirigido automáticamente,
+            <a href="/es">continúa en español</a> o
+            <a href="/en">continue in English</a>.
+        </p>
+    </body>
 </html>

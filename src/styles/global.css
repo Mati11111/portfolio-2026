@@ -118,10 +118,26 @@
     scrollbar-color: var(--color-bg-primary) transparent;
 }
 
+/* info panel scrollbar -> almost transparent so it doesn't cover the text */
+#rightList::-webkit-scrollbar-thumb {
+    background-color: color-mix(in srgb, var(--color-bg-primary) 15%, transparent);
+}
+
+#rightList {
+    scrollbar-color: color-mix(in srgb, var(--color-bg-primary) 15%, transparent)
+        transparent;
+}
+
 html {
     font-family: "Stellar", system-ui, sans-serif;
     font-weight: 300;
     scroll-behavior: smooth;
+    /* header color -> shows in mobile safe-area / overscroll (bounce) zones */
+    background-color: #181818;
+    /* keep the browser UI (scrollbars, overscroll) dark */
+    color-scheme: dark;
+    /* prevent the light body background from showing through overscroll */
+    overscroll-behavior: none;
 }
 
 h1,
@@ -174,6 +190,8 @@ body {
             )
             center / var(--dot-space) var(--dot-space),
         var(--dot-color);
+    /* solid base so safe-area / status bar match the header color exactly */
+    background-color: #181818;
 }
 
 /*ANIMATIONS*/

@@ -1,0 +1,122 @@
+---
+import "@/styles/global.css";
+import { createTranslator } from "@/i18n";
+
+interface Props {
+    lang: "en" | "es";
+}
+
+const { lang } = Astro.props;
+const tl = createTranslator(lang);
+
+// URL canónica de la página actual (independiente de query params).
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+
+// URLs alternativas por idioma para hreflang.
+const esURL = new URL("/", Astro.site).href;
+const enURL = new URL("/en", Astro.site).href;
+
+// Imagen para redes sociales (recomendado 1200x630).
+const ogImage = new URL("/mati-social.png", Astro.site).href;
+
+const title = tl("head.title");
+const description = tl("head.metaDescription");
+const ogTitle = tl("head.metaTitle");
+
+// Datos estructurados (JSON-LD) para mejorar el SEO como "Person".
+const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Matías Chaparro",
+    url: canonicalURL,
+    jobTitle:
+        lang === "es" ? "Desarrollador Full-Stack" : "Full-Stack Developer",
+    description,
+    sameAs: [tl("footer.github-link"), tl("footer.linkedin-link")],
+};
+---
+
+<!doctype html>
+<html lang={lang}>
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="author" content="Matías Chaparro" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+        <!-- Canonical y alternativas por idioma -->
+        <link rel="canonical" href={canonicalURL} />
+        <link rel="alternate" hreflang="es" href={esURL} />
+        <link rel="alternate" hreflang="en" href={enURL} />
+        <link rel="alternate" hreflang="x-default" href={esURL} />
+        <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+
+        <!-- Color de UI del navegador móvil -->
+        <meta name="theme-color" content="#181818" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+        <!-- Open Graph -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={ogTitle} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalURL} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:locale" content={lang === "es" ? "es_ES" : "en_US"} />
+        <meta
+            property="og:locale:alternate"
+            content={lang === "es" ? "en_US" : "es_ES"}
+        />
+        <meta property="og:site_name" content="Matías Chaparro" />
+
+        <!-- Twitter / X Cards -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={ogTitle} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImage} />
+
+        <!-- Datos estructurados -->
+        <script
+            type="application/ld+json"
+            set:html={JSON.stringify(personSchema)}
+        />
+
+        <slot name="head" />
+    </head>
+    <body class="flex-col content-between">
+        <slot />
+    </body>
+</html>
+
+<script>
+    const footer = document.getElementById("footer");
+    const observer = new IntersectionObserver(
+        ([entry]) => {
+            if (!footer) return;
+            if (entry.isIntersecting) {
+                footer.classList.remove("opacity-0");
+                footer.classList.add("animate-footerContainerApear");
+            }
+        },
+        { threshold: 0.1 },
+    );
+    if (footer) observer.observe(footer);
+</script>
+<script is:inline>
+    const isDark =
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+    document.documentElement.classList.toggle("dark", isDark);
+
+    // Color de la UI móvil / safe-area -> siempre #181818 en ambos temas
+    document.documentElement.style.backgroundColor = "#181818";
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeMeta) themeMeta.setAttribute("content", "#181818");
+</script>

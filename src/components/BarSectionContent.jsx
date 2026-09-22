@@ -24,7 +24,62 @@ export default function BarSectionContent({
   const [itemsPerPage, setItemsPerPage] = useState(5);
   const [frameworkDetails, setFrameworkDetails] = useState([]);
   const [hTopHeaders, setHTopHeaders] = useState([]);
-  const [sorterOption, setSorterOption] = useState("projects_amount");
+  //table sorting -> starts by experience time, can be changed from the headers
+  const [sorterOption, setSorterOption] = useState("experience_time");
+
+  //convert an experience_time label ("3 AÑOS", "8 MESES", "1 AÑO") into months
+  const monthsFromExperience = (str = "") => {
+    if (!str) return 0;
+    const number = parseInt(str, 10) || 0;
+    const isYears = /(a[nñ]o|year)/i.test(str);
+    return isYears ? number * 12 : number;
+  };
+
+  //table rows sorted by the selected column
+  const sortedTableFrameworks = useMemo(() => {
+    return [...allFrameworks].sort((a, b) => {
+      switch (sorterOption) {
+        //most experienced first
+        case "experience_time":
+          return (
+            monthsFromExperience(frameworkDetails[b]?.experience_time) -
+            monthsFromExperience(frameworkDetails[a]?.experience_time)
+          );
+        //most used first
+        case "projects_amount":
+          return (frameworkCount[b] || 0) - (frameworkCount[a] || 0);
+        //alphabetical
+        case "area":
+          return (frameworkDetails[a]?.area || "").localeCompare(
+            frameworkDetails[b]?.area || "",
+          );
+        case "language":
+          return (frameworkDetails[a]?.language || "").localeCompare(
+            frameworkDetails[b]?.language || "",
+          );
+        case "framework":
+        default:
+          return a.localeCompare(b);
+      }
+    });
+  }, [allFrameworks, sorterOption, frameworkDetails, frameworkCount]);
+
+  //most experienced framework (in months) -> used as 100% reference for the bars
+  const maxMonths = useMemo(() => {
+    const values = Object.values(frameworkDetails).map((d) =>
+      monthsFromExperience(d?.experience_time),
+    );
+    return values.length ? Math.max(...values) : 0;
+  }, [frameworkDetails]);
+
+  //bar width relative to the most experienced framework (min 8% so short ones stay visible)
+  const getPercent = (frameworkName) => {
+    const months = monthsFromExperience(
+      frameworkDetails[frameworkName]?.experience_time,
+    );
+    if (!maxMonths || !months) return 0;
+    return Math.max((months / maxMonths) * 100, 8);
+  };
 
   useEffect(() => {
     //set projects amount (experiences+careers+projects)
@@ -51,39 +106,12 @@ export default function BarSectionContent({
       return list;
     }, {});
 
+    //always order by experience time (months) -> highest first
     const orderedFrameworks = Object.keys(countMap).sort((a, b) => {
-      const detailsA = detailsMap[a];
-      const detailsB = detailsMap[b];
-
-      switch (sorterOption) {
-        //sort by projects amount
-        case "projects_amount":
-          return countMap[b] - countMap[a];
-        //sort by area -> a-z
-        case "area":
-          return (detailsA?.area || "").localeCompare(detailsB?.area || "");
-        //sort by programming language -> a-z
-        case "language":
-          return (detailsA?.language || "").localeCompare(
-            detailsB?.language || "",
-          );
-        //sort by experience amount
-        case "experience_time": {
-          const getYears = (str = "") => {
-            if (!str) return 0;
-            const number = parseInt(str) || 0;
-            const isMonths = str.toUpperCase().includes("M");
-            return isMonths ? number / 12 : number;
-          };
-          return (
-            getYears(detailsB?.experience_time) -
-            getYears(detailsA?.experience_time)
-          );
-        }
-        //sort by framework -> a-z (inital case)
-        default:
-          return a.localeCompare(b);
-      }
+      const monthsA = monthsFromExperience(detailsMap[a]?.experience_time);
+      const monthsB = monthsFromExperience(detailsMap[b]?.experience_time);
+      if (monthsB !== monthsA) return monthsB - monthsA;
+      return a.localeCompare(b);
     });
 
     setFrameworkCount(countMap);
@@ -92,12 +120,12 @@ export default function BarSectionContent({
     setHTopHeaders(projects[0]["framework-headers"] || []);
     setAllFrameworks(orderedFrameworks);
     setFrameworkDetails(detailsMap);
-  }, [experiences, careers, projects, sorterOption]);
+  }, [experiences, careers, projects]);
   //show framework content
   function renderData() {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    const currentItems = allFrameworks.slice(startIndex, endIndex);
+    const currentItems = sortedTableFrameworks.slice(startIndex, endIndex);
     return (
       <>
         {currentItems.map((item, index) => {
@@ -172,8 +200,7 @@ export default function BarSectionContent({
       <section className="flex flex-row justify-between gap-x-2">
         <section className="flex flex-col gap-y-2 w-1/2">
           {allFrameworks.slice(0, 4).map((frameworkName) => {
-            const count = frameworkCount[frameworkName];
-            const percent = totalProjects ? (count / totalProjects) * 100 : 0;
+            const percent = getPercent(frameworkName);
 
             return (
               <div
@@ -195,8 +222,7 @@ export default function BarSectionContent({
         </section>
         <section className="flex flex-col gap-y-2 w-1/2 ">
           {allFrameworks.slice(4, 8).map((frameworkName) => {
-            const count = frameworkCount[frameworkName];
-            const percent = totalProjects ? (count / totalProjects) * 100 : 0;
+            const percent = getPercent(frameworkName);
 
             return (
               <div
@@ -227,7 +253,10 @@ export default function BarSectionContent({
               <tr>
                 {hTopHeaders.map((header) => (
                   <th
-                    onClick={() => setSorterOption(header.id)}
+                    onClick={() => {
+                      setSorterOption(header.id);
+                      setCurrentPage(1);
+                    }}
                     key={header.id}
                     className={` text-left font-light
                   ${sorterOption === header.id ? "bg-bg-primary text-text-tertiary cursor-default" : "cursor-pointer"} `}

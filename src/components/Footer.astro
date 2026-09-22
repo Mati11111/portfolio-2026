@@ -1,5 +1,5 @@
 ---
-import { createTranslator, t } from "@/i18n";
+import { createTranslator } from "@/i18n";
 import EmailIcon from "@/assets/email.svg";
 import GithubIcon from "@/assets/github.svg";
 import LinkedinIcon from "@/assets/linkedin.svg";
@@ -11,15 +11,16 @@ const currentYear = new Date().getFullYear();
 ---
 
 <section class="flex flex-col">
-    <div
+    <nav
         id="footer-icons-container"
-        aria-label="social-media-links"
+        aria-label={tl("footer.socials-label")}
         class="flex flex-row items-center justify-center gap-x-5 text-2xl opacity-0"
     >
         <a
             href={tl("footer.github-link")}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`${tl("footer.github")} (${tl("footer.opens-new-tab")})`}
             class="footer-icon-container flex flex-col justify-center items-center cursor-pointer"
         >
             <GithubIcon
@@ -27,6 +28,7 @@ const currentYear = new Date().getFullYear();
                 width={20}
                 height={20}
                 fill="#dddddd"
+                aria-hidden="true"
             />
         </a>
 
@@ -34,6 +36,7 @@ const currentYear = new Date().getFullYear();
             href={tl("footer.linkedin-link")}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`${tl("footer.linkedin")} (${tl("footer.opens-new-tab")})`}
             class="footer-icon-container flex flex-col justify-center items-center cursor-pointer"
         >
             <LinkedinIcon
@@ -41,29 +44,35 @@ const currentYear = new Date().getFullYear();
                 width={20}
                 height={20}
                 fill="#dddddd"
+                aria-hidden="true"
             />
         </a>
 
-        <div
-            class="footer-icon-container flex flex-col justify-center items-center cursor-pointer"
-            onclick="navigator.clipboard.writeText('matias.chaparro.mail@gmail.com')"
-            aria-label="Copy email to clipboard"
+        <button
+            type="button"
+            id="copy-email-button"
+            data-email={tl("footer.email-link")}
+            class="footer-icon-container flex flex-col justify-center items-center cursor-pointer bg-transparent border-0 p-0"
+            aria-label={tl("footer.copy-email")}
         >
             <EmailIcon
                 class="footer-icon"
                 width={27}
                 height={27}
                 fill="#dddddd"
+                aria-hidden="true"
             />
-        </div>
-    </div>
+        </button>
+    </nav>
+    <p id="copy-email-status" class="sr-only" role="status" aria-live="polite">
+    </p>
 </section>
 
 <div class="flex flex-col justify-center items-center text-text-same">
     <div>
-        <h1 id="footerSign" class="text-secondary opacity-0">
+        <p id="footerSign" class="text-secondary opacity-0">
             {tl("footer.sign")}
-        </h1>
+        </p>
         <div class="flex flex-row gap-x-1 items-center justify-center">
             <p id="copyright" class="text-secondary opacity-0">&copy;</p>
             <p id="copyright-year" class="text-secondary opacity-0">
@@ -74,7 +83,7 @@ const currentYear = new Date().getFullYear();
 
     <div>
         <section
-            class="sm:absolute relative items-center justify-center sm:bottom-4 sm:right-4 opacity-50 md:bottom-8 md:right-8 lg:bottom-10 lg:right-10"
+            class="sm:fixed relative items-center justify-center sm:bottom-4 sm:right-4 opacity-50 md:bottom-8 md:right-8 lg:bottom-10 lg:right-10 z-50 pointer-events-auto"
         >
             <section class="flex flex-row sm:flex-col justify-center">
                 <LanguageToggle client:only="react" />
@@ -83,6 +92,24 @@ const currentYear = new Date().getFullYear();
         </section>
     </div>
 
+    <script>
+        // Copiar email al portapapeles con feedback accesible
+        const copyButton = document.getElementById("copy-email-button");
+        const copyStatus = document.getElementById("copy-email-status");
+        copyButton?.addEventListener("click", async () => {
+            const email = copyButton.getAttribute("data-email") ?? "";
+            try {
+                await navigator.clipboard.writeText(email);
+                if (copyStatus)
+                    copyStatus.textContent = `${email} copiado al portapapeles`;
+            } catch (err) {
+                if (copyStatus)
+                    copyStatus.textContent =
+                        "No se pudo copiar el email. Cópialo manualmente: " +
+                        email;
+            }
+        });
+    </script>
     <script>
         // animated hover for socials
         const containers = document.querySelectorAll(".footer-icon-container");

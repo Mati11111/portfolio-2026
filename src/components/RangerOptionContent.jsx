@@ -10,7 +10,7 @@ export default function RangerOptionContent({ content = "", experience = 0 }) {
       >
         <div
           id="rightList"
-          className="lg:p-5 md:p-1 flex flex-col h-full min-h-0 overflow-y-scroll gap-10"
+          className="lg:p-5 md:p-1 flex flex-col h-full min-h-0 overflow-y-scroll lg:gap-10 gap-4 pb-6"
         >
           <div className="flex flex-col lg:justify-between md:justify-start">
             <h1
@@ -44,17 +44,18 @@ export default function RangerOptionContent({ content = "", experience = 0 }) {
           >
             {parsedContent[experience].description}
           </p>
-          <section className="flex flex-row justify-end h-fit w-full pr-0 p-1 -mr-2 lg:block md:hidden">
-            <div className="flex gap-2 text-sm md:overflow-x-auto md:whitespace-nowrap md:max-w-full">
+          <section className="flex flex-row lg:justify-end md:justify-start h-fit w-full pr-0 p-1 lg:-mr-2 lg:mt-auto shrink-0">
+            <div className="flex flex-wrap gap-x-2 gap-y-1 text-sm lg:justify-end md:justify-start">
               {parsedContent[experience].frameworks
                 .slice(0, 5)
-                .map((framework, index) => (
-                  <div key={index}>
-                    <p className="xl:text-sm md:text-[0.5rem] text-nowrap">
-                      {framework}
-                      {index === 3 ? "" : " | "}
-                    </p>
-                  </div>
+                .map((framework, index, list) => (
+                  <p
+                    key={index}
+                    className="xl:text-sm md:text-[0.6rem] text-nowrap"
+                  >
+                    {framework}
+                    {index === list.length - 1 ? "" : " | "}
+                  </p>
                 ))}
             </div>
           </section>

@@ -1,6 +1,4 @@
 import { useEffect, useState, useMemo } from "react";
-import LeftIcon from "@/assets/left-icon.svg?url";
-import LeftIconDark from "@/assets/left-icon-dark-mode.svg?url";
 
 export default function BarSectionContentMobileView({
   experienceContent,
@@ -20,11 +18,35 @@ export default function BarSectionContentMobileView({
   const [allFrameworks, setAllFrameworks] = useState([]);
   const [frameworkCount, setFrameworkCount] = useState({});
   const [totalProjects, setTotalProjects] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(5);
   const [frameworkDetails, setFrameworkDetails] = useState([]);
   const [hTopHeaders, setHTopHeaders] = useState([]);
-  const [sorterOption, setSorterOption] = useState("projects_amount");
+  //bars are always sorted by experience time
+  const sorterOption = "experience_time";
+
+  //convert an experience_time label ("3 AÑOS", "8 MESES", "1 AÑO") into months
+  const monthsFromExperience = (str = "") => {
+    if (!str) return 0;
+    const number = parseInt(str, 10) || 0;
+    const isYears = /(a[nñ]o|year)/i.test(str);
+    return isYears ? number * 12 : number;
+  };
+
+  //most experienced framework (in months) -> used as 100% reference for the bars
+  const maxMonths = useMemo(() => {
+    const values = Object.values(frameworkDetails).map((d) =>
+      monthsFromExperience(d?.experience_time),
+    );
+    return values.length ? Math.max(...values) : 0;
+  }, [frameworkDetails]);
+
+  //bar width relative to the most experienced framework (min 8% so short ones stay visible)
+  const getPercent = (frameworkName) => {
+    const months = monthsFromExperience(
+      frameworkDetails[frameworkName]?.experience_time,
+    );
+    if (!maxMonths || !months) return 0;
+    return Math.max((months / maxMonths) * 100, 8);
+  };
 
   useEffect(() => {
     //set projects amount (experiences+careers+projects)
@@ -51,39 +73,12 @@ export default function BarSectionContentMobileView({
       return list;
     }, {});
 
+    //always order by experience time (months) -> highest first
     const orderedFrameworks = Object.keys(countMap).sort((a, b) => {
-      const detailsA = detailsMap[a];
-      const detailsB = detailsMap[b];
-
-      switch (sorterOption) {
-        //sort by projects amount
-        case "projects_amount":
-          return countMap[b] - countMap[a];
-        //sort by area -> a-z
-        case "area":
-          return (detailsA?.area || "").localeCompare(detailsB?.area || "");
-        //sort by programming language -> a-z
-        case "language":
-          return (detailsA?.language || "").localeCompare(
-            detailsB?.language || "",
-          );
-        //sort by experience amount
-        case "experience_time": {
-          const getYears = (str = "") => {
-            if (!str) return 0;
-            const number = parseInt(str) || 0;
-            const isMonths = str.toUpperCase().includes("M");
-            return isMonths ? number / 12 : number;
-          };
-          return (
-            getYears(detailsB?.experience_time) -
-            getYears(detailsA?.experience_time)
-          );
-        }
-        //sort by framework -> a-z (inital case)
-        default:
-          return a.localeCompare(b);
-      }
+      const monthsA = monthsFromExperience(detailsMap[a]?.experience_time);
+      const monthsB = monthsFromExperience(detailsMap[b]?.experience_time);
+      if (monthsB !== monthsA) return monthsB - monthsA;
+      return a.localeCompare(b);
     });
 
     setFrameworkCount(countMap);
@@ -93,25 +88,21 @@ export default function BarSectionContentMobileView({
     setAllFrameworks(orderedFrameworks);
     setFrameworkDetails(detailsMap);
   }, [experiences, careers, projects, sorterOption]);
-  //show framework content
+  //show framework content (compact table for mobile -> same items as the bars)
   function renderData() {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const currentItems = allFrameworks.slice(startIndex, endIndex);
     return (
       <>
-        {currentItems.map((item, index) => {
+        {allFrameworks.slice(0, 6).map((item, index) => {
           const details = frameworkDetails[item];
           return (
             <tr
               key={item}
-              className={`cursor-default max-w-10 border border-solid border-bg-secondary text-text-secondary
-              ${index === 0 && startIndex === 0 ? "bg-bg-primary text-text-tertiary border-t-bg-primary" : ""}`}
+              className={`cursor-default border border-solid border-bg-secondary text-text-secondary
+              ${index === 0 ? "bg-bg-primary text-text-tertiary border-t-bg-primary" : ""}`}
             >
-              <td>{item}</td>
+              <td className="pl-1">{item}</td>
               <td>{details?.area || "—"}</td>
               <td>{details?.language || "—"}</td>
-              <td>{frameworkCount[item] ?? "—"}</td>
               <td>{details?.experience_time || "—"}</td>
             </tr>
           );
@@ -119,61 +110,12 @@ export default function BarSectionContentMobileView({
       </>
     );
   }
-  //framework ->go to next page
-  function goToNextPage() {
-    setCurrentPage((prevPage) => prevPage + 1);
-  }
-  //framework ->go to previous page
-  function goToPrevPage() {
-    setCurrentPage((prevPage) => prevPage - 1);
-  }
-  //show framework buttons
-  function renderPaginationControls() {
-    const totalPages = Math.ceil(allFrameworks.length / itemsPerPage);
-    return (
-      <div className="flex flex-row gap-x-10">
-        <button onClick={goToPrevPage} disabled={currentPage === 1}>
-          <img
-            src={LeftIcon}
-            alt="Previous"
-            className={`w-6 h-6 transition-all duration-300 ease-in-out dark:hidden
-            ${currentPage === 1 ? "cursor-default opacity-60" : "cursor-pointer"}
-            `}
-          />
-          <img
-            src={LeftIconDark}
-            alt="Previous"
-            className={`w-6 h-6 transition-all duration-300 ease-in-out hidden dark:block
-            ${currentPage === 1 ? "cursor-default opacity-60" : "cursor-pointer"}
-            `}
-          />
-        </button>
-        <button onClick={goToNextPage} disabled={currentPage === totalPages}>
-          <img
-            src={LeftIcon}
-            alt="Next"
-            className={`w-6 h-6 transition-all duration-300 rotate-180 ease-in-out dark:hidden
-            ${currentPage === totalPages ? "cursor-default opacity-60" : "cursor-pointer"}
-            `}
-          />
-          <img
-            src={LeftIconDark}
-            alt="Next"
-            className={`w-6 h-6 transition-all duration-300 rotate-180 ease-in-out hidden dark:block
-            ${currentPage === totalPages ? "cursor-default opacity-60" : "cursor-pointer"}
-            `}
-          />
-        </button>
-      </div>
-    );
-  }
   return (
-    <div className="flex flex-col h-[90%] w-full justify-center">
-      <section className="flex flex-row  gap-x-2">
+    <div className="flex flex-col h-full w-full justify-start gap-y-4 min-h-0">
+      <section className="flex flex-row gap-x-2 shrink-0">
         <section className="flex flex-col gap-y-2 w-full">
           {allFrameworks.slice(0, 6).map((frameworkName) => {
-            const count = frameworkCount[frameworkName];
-            const percent = totalProjects ? (count / totalProjects) * 100 : 0;
+            const percent = getPercent(frameworkName);
 
             return (
               <div
@@ -193,6 +135,26 @@ export default function BarSectionContentMobileView({
             );
           })}
         </section>
+      </section>
+      <section className="flex flex-col shrink-0">
+        <table className="w-full table-fixed text-[0.65rem]">
+          <thead className="bg-variant text-text-same sticky top-0 text-nowrap text-ellipsis">
+            <tr>
+              {hTopHeaders
+                .filter((header) => header.id !== "projects_amount")
+                .map((header) => (
+                  <th
+                    key={header.id}
+                    className={`text-left font-light pl-1 truncate
+                    ${sorterOption === header.id ? "bg-bg-primary text-text-tertiary" : ""}`}
+                  >
+                    {header.label}
+                  </th>
+                ))}
+            </tr>
+          </thead>
+          <tbody className="divide-y">{renderData()}</tbody>
+        </table>
       </section>
     </div>
   );
