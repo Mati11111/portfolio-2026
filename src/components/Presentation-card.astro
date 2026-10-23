@@ -1,7 +1,14 @@
 ---
 import PresentationAnimation from "@/components/Presentation-animation.jsx";
+import { createTranslator } from "@/i18n";
+
+const tl = createTranslator(Astro.currentLocale);
+const heading = tl("presentation.heading");
 ---
 
 <section>
+    <!-- H1 real y siempre presente para SEO y lectores de pantalla.
+         Queda visualmente oculto; la animación "MATI </>" es decorativa. -->
+    <h1 class="sr-only">{heading}</h1>
     <PresentationAnimation client:visible />
 </section>

@@ -6,7 +6,6 @@ const tl = createTranslator(Astro.currentLocale);
 <section class="flex flex-col w-full h-full xl:text-2xl md:text-sm">
     <div
         id="show-terminal-welcome"
-        aria-label="simulated-linux-terminal"
         class="opacity-0 flex flex-col justify-start bg-transparent z-20 absolute w-full h-[85%] items-center border-bg-variant border-2"
     >
         <span
@@ -28,14 +27,14 @@ const tl = createTranslator(Astro.currentLocale);
                     </p>
                 </div>
                 <div class="flex flex-row text-nowrap">
-                    <h1
+                    <span
                         id="find-folder-welcome-line"
                         class="font-medium w-fit opacity-0"
                     >
                         {tl("terminal.terminal-remote")}{
                             tl("terminal.terminal-shell-symbol")
                         }
-                    </h1>
+                    </span>
                     <p
                         id="blinking-cursor-welcome-1"
                         class="animate-blinking-cursor w-3 xl:h-7 md:h-5 bg-selected"
@@ -49,7 +48,7 @@ const tl = createTranslator(Astro.currentLocale);
                 <div
                     class="flex pb-5 flex-row text-nowrap overflow-hidden lg:pb-0"
                 >
-                    <h1
+                    <span
                         id="terminal-welcome"
                         class="font-medium w-fit opacity-0"
                     >
@@ -58,7 +57,7 @@ const tl = createTranslator(Astro.currentLocale);
                         }{tl("terminal.terminal-main-folder")}{
                             tl("terminal.terminal-dots")
                         }{tl("terminal.terminal-shell")}
-                    </h1>
+                    </span>
                     <p
                         id="blinking-cursor-welcome-2"
                         class="opacity-0 w-3 xl:h-7 md:h-5 bg-selected"
@@ -79,7 +78,7 @@ const tl = createTranslator(Astro.currentLocale);
                         </p>
                     </div>
                     <div class="flex flex-row">
-                        <h1
+                        <span
                             id="terminal-resume-welcome"
                             class="font-medium w-fit opacity-0"
                         >
@@ -88,7 +87,7 @@ const tl = createTranslator(Astro.currentLocale);
                             }{tl("terminal.terminal-main-folder")}{
                                 tl("terminal.terminal-dots")
                             }{tl("terminal.terminal-shell")}
-                        </h1>
+                        </span>
                         <p
                             id="blinking-cursor-welcome-3"
                             class="opacity-0 w-3 xl:h-7 md:h-5 bg-selected"

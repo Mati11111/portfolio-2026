@@ -4,17 +4,23 @@
     "metaTitle": "Matías Chaparro | Portafolio",
     "metaDescription": "Portafolio de Matías Chaparro, Ingeniero Civil Informático especializado en desarrollo full-stack."
   },
+  "presentation": {
+    "heading": "Matías Chaparro — Ingeniero Civil Informático y Desarrollador Full-Stack"
+  },
+  "a11y": {
+    "skipToContent": "Saltar al contenido principal"
+  },
   "body": {
-    "placeholder": "EL CONTENIDO VA AQUI",
-    "resume": "Ingeniero Civil Informático y Desarrollador Full-Stack con experiencia en trabajo remoto, especializado en desarrollo de plataformas web, optimización de flujos de usuario y performance. He trabajado con React, MERN, Node.js, Docker, CI/CD, ETL (Informatica PowerCenter), SQL, Power BI y AWS, integrando tecnologías distribuidas como Stellar y Soroban. Experiencia en gestión de proyectos y trabajo en equipo utilizando Jira. Apasionado por la mejora continua, la eficiencia de procesos y la adopción de nuevas tecnologías.",
+    "placeholder": "EL CONTENIDO VA AQUÍ",
+    "resume": "Ingeniero Civil Informático y Desarrollador Full-Stack con experiencia en trabajo remoto, especializado en el desarrollo de plataformas web y la optimización de flujos de usuario y rendimiento. He trabajado con React, el stack MERN, Node.js, Docker, CI/CD, ETL (Informatica PowerCenter), SQL, Power BI y AWS, e integrado tecnologías distribuidas como Stellar y Soroban. Con experiencia en gestión de proyectos y trabajo en equipo con Jira. Me motivan la mejora continua, la eficiencia de los procesos y la adopción de nuevas tecnologías.",
     "ranger": {
-      "options": ["Experiencia laboral", "Formacion", "Proyectos personales"],
+      "options": ["Experiencia laboral", "Formación", "Proyectos personales"],
       "job_experiences": [
         {
           "text": ".txt",
           "company_name": "Anticipa (Fonasa)",
           "role": "Desarrollador Full-Stack",
-          "description": "Desarrollo backend para el sector salud (FONASA). Diseño e implementación de microservicios y APIs con Python, FastAPI y SQLAlchemy. Construcción de lógica de negocio en una arquitectura escalable y mantenible para procesos internos críticos.",
+          "description": "Desarrollo backend para el sector salud público (FONASA). Diseñé e implementé microservicios y APIs con Python, FastAPI y SQLAlchemy, construyendo la lógica de negocio sobre una arquitectura escalable y mantenible para procesos internos críticos.",
           "date": "Abr 2026 - Presente",
           "duration": "6 MESES",
           "frameworks": ["FastAPI", "SQLAlchemy", "PostgreSQL"]
@@ -23,7 +29,7 @@
           "text": ".txt",
           "company_name": "Apiux (Fonasa)",
           "role": "Desarrollador Full-Stack",
-          "description": "Desarrollo frontend para el sector salud (FONASA) con React, Tailwind y TypeScript. Construcción de interfaces y componentes reutilizables, consumo e integración de APIs y optimización de flujos de usuario en entornos productivos.",
+          "description": "Desarrollo frontend para el sector salud público (FONASA) con React, Tailwind y TypeScript. Construí interfaces y componentes reutilizables, consumí e integré APIs y optimicé flujos de usuario en entornos productivos.",
           "date": "Feb 2026 - Abr 2026",
           "duration": "3 MESES",
           "frameworks": ["React", "Tailwind", "FastAPI", "SQLAlchemy"]
@@ -32,7 +38,7 @@
           "text": ".txt",
           "company_name": "Forcast",
           "role": "Desarrollador Full-Stack",
-          "description": "Desarrollo de interfaces con React, Next.js y TailwindCSS. Implementación de APIs REST con Node.js y Express, integración de servicios externos (Stellar y Soroban) y gestión de base de datos con Prisma. Despliegues con Docker y CI/CD.",
+          "description": "Desarrollé interfaces con React, Next.js y TailwindCSS, y APIs REST con Node.js y Express. Integré servicios externos (Stellar y Soroban) y gestioné la base de datos SQL con Prisma. Despliegues con Docker y CI/CD.",
           "date": "Jul 2025 – Nov 2025",
           "duration": "5 MESES",
           "frameworks": ["React", "NextJs", "Tailwind", "NodeJs", "ExpressJs", "Prisma", "Docker"]
@@ -40,8 +46,8 @@
         {
           "text": ".txt",
           "company_name": "Entix",
-          "role": "Desarrollador de procesos ETL",
-          "description": "Gestión de flujos ETL con Informatica PowerCenter. Realicé consultas SQL en Oracle sobre múltiples bases de datos, monitoreando procesos y generando reportes ejecutivos para el análisis de información y la toma de decisiones.",
+          "role": "Desarrollador ETL",
+          "description": "Gestioné flujos ETL con Informatica PowerCenter. Realicé consultas SQL en Oracle sobre múltiples bases de datos, monitoreé procesos y generé reportes ejecutivos para el análisis de información y la toma de decisiones en producción.",
           "date": "Ene 2025 – Abr 2025",
           "duration": "4 Meses",
           "frameworks": ["Informatica PowerCenter", "OracleSQL", "Power BI"]
@@ -50,7 +56,7 @@
           "text": ".txt",
           "company_name": "Servcon",
           "role": "Desarrollador Full-Stack",
-          "description": "Lideré la arquitectura de una plataforma web para una constructora, gestionando tareas con Jira. Desarrollé el backend con Node.js y Express, modelé la base de datos en MongoDB y construí el frontend en React. Despliegue en VPS Linux con Cloudflare.",
+          "description": "Lideré la arquitectura de una plataforma web para una constructora, gestionando las tareas con Jira. Desarrollé el backend con Node.js y Express, modelé la base de datos en MongoDB y construí el frontend en React. Desplegada en un VPS Linux detrás de Cloudflare.",
           "date": "Ago 2023 – Ene 2024",
           "duration": "6 MESES",
           "frameworks": ["NodeJs", "ExpressJs", "React", "MongoDB", "Linux", "Cloudflare"]
@@ -68,9 +74,9 @@
       "careers": [
         {
           "text": ".txt",
-          "company_name": "Universidad Nacional Andres Bello",
-          "role": "Ingeniero civil informatico",
-          "description": "Formación en ingeniería de software y metodologías ágiles (Scrum). Desarrollo académico con React, Node.js, PostgreSQL, MongoDB y Docker, con aplicación de Machine Learning. Tesis sobre integración de componentes electrónicos con modelos de IA.",
+          "company_name": "Universidad Nacional Andrés Bello",
+          "role": "Ingeniero Civil Informático",
+          "description": "Formación en ingeniería de software y metodologías ágiles (Scrum). Proyectos académicos con React, Node.js, PostgreSQL, MongoDB y Docker, con aplicación de Machine Learning. Tesis sobre la integración de componentes electrónicos con modelos de IA.",
           "date": "Ene 2020 – Ene 2026",
           "duration": "5 años",
           "frameworks": ["NodeJs", "React", "PostgreSQL", "MongoDB", "Docker", "ML"]
@@ -80,7 +86,7 @@
         {
           "text": ".txt",
           "company_name": "Integration API Gateway",
-          "description": "API Gateway en Node.js y Express para integrar servicios externos (Spotify, YouTube Music, Cloudinary y Gemini AI). Implementé endpoints REST, autenticación con terceros y comunicación con Discord. Desplegado en Oracle Cloud con gestión de logs.",
+          "description": "API Gateway construido con Node.js y Express para integrar servicios externos (Spotify, YouTube Music, Cloudinary y Gemini AI). Implementé endpoints REST, autenticación con terceros e integración con Discord. Desplegado en Oracle Cloud con gestión centralizada de logs.",
           "status": "Finalizado",
           "frameworks": ["NodeJs", "ExpressJs", "Docker", "Linux"],
           "framework-headers": [
@@ -220,16 +226,16 @@
     }
   },
   "terminal": {
-    "terminal-welcome-msg": "Bienvenido a mi portafolio!",
+    "terminal-welcome-msg": "¡Bienvenido a mi portafolio!",
     "terminal-local-header": "mati@local",
     "terminal-shell-symbol": "~$",
     "terminal-shell": "$",
     "terminal-folder-symbol": "~/",
     "terminal-local": "mati@local:",
     "terminal-ssh": "ssh ",
-    "terminal-confirm": "Estas seguro que quieres continuar conectando (si/no)?",
-    "terminal-yes": "si",
-    "terminal-welcome": "Bienvenido a mi portafolio!",
+    "terminal-confirm": "¿Estás seguro de que quieres continuar conectando (sí/no)?",
+    "terminal-yes": "sí",
+    "terminal-welcome": "¡Bienvenido a mi portafolio!",
     "terminal-remote-header": "portafolio@localhost",
     "terminal-remote": "portafolio@localhost:",
     "terminal-main-folder": "documentos",
@@ -266,11 +272,11 @@
       },
       "1": {
         "0": "textLine",
-        "1": "Estas seguro que quieres continuar conectando (si/no)?"
+        "1": "¿Estás seguro de que quieres continuar conectando (sí/no)?"
       },
       "2": {
         "0": "textLine",
-        "1": "si"
+        "1": "sí"
       }
     }
   },

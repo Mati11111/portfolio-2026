@@ -13,15 +13,15 @@ export default function RangerOptionContent({ content = "", experience = 0 }) {
           className="lg:p-5 md:p-1 flex flex-col h-full min-h-0 overflow-y-scroll lg:gap-10 gap-4 pb-6"
         >
           <div className="flex flex-col lg:justify-between md:justify-start">
-            <h1
+            <h2
               id="right-role"
               className="font-medium xl:text-2xl md:text-sm lg:border-none"
             >
               {parsedContent[experience].role ||
                 parsedContent[experience].company_name}
-            </h1>
+            </h2>
             <span
-              id="right-role"
+              id="right-company"
               className="font-light xl:text-[1rem] md:text-sm mb-3"
             >
               {parsedContent[experience].status

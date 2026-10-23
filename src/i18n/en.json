@@ -2,19 +2,25 @@
   "head": {
     "title": "Matías Chaparro | Full-Stack Developer",
     "metaTitle": "Matías Chaparro | Portfolio",
-    "metaDescription": "Portfolio of Matías Chaparro, Computer Engineer specialized in full-stack development."
+    "metaDescription": "Portfolio of Matías Chaparro, a Computer Engineer specialized in full-stack development."
+  },
+  "presentation": {
+    "heading": "Matías Chaparro — Computer Engineer and Full-Stack Developer"
+  },
+  "a11y": {
+    "skipToContent": "Skip to main content"
   },
   "body": {
     "placeholder": "CONTENT GOES HERE",
-    "resume": "Computer Engineer and Full-Stack Developer with remote work experience, specialized in web platform development, user flow optimization and performance. I have worked with React, MERN, Node.js, Docker, CI/CD, ETL (Informatica PowerCenter), SQL, Power BI and AWS, integrating distributed technologies such as Stellar and Soroban. Experienced in project management and teamwork using Jira. Passionate about continuous improvement, process efficiency and the adoption of new technologies.",
+    "resume": "Computer Engineer and Full-Stack Developer with remote work experience, specialized in building web platforms and optimizing user flows and performance. I have worked with React, the MERN stack, Node.js, Docker, CI/CD, ETL (Informatica PowerCenter), SQL, Power BI and AWS, and integrated distributed technologies such as Stellar and Soroban. Experienced in project management and teamwork with Jira. Driven by continuous improvement, process efficiency and the adoption of new technologies.",
     "ranger": {
       "options": ["Work experience", "Education", "Personal projects"],
       "job_experiences": [
         {
           "text": ".txt",
-          "company_name": "Anticipa",
+          "company_name": "Anticipa (Fonasa)",
           "role": "Full-Stack Developer",
-          "description": "Backend development for the health sector (FONASA). Design and implementation of microservices and APIs with Python, FastAPI and SQLAlchemy. Built business logic in a scalable, maintainable architecture for critical internal processes.",
+          "description": "Backend development for the public health sector (FONASA). Designed and implemented microservices and APIs with Python, FastAPI and SQLAlchemy, building the business logic on a scalable, maintainable architecture for critical internal processes.",
           "date": "Apr 2026 - Present",
           "duration": "6 MONTHS",
           "frameworks": ["FastAPI", "SQLAlchemy", "PostgreSQL"]
@@ -23,7 +29,7 @@
           "text": ".txt",
           "company_name": "Apiux (Fonasa)",
           "role": "Full-Stack Developer",
-          "description": "Frontend development for the health sector (FONASA) with React, Tailwind and TypeScript. Built interfaces and reusable components, consumed and integrated APIs, and optimized user flows in production environments.",
+          "description": "Frontend development for the public health sector (FONASA) with React, Tailwind and TypeScript. Built interfaces and reusable components, consumed and integrated APIs, and optimized user flows in production.",
           "date": "Feb 2026 - Apr 2026",
           "duration": "3 MONTHS",
           "frameworks": ["React", "Tailwind", "FastAPI", "SQLAlchemy"]
@@ -32,7 +38,7 @@
           "text": ".txt",
           "company_name": "Forcast",
           "role": "Full-Stack Developer",
-          "description": "Developed interfaces with React, Next.js and TailwindCSS. Built REST APIs with Node.js and Express, integrated external services (Stellar and Soroban) and managed the SQL database with Prisma. Deployments with Docker and CI/CD.",
+          "description": "Built interfaces with React, Next.js and TailwindCSS, and REST APIs with Node.js and Express. Integrated external services (Stellar and Soroban) and managed the SQL database with Prisma. Deployed with Docker and CI/CD.",
           "date": "Jul 2025 – Nov 2025",
           "duration": "5 MONTHS",
           "frameworks": ["React", "NextJs", "Tailwind", "NodeJs", "ExpressJs", "Prisma", "Docker"]
@@ -40,8 +46,8 @@
         {
           "text": ".txt",
           "company_name": "Entix",
-          "role": "ETL Process Developer",
-          "description": "Management of ETL flows with Informatica PowerCenter. Ran SQL queries in Oracle across multiple databases, monitoring processes and generating executive reports for data analysis and decision making in production.",
+          "role": "ETL Developer",
+          "description": "Managed ETL workflows with Informatica PowerCenter. Ran SQL queries in Oracle across multiple databases, monitored processes and produced executive reports to support data analysis and decision-making in production.",
           "date": "Jan 2025 – Apr 2025",
           "duration": "4 Months",
           "frameworks": ["Informatica PowerCenter", "OracleSQL", "Power BI"]
@@ -50,7 +56,7 @@
           "text": ".txt",
           "company_name": "Servcon",
           "role": "Full-Stack Developer",
-          "description": "Led the architecture of a web platform for a construction company, managing tasks with Jira. Built the backend with Node.js and Express, modeled the database in MongoDB and developed the frontend in React. Deployed on a Linux VPS with Cloudflare.",
+          "description": "Led the architecture of a web platform for a construction company, tracking tasks with Jira. Built the backend with Node.js and Express, modeled the database in MongoDB and developed the frontend in React. Deployed on a Linux VPS behind Cloudflare.",
           "date": "Aug 2023 – Jan 2024",
           "duration": "6 MONTHS",
           "frameworks": ["NodeJs", "ExpressJs", "React", "MongoDB", "Linux", "Cloudflare"]
@@ -59,7 +65,7 @@
           "text": ".txt",
           "company_name": "Psys",
           "role": "IT Consultant",
-          "description": "Monitored the performance of a web platform on AWS within the health and wellness sector. Analyzed metrics, identified bottlenecks and proposed architecture improvements, resource optimization and infrastructure best practices.",
+          "description": "Monitored the performance of a web platform on AWS in the health and wellness sector. Analyzed metrics, identified bottlenecks and proposed architecture improvements, resource optimization and infrastructure best practices.",
           "date": "Mar 2023 – Jun 2023",
           "duration": "4 Months",
           "frameworks": ["AWS", "Linux", "OracleSQL"]
@@ -68,9 +74,9 @@
       "careers": [
         {
           "text": ".txt",
-          "company_name": "Universidad Nacional Andres Bello",
+          "company_name": "Universidad Nacional Andrés Bello",
           "role": "Computer Engineer",
-          "description": "Education in software engineering and agile methodologies (Scrum). Academic development with React, Node.js, PostgreSQL, MongoDB and Docker, applying Machine Learning. Thesis on integrating electronic components with AI models.",
+          "description": "Trained in software engineering and agile methodologies (Scrum). Academic projects with React, Node.js, PostgreSQL, MongoDB and Docker, applying Machine Learning. Thesis on integrating electronic components with AI models.",
           "date": "Jan 2020 – Jan 2026",
           "duration": "5 years",
           "frameworks": ["NodeJs", "React", "PostgreSQL", "MongoDB", "Docker", "ML"]
@@ -80,7 +86,7 @@
         {
           "text": ".txt",
           "company_name": "Integration API Gateway",
-          "description": "API Gateway in Node.js and Express to integrate external services (Spotify, YouTube Music, Cloudinary and Gemini AI). Implemented REST endpoints, third-party authentication and Discord communication. Deployed on Oracle Cloud with log management.",
+          "description": "API Gateway built with Node.js and Express to integrate external services (Spotify, YouTube Music, Cloudinary and Gemini AI). Implemented REST endpoints, third-party authentication and Discord integration. Deployed on Oracle Cloud with centralized log management.",
           "status": "Finished",
           "frameworks": ["NodeJs", "ExpressJs", "Docker", "Linux"],
           "framework-headers": [

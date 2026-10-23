@@ -152,6 +152,37 @@ a {
 * {
     user-select: none;
 }
+
+/* Permitir seleccionar el texto real de contenido (currículum, descripciones)
+   para mejorar la usabilidad sin afectar los elementos decorativos. */
+p,
+h1,
+h2,
+li,
+#right-description,
+#show-text-welcome {
+    user-select: text;
+}
+
+/* A11y: foco visible para navegación con teclado (WCAG 2.4.7) */
+:focus-visible {
+    outline: 3px solid var(--color-secondary, #4b9eff);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* A11y: respetar la preferencia de movimiento reducido (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
 .reveal-left {
     clip-path: inset(0 100% 0 0);
     display: inline-block;
