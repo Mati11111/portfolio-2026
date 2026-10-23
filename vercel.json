@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/components/:path*",
-      "destination": "https://components-project.vercel.app/components/:path*"
+      "destination": "https://components-project-omega.vercel.app/components/:path*"
     }
   ]
 }
