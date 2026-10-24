@@ -17,7 +17,12 @@ const esURL = new URL("/", Astro.site).href;
 const enURL = new URL("/en", Astro.site).href;
 
 // Imagen para redes sociales (recomendado 1200x630).
-const ogImage = new URL("/mati-social.png", Astro.site).href;
+// Se consume desde la librería de componentes (mati-dev.cl/components) para
+// mantener un único asset de marca compartido entre ambos sitios.
+const ogImage = "https://mati-dev.cl/components/mati-social.png";
+
+// Favicon / icono de perfil, también servido por la librería.
+const faviconURL = "https://mati-dev.cl/components/brand/favicon.svg";
 
 const title = tl("head.title");
 const description = tl("head.metaDescription");
@@ -68,7 +73,7 @@ const ogImageAlt =
         <title>{title}</title>
         <meta name="description" content={description} />
         <meta name="author" content="Matías Chaparro" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/svg+xml" href={faviconURL} />
 
         <!-- Canonical y alternativas por idioma -->
         <link rel="canonical" href={canonicalURL} />
